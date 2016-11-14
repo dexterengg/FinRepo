@@ -1,0 +1,168 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminDashBoard.master.cs" Inherits="Admin_AdminDashBoard" %>
+<%@ Register TagPrefix="AdExternalLinkAs"  TagName="AdExternalLinkAs"  Src="~/Admin/ExternalLinks.ascx" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajxct" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>  
+
+    <AdExternalLinkAs:AdExternalLinkAs id="externallink" runat="server" />     
+    
+    <style>
+        /*body{background: #fff url(img/texture.png) repeat;margin: 0;padding: 0;}*/
+        .content{margin: 0px 20px 0px 2px;}
+        .flexy-menu{margin: 5px 0 0 0!important;}
+        .flexy-menu{width: 100%;margin:0;padding: 0;position:relative;float:left;list-style: none;background: #333333;}
+        .flexy-menu li{display:inline-block;font-size:13px;margin:0;padding:0;float:left;line-height: 20px;position:relative;}
+        .flexy-menu > li > a{padding:20px 22px;color:#ccc;text-decoration:none;display:block;text-transform:uppercase;-webkit-transition:color 0.2s linear, background 0.2s linear;-moz-transition:color 0.2s linear, background 0.2s linear;-o-transition:color 0.2s linear, background 0.2s linear;transition:color 0.2s linear, background 0.2s linear;}
+        .flexy-menu li:hover > a,.flexy-menu li.active a{background: #555;color: #fff;}
+        .flexy-menu li.right{float: right;}
+        .flexy-menu ul, .flexy-menu ul li ul{list-style: none;margin: 0;padding: 0;display: none;position: absolute;z-index: 99999;width: 132px;background: #333333;box-shadow: 0 1px 1px rgba(0,0,0,0.3);}
+        .flexy-menu ul{top: 60px;left: 0;}
+        .flexy-menu ul li ul{top: 0;left: 100%;}
+        .flexy-menu ul li{clear:both;width:100%;border: none;font-size:12px;}
+        .flexy-menu ul li a{padding:10px 20px;width:100%;color:#dedede;font-size:13px;text-decoration:none;display:inline-block;float:left;clear:both;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-transition:color 0.2s linear, background 0.2s linear;-moz-transition:color 0.2s linear, background 0.2s linear;-o-transition:color 0.2s linear, background 0.2s linear;transition:color 0.2s linear, background 0.2s linear;}
+        .flexy-menu > li .indicator{position: absolute;color: #dedede;top: 20px;right: 8px;font-size: 17px;}
+        .flexy-menu ul > li .indicator{top: 10px;right: 8px;}
+        .thin > li > a{padding: 10px 22px;}
+        .thin ul{top: 40px;}
+        .thin > li .indicator{top: 10px;}
+        .thick > li > a{padding: 40px 22px;}
+        .thick ul{top: 100px;}
+        .thick > li .indicator{top: 40px;}
+        .flexy-menu i{line-height: 20px !important;margin-right: 6px;font-size: 18px;float: left;}
+        .flexy-menu > li.showhide{display: none;width: 100%;height: 50px;cursor: pointer;color:#dedede;border-bottom: solid 1px rgba(0, 0, 0, 0.1);background: #333333;}
+        .flexy-menu > li.showhide span.title{margin: 16px 0 0 25px;float: left;}
+        .flexy-menu > li.showhide span.icon{margin: 17px 20px;float: right;}
+        .flexy-menu > li.showhide .icon em{margin-bottom: 3px;display: block;width: 20px;height: 2px;background: #ccc;}
+        .orange li:hover > a, .orange li.active a{background: #025db1;color: #fff!important;}
+        .flexy-menu.vertical{width: 100%;}
+        .flexy-menu.vertical li{width: 100%;}
+        .flexy-menu.vertical li a{display: inline-block !important;width: 100%;padding:10px 20px 8px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+        .flexy-menu.vertical ul li{width: 100%;}
+        .flexy-menu.vertical ul, .flexy-menu.vertical ul li ul{width: auto; white-space: nowrap; }
+        .flexy-menu.vertical ul{top: 0;left: 100%;}
+        .flexy-menu.vertical ul li ul{top: 0px;}
+        .flexy-menu.vertical.right{float: right !important;}
+        .flexy-menu.vertical.right ul{left: -150px !important;}
+        .flexy-menu.vertical > li .indicator{top: 8px;right: 15px;font-size: 17px;}
+        .flexy-menu.vertical ul > li .indicator{top: 9px;right: 15px;}
+        @media only screen and (max-width: 768px)
+        {
+            .content{margin: 0px 0px 0px 2px;}
+            .flexy-menu.vertical{width: 100%;}
+            .flexy-menu li{display: block;width: 100%;}
+            .flexy-menu > li > a{padding-top:15px;padding-bottom:15px;padding-left: 25px;}
+            .flexy-menu a{width: 100%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+            .flexy-menu ul, .flexy-menu ul li ul,.flexy-menu.vertical ul, .flexy-menu.vertical ul li ul{width: 100%;left: 0;border-left: none;position: static;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+            .flexy-menu ul li{border-left: none;border-right: none;}
+            .flexy-menu ul li a,.flexy-menu.vertical ul li a{padding-top:10px;padding-bottom:10px;}
+            .flexy-menu ul > li > a{padding-left: 40px !important;}
+            .flexy-menu > li .indicator{top: 15px;right: 25px;font-size: 17px;}
+            .flexy-menu ul > li .indicator{right: 24px;}
+            .flexy-menu.vertical ul > li .indicator{top: 10px;right: 15px;}
+            .flexy-menu > li > ul > li > a{padding-left: 40px !important;}
+            .flexy-menu > li > ul > li > ul > li > a{padding-left: 60px !important;}
+            .flexy-menu > li > ul > li > ul > li > ul > li > a{padding-left: 80px !important;}
+
+        }
+</style>    
+    <script type="text/javascript" src="js/flexy-menu.js"></script>
+    <script type="text/javascript">$(document).ready(function () { $(".flexy-menu").flexymenu({ speed: 400, type: "vertical", indicator: true }); });</script>
+
+
+</head>
+<body>
+    <form id="form1" runat="server" >
+        <div id="wrapper">
+            <header>
+                <div class="logo"><a href="../Default.aspx" target="_parent"><img src="../images/fincart.png" /></a></div>  
+                <div class="pageTopic" >
+                    
+                </div>                
+                <div class="hRight">
+                    <span class="welcomeRole">
+                        You have logged in as <asp:Label ID="lblUserRole" runat="server" Text="Operator"></asp:Label>
+                        <asp:Label ID="lblUserName" runat="server" Text="UserName"></asp:Label>
+                    </span>
+                    <span class="pipe">|</span>
+                      <asp:LinkButton ID="LoginD" runat="server" OnClick="LoginD_Click" CssClass="signin">Logout</asp:LinkButton>
+                    <span class="pipe">|</span>
+                      <span id="dbPlanner" runat="server" visible="false">
+                         <a href="PlannerLMS.aspx" title="Planner Dashboard"><i class="fa fa-university signin"></i></a>
+                        </span>
+                        <span id="dbOperator" runat="server" visible="false">
+                          <a href="OperatorLMS.aspx" title="Operator Dashboard"><i class="fa fa-university signin"></i></a>
+                        </span>
+                        <span id="dbAdmin" runat="server" visible="false">
+                          <a href="AdminDB.aspx" title="Admin Dashboard"><i class="fa fa-university signin"></i></a>
+                        </span>
+                </div>   
+            </header>
+            <div id="container">
+                <div id="DBMenuContainer">
+                    <div class="content">
+                        <ul class="flexy-menu orange">                                                        
+                            <li><a href="LMS.aspx"><i class="fa fa-comments"></i>LMS</a></li>
+                            <li runat="server" id="UserMenu"><a href="CreateUser.aspx"><i class="fa fa-group"></i>User</a></li>
+                            
+                            <%--<li><a href="JavaScript:void(0)"><i class="fa fa-list-alt"></i>Dropdown</a>
+                                <ul>
+                                    <li><a href="JavaScript:void(0)">Goal Category</a></li>
+                                    <li><a href="JavaScript:void(0)">Asset Type</a></li>
+                                    <li><a href="JavaScript:void(0)">Relationship</a></li>
+                                    <li><a href="JavaScript:void(0)">Income Type</a></li>
+                                    <li><a href="JavaScript:void(0)">Expense Type</a></li>
+                                    <li><a href="JavaScript:void(0)">Expense Sub-Type</a></li>
+                                    <li><a href="JavaScript:void(0)">Lead Type</a></li>
+                                    <li><a href="JavaScript:void(0)">Plan Type1</a></li>
+                                    <li><a href="JavaScript:void(0)">Plan Type2</a></li>
+                                    <li><a href="JavaScript:void(0)">Payment Mode</a></li>
+                                    <li><a href="JavaScript:void(0)">Register Planner</a></li>
+                                </ul>
+                            </li>--%>
+                            <li runat="server" id="WorkshopMenu"><a href="JavaScript:void(0)"><i class="fa fa-th"></i>Workshop</a>
+                                <ul>
+                                    <li><a href="WorkshopCourses.aspx">Workshop Courses</a></li>
+                                    <li><a href="WSParticipationList.aspx">Workshop Participation List</a></li>
+                                    <%--<li><a href="JavaScript:void(0)">Workshop - html design / upload</a></li>--%>
+                                </ul>
+                            </li> 
+                            <li runat="server" id="TemplateMenu"><a href="JavaScript:void(0)"><i class="fa fa-bullhorn"></i>Template</a>
+                                <ul>
+                                    <%--<li><a href="JavaScript:void(0)">Downloads Center</a></li>
+                                    <li><a href="JavaScript:void(0)">Downloads Center - File Names</a></li>
+                                    <li><a href="JavaScript:void(0)">Birthday Wishes | SMS | EMAIL</a></li>
+                                    <li><a href="JavaScript:void(0)">Anniversary Wishes | SMS | EMAIL</a></li>--%>
+                                    <li><a href="AddSchemeMatrix.aspx">Scheme Matrix</a></li>
+                                </ul>
+                            </li> 
+                            <li runat="server" id="SubscriptionMenu"><a href="SubscriptionList.aspx"><i class="fa fa-check-circle"></i>Subscription List</a></li>
+                            <li runat="server" id="Trash"><a href="LeadTrash.aspx"><i class="fa fa-pencil-square-o"></i>Trash</a></li>
+                            <li runat="server" id="LeadPassword"><a href="LeadPassword.aspx"><i class="fa fa-key"></i>Lead Details</a></li>
+                            <li runat="server" id="TrackingMenu"><a href="JavaScript:void(0)"><i class="fa fa-eye"></i>Tracking System</a>
+                                <ul>
+                                    <li><a href="PlannerTrack.aspx">Planner Activies</a></li>
+<%--                                    <li><a href="WSParticipationList.aspx">Workshop Participation List</a></li>--%>
+                                    <%--<li><a href="JavaScript:void(0)">Workshop - html design / upload</a></li>--%>
+                                </ul>
+                            </li>                     
+                        </ul>
+                    </div>
+                </div>
+                <div id="DBContentContainer">
+                    <asp:ContentPlaceHolder id="AdminContentPlaceHolder" runat="server">
+                        
+                    </asp:ContentPlaceHolder>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+</body>
+</html>
