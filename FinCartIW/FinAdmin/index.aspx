@@ -19,8 +19,11 @@
                 <img src="images/business-woman-icon-24_ver_0.png" class=" img-responsive img-thumbnail img-circle" />
             </div>
             <form>
-                <h1><span id="usermsg"></span></h1>
-                <a id="redirect-button" style="display:none;"></a>
+                <h1>
+                    <span id="usermsg"></span>
+                    <br />
+                    <a id="redirect-button" style="display:none;"></a>
+                </h1>
             </form>
             <form class="form">
                 <input id="txtAdminUserName" type="text" placeholder="Username" tabindex="1">
