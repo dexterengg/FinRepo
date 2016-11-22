@@ -54,66 +54,51 @@
             <div class="block-header">
                 <h2>ADVANCED FORM ELEMENTS</h2>
             </div>
-            <!-- Color Pickers -->
+
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>
-                                COLOR PICKERS
-                                <small>Taken from <a href="https://github.com/mjolnic/bootstrap-colorpicker/" target="_blank">github.com/mjolnic/bootstrap-colorpicker</a></small>
-                            </h2>
+                            <h2>TEXTAREA</h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                         <div class="body">
+                            <h2 class="card-inside-title">Query</h2>
                             <div class="row clearfix">
-                                <div class="col-md-6">
-                                    <b>HEX CODE</b>
-                                    <div class="input-group colorpicker">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" value="#00AABB">
+                                            <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
-                                        <span class="input-group-addon">
-                                            <i></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <b>RGB(A) CODE</b>
-                                    <div class="input-group colorpicker">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" value="rgba(0,0,0,0.7)">
-                                        </div>
-                                        <span class="input-group-addon">
-                                            <i></i>
-                                        </span>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Color Pickers -->
-            <!-- File Upload | Drag & Drop OR With Click & Choose -->
+           
+
+               <!-- File Upload | Drag & Drop OR With Click & Choose -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
                                 FILE UPLOAD - DRAG & DROP OR WITH CLICK & CHOOSE
-                                <small>Taken from <a href="http://www.dropzonejs.com/" target="_blank">www.dropzonejs.com</a></small>
+                                
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -146,8 +131,88 @@
                 </div>
             </div>
             <!-- #END# File Upload | Drag & Drop OR With Click & Choose -->
-            <!-- Masked Input -->
+
+            
+                 <!-- Advanced Select -->
             <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Assined To</b>
+                                    </p>
+                                    <select class="form-control show-tick">
+                                        <option>Select</option>
+                                        <option>Assined</option>
+                                        <option>Assined</option>
+                                        <option>Assined</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Report To</b>
+                                    </p>
+                                    <select class="form-control show-tick">
+                                      <option>Select</option>
+                                        <option>Report To</option>
+                                        <option>Report To</option>
+                                        <option>Report To</option>
+
+                                        
+                                    </select>
+                               </div>
+
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Status </b>
+                                    </p>
+                                    <select class="form-control show-tick" multiple>
+                                        <option> Select </option>
+                                        <option>Open</option>
+                                        <option>Close</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Priority Moderate</b>
+                                    </p>
+                                   <select class="form-control show-tick" multiple>
+                                       <option> Select </option>
+                                        <option>High</option>
+                                        <option>Low</option>
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                             <div class="col-md-12" style="text-align:right"> <button type="button" class="btn btn-success">Submit</button> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Advanced Select -->
+         
+            <!-- Masked Input -->
+            <%--<div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -308,10 +373,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <!-- #END# Masked Input -->
             <!-- Input Group -->
-            <div class="row clearfix">
+            <%--<div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -502,10 +567,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <!-- #END# Input Group -->
             <!-- Multi Select -->
-            <div class="row clearfix">
+            <%--<div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -592,10 +657,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <!-- #END# Multi Select -->
 
-            <div class="row clearfix">
+            <%--<div class="row clearfix">
                 <!-- Spinners -->
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
@@ -677,145 +742,10 @@
                     </div>
                 </div>
                 <!-- #END# Tags Input -->
-            </div>
-            <!-- Advanced Select -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                ADVANCED SELECT
-                                <small>Taken from <a href="https://silviomoreto.github.io/bootstrap-select/" target="_blank">silviomoreto.github.io/bootstrap-select</a></small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div class="row clearfix">
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>Basic</b>
-                                    </p>
-                                    <select class="form-control show-tick">
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                    </select>
-
-                                </div>
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>With OptGroups</b>
-                                    </p>
-                                    <select class="form-control show-tick">
-                                        <optgroup label="Picnic">
-                                            <option>Mustard</option>
-                                            <option>Ketchup</option>
-                                            <option>Relish</option>
-                                        </optgroup>
-                                        <optgroup label="Camping">
-                                            <option>Tent</option>
-                                            <option>Flashlight</option>
-                                            <option>Toilet Paper</option>
-                                        </optgroup>
-                                    </select>
-
-                                </div>
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>Multiple Select</b>
-                                    </p>
-                                    <select class="form-control show-tick" multiple>
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                    </select>
-
-                                </div>
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>With Search Bar</b>
-                                    </p>
-                                    <select class="form-control show-tick" data-live-search="true">
-                                        <option>Hot Dog, Fries and a Soda</option>
-                                        <option>Burger, Shake and a Smile</option>
-                                        <option>Sugar, Spice and all things nice</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>Max Selection Limit: 2</b>
-                                    </p>
-                                    <select class="form-control show-tick" multiple>
-                                        <optgroup label="Condiments" data-max-options="2">
-                                            <option>Mustard</option>
-                                            <option>Ketchup</option>
-                                            <option>Relish</option>
-                                        </optgroup>
-                                        <optgroup label="Breads" data-max-options="2">
-                                            <option>Plain</option>
-                                            <option>Steamed</option>
-                                            <option>Toasted</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>Display Count</b>
-                                    </p>
-                                    <select class="form-control show-tick" multiple data-selected-text-format="count">
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                        <option>Onions</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>With SubText</b>
-                                    </p>
-                                    <select class="form-control show-tick" data-show-subtext="true">
-                                        <option data-subtext="French's">Mustard</option>
-                                        <option data-subtext="Heinz">Ketchup</option>
-                                        <option data-subtext="Sweet">Relish</option>
-                                        <option data-subtext="Miracle Whip">Mayonnaise</option>
-                                        <option data-divider="true"></option>
-                                        <option data-subtext="Honey">Barbecue Sauce</option>
-                                        <option data-subtext="Ranch">Salad Dressing</option>
-                                        <option data-subtext="Sweet &amp; Spicy">Tabasco</option>
-                                        <option data-subtext="Chunky">Salsa</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <p>
-                                        <b>Disabled Option</b>
-                                    </p>
-                                    <select class="form-control show-tick">
-                                        <option>Mustard</option>
-                                        <option disabled>Ketchup</option>
-                                        <option>Relish</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Advanced Select -->
+            </div>--%>
+       
             <!-- Input Slider -->
-            <div class="row clearfix">
+            <%--<div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -852,7 +782,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <!-- #END# Input Slider -->
         </div>
     </section> 
