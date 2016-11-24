@@ -175,9 +175,7 @@
                                         <option>Report To</option>
                                         <option>Report To</option>
                                         <option>Report To</option>
-
-                                        
-                                    </select>
+                                   </select>
                                </div>
 
                                 <div class="col-md-3">
@@ -189,8 +187,7 @@
                                         <option>Open</option>
                                         <option>Close</option>
                                     </select>
-
-                                </div>
+                                 </div>
                                 <div class="col-md-3">
                                     <p>
                                         <b>Priority Moderate</b>
