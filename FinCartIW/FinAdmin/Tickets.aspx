@@ -19,6 +19,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             bindDepartment($('#<%=ddlDepartment.ClientID%>'));
+            $('#<%=ddlDepartment.ClientID%>').on("change", departmentChange($('#<%=ddlDepartment.ClientID%>'), $("#<%=ddlDepartment.ClientID%> option:selected").val(), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>')));
         });
     </script>
 </asp:Content>
