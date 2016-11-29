@@ -14,9 +14,10 @@
         success: function (r) {
             ddlDepartment.empty().append('<option selected="selected" value="0">Select Department</option>');
             var ul = ddlDepartment.prev().children();
+            ul.empty().append("<li id='ddlDepartmentli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Department</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
             $.each(r.d, function (index) {
                 var i = index + 1;
-                ul.append("<li data-original-index='" + i + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>" + this['Name'] + "</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+                ul.append("<li id='ddlDepartmentli"+i+"' data-original-index='" + i + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>" + this['Name'] + "</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
                 ddlDepartment.append($("<option></option>").val(this['Code']).html(this['Name']));
             });
 
@@ -42,27 +43,28 @@ function endPreloader(msg) {
     }
 }
 
-function departmentChange(ddlDepartment, ddlDesignation, ddlAssignTo, ddlReportTo) {
+function departmentChange(ddlDepartment,depid, ddlDesignation, ddlAssignTo, ddlReportTo) {
     startPreloader("Loading Designations...");
+
+
+
 
     ddlDesignation.empty().append('<option selected="selected" value="0">Select Designation</option>');
     var ul = ddlDesignation.prev().children();
-    ul.empty().append("<li data-original-index='" + 0 + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Designation</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+    ul.empty().append("<li id='ddlDesignationli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Designation</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
 
 
     $.ajax({
         type: "POST",
-        url: "Tickets.aspx/GetDepartments",
-        data: '{}',
+        url: "Tickets.aspx/GetRoles",
+        data: '{depid:"' + depid + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (r) {
-            ddlDepartment.empty().append('<option selected="selected" value="0">Select Department</option>');
-            var ul = ddlDepartment.prev().children();
             $.each(r.d, function (index) {
                 var i = index + 1;
-                ul.append("<li data-original-index='" + i + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>" + this['Name'] + "</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
-                ddlDepartment.append($("<option></option>").val(this['Code']).html(this['Name']));
+                ul.append("<li d='ddlDesignationli"+i+"' data-original-index='" + i + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>" + this['RoleName'] + "</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+                ddlDesignation.append($("<option></option>").val(this['Code']).html(this['RoleName']));
             });
 
             endPreloader("");
