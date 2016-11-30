@@ -19,8 +19,11 @@
     <script type="text/javascript">
         $(document).ready(function () {
             bindDepartment($('#<%=ddlDepartment.ClientID%>'));
-            $('#<%=ddlDepartment.ClientID%>').on("change", departmentChange($('#<%=ddlDepartment.ClientID%>'), $("#<%=ddlDepartment.ClientID%> option:selected").val(), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>')));
         });
+
+        function fillDesignation() {
+            departmentChange($('#<%=ddlDepartment.ClientID%>'), $("#<%=ddlDepartment.ClientID%> option:selected").val(), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -42,7 +45,7 @@
                                         <p>
                                             <b>Department</b>
                                         </p>
-                                        <asp:DropDownList ID="ddlDepartment" runat="server" CssClass="form-control show-tick">
+                                        <asp:DropDownList ID="ddlDepartment" runat="server" CssClass="form-control show-tick" onchange="fillDesignation()">
                                             <asp:ListItem>Select Department</asp:ListItem>
                                         </asp:DropDownList>
 

@@ -46,13 +46,24 @@ function endPreloader(msg) {
 function departmentChange(ddlDepartment,depid, ddlDesignation, ddlAssignTo, ddlReportTo) {
     startPreloader("Loading Designations...");
 
-
-
+    $('#ddlDepartmentli' + ddlDepartment.prop('selectedIndex')).addClass('selected');
 
     ddlDesignation.empty().append('<option selected="selected" value="0">Select Designation</option>');
+    ddlDesignation.prev().prev().children(":first").text("Select Designation");
     var ul = ddlDesignation.prev().children();
     ul.empty().append("<li id='ddlDesignationli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Designation</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
 
+
+    ddlAssignTo.empty().append('<option selected="selected" value="0">Select Assign To</option>');
+    ddlAssignTo.prev().prev().children(":first").text("Select Assign To");
+    var ul1 = ddlAssignTo.prev().children();
+    ul1.empty().append("<li id='ddlAssignToli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Assign To</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+
+
+    ddlReportTo.empty().append('<option selected="selected" value="0">Select Report To</option>');
+    ddlReportTo.prev().prev().children(":first").text("Select Report To");
+    var ul2 = ddlReportTo.prev().children();
+    ul2.empty().append("<li id='ddlReportToli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Report To</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
 
     $.ajax({
         type: "POST",
