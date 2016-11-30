@@ -28,6 +28,10 @@
         function fillAssignTo() {
             designationChange($('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
         }
+
+        function fillReportTo() {
+            assignToChange($('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
+         }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -67,7 +71,7 @@
                                         <p>
                                             <b>Assign To</b>
                                         </p>
-                                        <asp:DropDownList ID="ddlAssignTo" runat="server" CssClass="form-control show-tick">
+                                        <asp:DropDownList ID="ddlAssignTo" runat="server" CssClass="form-control show-tick" onchange="fillReportTo()">
                                             <asp:ListItem>Select Assign To</asp:ListItem>
                                         </asp:DropDownList>
 

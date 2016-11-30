@@ -122,3 +122,34 @@ function designationChange(ddlDesignation, ddlAssignTo, ddlReportTo) {
         }
     });
 }
+
+function assignToChange(ddlDepartment, ddlAssignTo, ddlReportTo) {
+    startPreloader("Loading Report To...");
+
+    $('#ddlAssignToli' + ddlAssignTo.prop('selectedIndex')).addClass('selected');
+
+    ddlReportTo.empty().append('<option selected="selected" value="0">Select Report To</option>');
+    ddlReportTo.prev().prev().children(":first").text("Select Report To");
+    var ul = ddlReportTo.prev().children();
+    ul.empty().append("<li id='ddlReportToli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Report To</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+
+    $.ajax({
+        type: "POST",
+        url: "Tickets.aspx/GetReportTo",
+        data: '{assignuserid:"' + ddlDepartment.val() + '",assignuserid:"' + ddlAssignTo.val() + '"}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (r) {
+            $.each(r.d, function (index) {
+                var i = index + 1;
+                ul.append("<li d='ddlReportToli" + i + "' data-original-index='" + i + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>" + this['Name'] + "</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+                ddlReportTo.append($("<option></option>").val(this['UserID']).html(this['Name']));
+            });
+
+            endPreloader("");
+        },
+        error: function (r) {
+            endPreloader("Error");
+        }
+    });
+}
