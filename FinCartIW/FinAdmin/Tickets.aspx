@@ -22,7 +22,11 @@
         });
 
         function fillDesignation() {
-            departmentChange($('#<%=ddlDepartment.ClientID%>'), $("#<%=ddlDepartment.ClientID%> option:selected").val(), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
+            departmentChange($('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
+        }
+
+        function fillAssignTo() {
+            designationChange($('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
         }
     </script>
 </asp:Content>
@@ -54,7 +58,7 @@
                                         <p>
                                             <b>Designation</b>
                                         </p>
-                                        <asp:DropDownList ID="ddlDesignation" runat="server" CssClass="form-control show-tick">
+                                        <asp:DropDownList ID="ddlDesignation" runat="server" CssClass="form-control show-tick" onchange="fillAssignTo()">
                                             <asp:ListItem>Select Designation</asp:ListItem>
                                         </asp:DropDownList>
 

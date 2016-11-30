@@ -43,7 +43,7 @@ function endPreloader(msg) {
     }
 }
 
-function departmentChange(ddlDepartment,depid, ddlDesignation, ddlAssignTo, ddlReportTo) {
+function departmentChange(ddlDepartment, ddlDesignation, ddlAssignTo, ddlReportTo) {
     startPreloader("Loading Designations...");
 
     $('#ddlDepartmentli' + ddlDepartment.prop('selectedIndex')).addClass('selected');
@@ -68,7 +68,7 @@ function departmentChange(ddlDepartment,depid, ddlDesignation, ddlAssignTo, ddlR
     $.ajax({
         type: "POST",
         url: "Tickets.aspx/GetRoles",
-        data: '{depid:"' + depid + '"}',
+        data: '{depid:"' + ddlDepartment.val() + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (r) {
@@ -76,6 +76,43 @@ function departmentChange(ddlDepartment,depid, ddlDesignation, ddlAssignTo, ddlR
                 var i = index + 1;
                 ul.append("<li d='ddlDesignationli"+i+"' data-original-index='" + i + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>" + this['RoleName'] + "</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
                 ddlDesignation.append($("<option></option>").val(this['Code']).html(this['RoleName']));
+            });
+
+            endPreloader("");
+        },
+        error: function (r) {
+            endPreloader("Error");
+        }
+    });
+}
+
+function designationChange(ddlDesignation, ddlAssignTo, ddlReportTo) {
+    startPreloader("Loading Assign To...");
+
+    $('#ddlDesignationli' + ddlDesignation.prop('selectedIndex')).addClass('selected');
+
+    ddlAssignTo.empty().append('<option selected="selected" value="0">Select Assign To</option>');
+    ddlAssignTo.prev().prev().children(":first").text("Select Assign To");
+    var ul = ddlAssignTo.prev().children();
+    ul.empty().append("<li id='ddlAssignToli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Assign To</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+
+
+    ddlReportTo.empty().append('<option selected="selected" value="0">Select Report To</option>');
+    ddlReportTo.prev().prev().children(":first").text("Select Report To");
+    var ul1 = ddlReportTo.prev().children();
+    ul1.empty().append("<li id='ddlReportToli0' data-original-index='0'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>Select Report To</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+
+    $.ajax({
+        type: "POST",
+        url: "Tickets.aspx/GetAssignTo",
+        data: '{roleid:"' + ddlDesignation.val() + '"}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (r) {
+            $.each(r.d, function (index) {
+                var i = index + 1;
+                ul.append("<li d='ddlAssignToli" + i + "' data-original-index='" + i + "'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>" + this['Name'] + "</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>");
+                ddlAssignTo.append($("<option></option>").val(this['UserID']).html(this['Name']));
             });
 
             endPreloader("");
