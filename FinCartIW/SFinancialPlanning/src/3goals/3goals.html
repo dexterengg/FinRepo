@@ -1,0 +1,43 @@
+﻿<div role="form" class="registration-form">
+    <fieldset>
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>What are your top 3 Most Important Goals now?</h3>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <div class="form-group">
+
+                <div class="funkyradio">
+                    <div class="funkyradio-primary" ng-if="stat!='Single'">
+                        <input type="checkbox" name="checkbox" id="checkbox1" ng-model="checkboxModel.value1" ng-change="chkchange1()" ng-disabled="chkchangeall1()" />
+                        <label for="checkbox1" style="color:#fff;">Children’s Education</label>
+                    </div>
+                    <div class="funkyradio-primary" ng-if="stat!='Single'">
+                        <input type="checkbox" name="checkbox" id="checkbox2" ng-model="checkboxModel.value2" ng-change="chkchange2()" ng-disabled="chkchangeall2()" />
+                        <label for="checkbox2" style="color:#fff;">Children’s Marriage</label>
+                    </div>
+                    <div class="funkyradio-primary">
+                        <input type="checkbox" name="checkbox" id="checkbox3" ng-model="checkboxModel.value3" ng-change="chkchange3()" ng-disabled="chkchangeall3()" />
+                        <label for="checkbox3" style="color:#fff;">Buying Asset Home / Car</label>
+                    </div>
+                    <div class="funkyradio-primary">
+                        <input type="checkbox" name="checkbox" id="checkbox4" ng-model="checkboxModel.value4" ng-change="chkchange4()" ng-disabled="chkchangeall4()" />
+                        <label for="checkbox4" style="color:#fff;">Vacation</label>
+                    </div>
+                    <div class="funkyradio-primary">
+                        <input type="checkbox" name="checkbox" id="checkbox5" ng-model="checkboxModel.value5" ng-change="chkchange5()" ng-disabled="chkchangeall5()" />
+                        <label for="checkbox5" style="color:#fff;">Retirement</label>
+                    </div>
+                    <div class="funkyradio-primary" ng-if="stat=='Single'">
+                        <input type="checkbox" name="checkbox" id="checkbox6" ng-model="checkboxModel.value6" ng-change="chkchange6()" ng-disabled="chkchangeall6()" />
+                        <label for="checkbox6" style="color:#fff;">Others</label>
+                    </div>
+                </div>
+
+            </div>
+            <button type="button" class="btn btn-previous" ng-click="decrement()">Previous</button>
+            <button type="button" class="btn btn-next pull-right" ng-click="increment()" ng-disabled="chkchange()">Next</button>
+        </div>
+    </fieldset>
+</div>

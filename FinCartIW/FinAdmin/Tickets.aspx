@@ -10,10 +10,11 @@
             width: 100%;
             top: 0;
             left: 0;
-            z-index: 1;
-            opacity: 0.5;
+            z-index: 9;
+            opacity: 0.8;
             background-color: #ccc;
             position: absolute;
+            color:#f44336;
         }
     </style>
     <script type="text/javascript">
@@ -31,7 +32,7 @@
 
         function fillReportTo() {
             assignToChange($('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
-         }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -47,6 +48,28 @@
                             </h2>
                             </div>
                             <div class="body">
+
+                                <div class="row clearfix">
+                                    <div class="col-md-8">
+                                        <p>
+                                            <b>Query</b>
+                                        </p>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <textarea id="txtquery" runat="server" rows="4" class="form-control no-resize" placeholder="Type Your Query......"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                      <div class="col-md-4">
+                                        <p>
+                                            <b>Attachment (Optional)</b>
+                                        </p>
+                                        <asp:FileUpload ID="fileattachment" runat="server" CssClass="form-control" />
+                                    </div>
+
+                                    </div>
 
                                 <div class="row clearfix">
                                     <div class="col-md-4">
@@ -111,25 +134,9 @@
                                     </div>
                                 </div>
 
-
                                 <div class="row clearfix">
-                                    <div class="col-md-8">
-                                        <p>
-                                            <b>Query</b>
-                                        </p>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <textarea id="txtquery" runat="server" rows="4" class="form-control no-resize" placeholder="Type Your Query......"></textarea>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <p>
-                                            <b>Attachment</b>
-                                        </p>
-                                        <asp:FileUpload ID="fileattachment" runat="server" CssClass="form-control form-line" />
+                                    <div class="col-md-12" style="text-align: right">
+                                        <asp:Button ID="btn_submit" runat="server" Text="Submit" CssClass="btn btn-success" OnClientClick="" OnClick="btn_submit_Click"/>
                                     </div>
                                 </div>
 

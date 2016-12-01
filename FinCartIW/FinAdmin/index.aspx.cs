@@ -11,7 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 public partial class FinAdmin_index : System.Web.UI.Page
 {
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -29,13 +29,12 @@ public partial class FinAdmin_index : System.Web.UI.Page
     public static object Authenticate(string username, string password)
     {
         userauthentication userauthentication = new userauthentication();
- 
+
         if (!String.IsNullOrWhiteSpace(username) && !String.IsNullOrWhiteSpace(password))
         {
             SqlConnection Con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
 
-            string query = "Select PlannerName, Code, UserID, PRole=(select Name from fp_ComboDetail where Code=p.PlannerRole) from fp_planner p " +
-                    " where userid='" + username + "' and Pwd='" + password + "' ";
+            string query = "Select p.PlannerName, p.Code, p.UserID, PRole=(select Name from fp_ComboDetail where Code=p.PlannerRole),e.DepId,e.RoleId,e.EmpCode from fp_planner p join fp_Employee e on p.userid=e.userid where p.userid='" + username + "' and p.Pwd='" + password + "'";
 
             SqlDataAdapter DA = new SqlDataAdapter(query, Con);
 
@@ -50,6 +49,7 @@ public partial class FinAdmin_index : System.Web.UI.Page
                 HttpContext.Current.Session["AdminSessionID"] = DS.Tables[0].Rows[0]["UserId"].ToString();
                 HttpContext.Current.Session["AdminSessionCode"] = DS.Tables[0].Rows[0]["Code"].ToString();
                 HttpContext.Current.Session["LoginRole"] = DS.Tables[0].Rows[0]["PRole"].ToString();
+                HttpContext.Current.Session["roleid"] = DS.Tables[0].Rows[0]["RoleId"].ToString();
 
                 string xUserRole = DS.Tables[0].Rows[0]["PRole"].ToString();
 
@@ -102,6 +102,6 @@ public partial class FinAdmin_index : System.Web.UI.Page
             userauthentication.page = "";
         }
 
-        return  userauthentication;
+        return userauthentication;
     }
 }

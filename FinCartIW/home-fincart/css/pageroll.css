@@ -1,0 +1,121 @@
+﻿/* List styles */
+
+.list {
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    text-transform: uppercase;
+    position: relative;
+    margin-left: -140px;
+    margin-top: 40%;
+    top: 55%;
+}
+
+.list a {
+    
+    display: block;
+    color: #fff;
+}
+
+.list a:hover {
+    text-indent: 20px;
+}
+
+.list dt, .list dd {
+
+    text-indent: 10px;
+    line-height: 55px;
+    background: #E0FBAC;
+    margin: 0;
+    height: 55px;
+    width: 270px;
+    color: #fff;
+}
+
+.list dt {
+
+    /* Since we're hiding elements behind here, we need it in 3d */
+    -webkit-transform: translateZ(0.3px);
+    -moz-transform: translateZ(0.3px);
+    -ms-transform: translateZ(0.3px);
+    -o-transform: translateZ(0.3px);
+    transform: translateZ(0.3px);
+
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+}
+
+.list dd {
+
+    border-top: 1px dashed rgba(255,255,255,0.3);
+    line-height: 35px;
+    font-size: 11px;
+    height: 35px;
+    margin: 0;
+}
+
+/* UI */
+
+.toggle {
+
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    border-radius: 3px;
+
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 50px;
+    margin-left: -70px;
+    margin-top: -20px;
+    background: #2b2b2b;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    height: 50px;
+    bottom: 10%;
+    width: 140px;
+    color: #fff;
+    left: 50%;
+}
+
+.toggle:hover {
+    
+    background: #E42692;
+}
+
+/* Individual styles */
+
+.maki dt, .maki dd, .maki a { background: #2698d4; }
+
+.maki a:hover { background: #2698d4; }
+
+
+.maki {
+
+    -webkit-transform: perspective(200px) translateZ(1px) !important;
+    -moz-transform: perspective(600px) translateZ(1px) !important;
+    -ms-transform: perspective(600px) translateZ(1px) !important;
+    -o-transform: perspective(600px) translateZ(1px) !important;
+    transform: perspective(600px) translateZ(1px) !important;
+
+    left: 50%;
+}
+
+.taki dt, .taki dd, .taki a { background: #2698d4; }
+
+.taki a:hover { background: #2698d4; }
+
+
+.taki {
+
+    -webkit-transform: perspective(200px) translateZ(1px) !important;
+    -moz-transform: perspective(600px) translateZ(1px) !important;
+    -ms-transform: perspective(600px) translateZ(1px) !important;
+    -o-transform: perspective(600px) translateZ(1px) !important;
+    transform: perspective(600px) translateZ(1px) !important;
+
+    left: 50%;
+}

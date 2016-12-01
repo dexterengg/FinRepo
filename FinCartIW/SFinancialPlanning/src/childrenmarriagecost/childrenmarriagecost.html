@@ -1,0 +1,19 @@
+﻿<div role="form" class="registration-form">
+    <fieldset>
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>Expected Current Cost of Marriage of your Children?</h3>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <div class="form-group">
+                <div ng-repeat="slider in sliders">
+                    <span style="color:#fff;">{{slider.name}} Marriage Cost: Rs. {{slider.value.toLocaleString('en-US', { style: 'currency', currency: 'INR' }).replace(".00","")}}</span>
+                    <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+                </div>
+            </div>
+            <button type="button" class="btn btn-previous" ng-click="decrement()">Previous</button>
+            <button type="button" class="btn btn-next pull-right" ng-click="increment()">Next</button>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,104 @@
+﻿<style>
+    .ng-modal-overlay {
+        /* A dark translucent div that covers the whole screen */
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 0.8;
+    }
+
+    .ng-modal-dialog {
+        /* A centered div above the overlay with a box shadow. */
+        z-index: 10000;
+        position: absolute;
+        width: 50%; /* Default */
+        /* Center the dialog */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        background-color: #f0ad4e;
+        box-shadow: 4px 4px 80px #000;
+        color:#000;
+    }
+
+    .ng-modal-dialog-content {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .ng-modal-close {
+        position: absolute;
+        top: 3px;
+        right: 5px;
+        padding: 5px;
+        cursor: pointer;
+        font-size: 120%;
+        display: inline-block;
+        font-weight: bold;
+        font-family: 'arial', 'sans-serif';
+    }
+</style>
+<div role="form" class="registration-form">
+    <fieldset>
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>Do you have a family history of any Critical Illness?
+            </div>
+        </div>
+        <div class="form-bottom">
+            <div class="form-group" align="center">
+                <div toggle-switch class="switch-large switch-success" ng-model="switchStatus" knob-label="{{k}}" on-label="Yes" off-label="No" ng-change="valchange()"></div><br />
+                <a href="javascript:void(0)" ng-click='toggleModal()' style="color:#fff;text-decoration:underline">Check illness</a></h3>
+            </div>
+                <button type="button" class="btn btn-previous" ng-click="decrement()">Previous</button>
+                <button type="button" class="btn btn-next pull-right" ng-click="increment()">Next</button>
+            </div>
+    </fieldset>
+</div>
+<modal-dialog show='modalShown' width='100%'>
+    <h4>Critical Illness</h4>
+    <div class="col-sm-12">
+        <div class="col-sm-6">
+            1. Cancer
+        </div>
+        <div class="col-sm-6">
+            2. Coronary Artery Disease
+        </div>
+        <div class="col-sm-6">
+            3. Coronary Artery bypass surgery
+        </div>
+        <div class="col-sm-6">
+            4. Heart valve surgery
+        </div>
+        <div class="col-sm-6">
+            5. Surgery to Aorta
+        </div>
+        <div class="col-sm-6">
+            6. Stroke
+        </div>
+        <div class="col-sm-6">
+            7. Kidney Failure
+        </div>
+        <div class="col-sm-6">
+            8. End Stage Lung Disease
+        </div>
+        <div class="col-sm-6">
+            9. End Stage Liver Failure
+        </div>
+        <div class="col-sm-6">
+            10. Coma
+        </div>
+        <div class="col-sm-6">
+            11. Multiple Sclerosis
+        </div>
+        <div class="col-sm-6">
+            12. Motor Neurone Disease
+        </div>
+    </div>
+</modal-dialog>

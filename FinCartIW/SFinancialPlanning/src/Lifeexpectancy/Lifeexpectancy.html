@@ -1,0 +1,17 @@
+﻿<div role="form" class="registration-form">
+    <fieldset>
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>What would be your expected Life Expectancy?</h3>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <div class="form-group">
+                <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+                <span style="color:#fff;">{{slider.value}} years</span>
+            </div>
+            <button type="button" class="btn btn-previous" ng-click="decrement()">Previous</button>
+            <button type="button" class="btn btn-next pull-right" ng-click="increment()">Next</button>
+        </div>
+    </fieldset>
+</div>

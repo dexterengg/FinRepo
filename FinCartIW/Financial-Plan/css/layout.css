@@ -1,0 +1,215 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{width:100%; height:auto; margin:0 auto; padding:0; text-align:center; font-size:17px}
+
+h1{font-family: 'Lato', sans-serif; color:#FFFFFF; text-align:center; font-size:30px; text-shadow: -1px -1px 0 #000, 
+ 1px -1px 0 #000,
+ -1px 1px 0 #000,
+ 1px 1px 0 #000;}
+h2{font-family: 'Montserrat', sans-serif; color:#FFFFFF; text-align:justify; font-size:20px;}
+.footer h4 {
+    color: #9CA2AC;
+}
+
+a {
+    color: #fff;
+    text-decoration: none; font-size:13px
+}
+
+.font-text{color: #ffffff !important;
+    line-height: 1.5em;
+    font-size: 12px;}
+
+.top-header{background-color:#353b47; width:100%; height:auto; padding:10px;
+			}
+			
+.banner{width:100%; background:url(../images/workshop.jpg); background-repeat:no-repeat; background-size:100%; padding-bottom:100px;}
+
+.input-bg {
+    background:url(../images/input-bg.PNG);
+    background-repeat: repeat;
+    width: 370px;
+    margin-bottom: 7PX;
+    margin-top: 4px;
+    border: none;
+    color: #555;
+    font-size: 18px;
+    padding: 7px 10px;
+    font-weight: 400;
+    display: block;
+    margin-left: 5px;
+}
+
+.register-bg {
+    background:url(../images/ips-bg.PNG);
+    background-repeat:repeat;
+    height:auto; padding:25px;
+}
+
+.harwerd-parcent{-webkit-mozila-border-radius:100%; border-radius:100%; padding:15px 5px; width:75%; 
+}
+
+.scroll-three-bg{width:100; background:url(../images/scroll-3-bg.jpg); background-repeat:no-repeat;  background-size:100%;}
+
+.know {
+    width: 100%;
+    margin: auto;
+    padding: 50px 0px;
+    text-align: center;
+    background: #505a6d;
+    color: #fff;
+}
+
+.work {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    background: #fff;
+}
+
+.key-future {
+    width: 100%;
+    margin: auto;
+    padding: 50px 0px;
+    text-align: center;
+    background: #6e7c97;
+    color: #fff;
+}
+
+
+.btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+
+ .footer-fixed {
+    background: #555555;
+    padding: 0;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    height: auto;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    margin-top: -5px;
+}
+
+
+.footer3 {
+    width: 100%;
+    margin: auto;
+    background: #696868;
+    color: #fff;
+    padding: 0px 0px;
+}
+
+
+
+.footer {
+    width: 100%;
+    margin: auto;
+    background: #353b47;
+    padding: 40px 0px;
+    color: #fff;
+}
+
+.get-start{ max-width:320px;}
+
+
+ .amount-cros {
+    text-decoration: line-through;
+    color: #fff;
+    font-size: 13px;
+    margin: 0px;
+}
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) { 
+	
+	body{width:100%; height:auto; margin:0 auto; padding:0; text-align:center; font-size:18px}
+
+	
+h1{font-family: 'Lato', sans-serif; color:#FFFFFF; text-align:center; font-size:27px; text-shadow: -1px -1px 0 #000, 
+ 1px -1px 0 #000,
+ -1px 1px 0 #000,
+ 1px 1px 0 #000;}
+h2{font-family: 'Montserrat', sans-serif; color:#FFFFFF; text-align:justify; font-size:22px;}	
+
+.banner{width:100%; background:url(../images/workshop.jpg); background-repeat:no-repeat; background-size:100%; padding-bottom:100px; min-height:400px;}
+
+
+
+.input-bg {
+    background:url(../images/input-bg.PNG);
+    background-repeat: repeat;
+    width: 370px;
+    margin-bottom: 7PX;
+    margin-top: 2px;
+    border: none;
+    color: #555;
+    font-size: 15px;
+    padding: 5px 6px;
+    font-weight: 300;
+    display: block;
+    margin-left: 2px;
+}
+	
+	
+	
+	.register-bg {
+    background:url(../images/ips-bg.PNG);
+    background-repeat:repeat;
+    height:auto; padding:25px;
+}
+	
+	
+	.get-start{ width:250px;}
+	
+	
+
+a {
+    color: #fff;
+    text-decoration: none; font-size:15px
+}
+
+
+.font-text{color: #ffffff !important;
+    line-height: 1.5em;
+    font-size: 14px;}
+
+
+	
+}
+

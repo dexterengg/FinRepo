@@ -1,0 +1,258 @@
+/* 
+ _____   _           _         _                        _                  
+|_   _| | |         | |       | |                      | |                 
+  | |   | |__   __ _| |_ ___  | |_ ___  _ __ ___   __ _| |_ ___   ___  ___ 
+  | |   | '_ \ / _` | __/ _ \ | __/ _ \| '_ ` _ \ / _` | __/ _ \ / _ \/ __|
+ _| |_  | | | | (_| | ||  __/ | || (_) | | | | | | (_| | || (_) |  __/\__ \
+ \___/  |_| |_|\__,_|\__\___|  \__\___/|_| |_| |_|\__,_|\__\___/ \___||___/
+ 
+@ihatetomatoes
+
+*/
+
+
+img {
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   Parallax Scroll
+   ========================================================================== */
+/*body, html {
+	height: 100%;
+	min-height: 100%;
+	background-color: #000000;
+}*/
+.no-js {
+	padding-top: 106px;
+}
+h2 {
+	margin-top: 0;
+}
+
+section {
+	min-width: 960px;
+	opacity: 0;
+}
+.loaded section,
+.no-js section {
+	opacity: 1;
+	-webkit-transition: opacity 300ms ease-out;
+	-moz-transition: opacity 300ms ease-out;
+	transition: opacity 300ms ease-out;
+}
+main {
+	overflow-x: hidden;
+}
+
+.bcg {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 310px;
+	width: 100%;
+}
+
+
+
+
+/* Slide 3 */
+#slide-2 .bcg {background-image:url('../img/bcg_slide-2.jpg')}
+#slide-3 .bcg {background-image:url('../img/bcg_slide-3.jpg')}
+#slide-4 .bcg {background-image:url('../img/bcg_slide-4.jpg')}
+#slide-5 .bcg {background-image:url('../img/portfolio-tracker.jpg')}
+
+
+/* Slide 4 
+.curtainContainer {width: 100%; height: 310px; position: relative;}
+.curtainContainer .curtain {width: 300%; height: 1px; background-color: #000000; position: absolute; top: 25%; left: 0; opacity: 0}
+.curtainContainer .copy {position: absolute; bottom: 30%; left: 0; width: 100%; text-align: center;}
+*/
+
+.hsContainer {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 310px;
+	overflow: hidden;
+	position: relative;
+}
+
+.hsContent {
+	max-width: 500px;
+	margin: -150px auto 0 auto;
+	display: table-cell;
+	vertical-align: middle;
+	color: #000000;
+	padding: 0 8%;
+	text-align: center;
+}
+	.hsContent h2,
+	.copy h2 {
+		color: #000000;
+		font-size: 32px;
+		line-height: 48px;
+		margin-bottom: 12px;
+		font-family:"Arial Black", Gadget, sans-serif;
+	}
+
+    .hsContent h3
+	{
+		color: #000000;
+		font-size: 24px;
+		line-height: 48px;
+		margin-bottom: 12px;
+		font-family:"Arial Black", Gadget, sans-serif;
+	}
+	.hsContent p {
+		width: 500px;
+		margin: 0 auto;
+		color: #000000;
+		font-size:14px;
+		font-family:Roboto;
+	}
+	.hsContent a {
+		color: #b2b2b2;
+		text-decoration: underline;
+	}
+	.bgBlack {
+		background-color: rgba(0,0,0,0.75);
+		padding: 3px 10px;
+	}
+
+.s-row {
+    width:60%;
+    margin:auto;
+}
+.s-col-sm-2 {
+    float:left;
+    width:20%;
+    height:40px;
+}
+.s-col-sm-10 {
+    float:left;
+    width:75%;
+    height:40px;
+    text-align:left !important;
+    padding-top:5px;
+}
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

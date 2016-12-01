@@ -1,0 +1,29 @@
+﻿<div role="form" class="registration-form">
+    <fieldset>
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>Which defines your family status best?</h3>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <div class="form-group">
+                <div class="funkyradio">
+                    <div class="funkyradio-success">
+                        <input type="radio" name="radio" id="radio3" ng-model="fstatus" value="Married with Kids" />
+                        <label for="radio3" style="color:#fff;">Married with Kids</label>
+                    </div>
+                    <div class="funkyradio-success">
+                        <input type="radio" name="radio" id="radio2" ng-model="fstatus" value="Married without Kids" />
+                        <label for="radio2" style="color:#fff;">Married without Kids</label>
+                    </div>
+                    <div class="funkyradio-success">
+                        <input type="radio" name="radio" id="radio1" ng-model="fstatus" value="Single" />
+                        <label for="radio1" style="color:#fff;">Single</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-previous" ng-click="decrement()">Previous</button>
+            <button type="button" class="btn btn-next pull-right" ng-click="increment()">Next</button>
+        </div>
+    </fieldset>
+</div>

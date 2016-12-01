@@ -44,4 +44,15 @@ public partial class FinAdmin_Tickets : System.Web.UI.Page
         TicketSystem tsystem = new TicketSystem();
         return tsystem.ReportingRoleList(depid, HttpContext.Current.Session["roleid"].ToString(), HttpContext.Current.Session["AdminSessionID"].ToString(), assignuserid);
     }
+
+    [WebMethod]
+    public static string GetReportTo(string depid, string assignuserid)
+    {
+        TicketSystem tsystem = new TicketSystem();
+        Ticket tc = new Ticket();
+
+        int i =tsystem.CreateTicket(tc);
+
+        return i == 1 ? "sucess" : "error";
+    }
 }

@@ -1,0 +1,29 @@
+﻿<div role="form" class="registration-form">
+    <fieldset>
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>While Investing, which of the following you care for most?</h3>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <div class="form-group">
+                <div class="funkyradio">
+                    <div class="funkyradio-success">
+                        <input type="radio" name="radio" id="radio1" ng-model="istatus" value="2.5" />
+                        <label for="radio1" style="color:#fff;">To Maximize Gain</label>
+                    </div>
+                    <div class="funkyradio-success">
+                        <input type="radio" name="radio" id="radio2" ng-model="istatus" value="5" />
+                        <label for="radio2" style="color:#fff;">To Minimize Loss</label>
+                    </div>
+                    <div class="funkyradio-success">
+                        <input type="radio" name="radio" id="radio3" ng-model="istatus" value="10" />
+                        <label for="radio3" style="color:#fff;">Both</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-previous" ng-click="decrement()">Previous</button>
+            <button type="button" class="btn btn-next pull-right" ng-click="increment()">Next</button>
+        </div>
+    </fieldset>
+</div>
