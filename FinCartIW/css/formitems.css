@@ -1,0 +1,434 @@
+/********************************************************/
+/*****************Common Form Input CSS *****************/
+/********************************************************/
+
+.cbp-mc-form {
+	position: relative;    
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.cbp-mc-form:before, 
+.cbp-mc-form:after { 
+	content: " "; display: table; 
+}
+
+.cbp-mc-form:after { 
+	clear: both; 
+}
+
+.cbp-mc-column {
+	width: 33%;
+	padding: 2px 30px;
+	float: left;
+}
+
+.cbp-mc-form label {
+	display: block;
+	padding: 5px 5px 5px 2px;
+	font-size: 1.1em;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+.cbp-mc-form input,
+.cbp-mc-form textarea,
+.cbp-mc-form select {	
+	line-height: 1.5;
+	font-size: 12px;
+	padding: 5px 10px;
+	color: #3b525c;
+	display: block;
+	width: 100%;
+	background: transparent;
+    border-radius: 2px;
+}
+
+.cbp-mc-form .aspddl {    
+	line-height: 1.6;
+	font-size: 12px;
+	padding: 5px 0;
+	color: #3b525c;
+	display: block;
+	width: 107%;
+	background: transparent;
+    border: 1px solid #949a9d;
+    border-radius: 2px;
+}
+
+.cbp-mc-form input,
+.cbp-mc-form textarea {
+	border: 1px solid #949a9d;
+}
+
+.cbp-mc-form textarea {
+	min-height: 100px;
+}
+
+.cbp-mc-form input:focus,
+.cbp-mc-form .aspddl:focus,
+.cbp-mc-form textarea:focus,
+.cbp-mc-form label:active + input,
+.cbp-mc-form label:active + textarea {
+	outline: none;
+	border: 1px solid #10689a;
+}
+
+.cbp-mc-form select:focus {
+	outline: none;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #969292;
+    font-style:normal;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #969292;
+    font-style: normal;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #969292;
+    font-style: normal;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #969292;
+    font-style: normal;
+}
+
+.cbp-mc-submit-wrap {
+	text-align: center;
+	padding-top: 40px;
+	clear: both;
+}
+
+.cbp-mc-form input.cbp-mc-submit {
+	background: #10689a;
+	border: none;
+	color: #fff;
+	width: auto;
+	cursor: pointer;
+	text-transform: capitalize;
+	display: inline-block;
+	padding: 15px 30px;
+	font-size: 1.1em;
+	border-radius: 2px;
+	letter-spacing: 1px;
+}
+
+.cbp-mc-form input.cbp-mc-submit:hover {
+	background: #1478b1;
+}
+
+@media screen and (max-width: 70em) {
+	.cbp-mc-column {
+		width: 50%;
+	}
+	.cbp-mc-column:nth-child(3) {
+		width: 94%;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.cbp-mc-column {
+		width: 94%;
+		padding: 10px 0px 10px 0;
+	}
+}
+
+/********************************************************/
+/*****************Grid Form Input CSS *****************/
+/********************************************************/
+
+.gv-cbp-mc-form {
+	position: relative;    
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.gv-cbp-mc-form:before, 
+.gv-cbp-mc-form:after { 
+	content: " "; display: table; 
+}
+
+.gv-cbp-mc-form:after { 
+	clear: both; 
+}
+
+.gv-cbp-mc-column {
+	width: 20%;
+	padding: 2px 20px;
+	float: left;
+}
+
+.gv-cbp-mc-form label {
+	display: block;
+	padding: 5px 5px 5px 2px;
+	font-size: 1.1em;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+.gv-cbp-mc-form input,
+.gv-cbp-mc-form textarea,
+.gv-cbp-mc-form select {	
+	line-height: 1.5;
+	font-size: 12px;
+	padding: 5px 10px;
+	color: #3b525c;
+	display: block;
+	width: 100%;
+	background: transparent;
+    border-radius: 2px;
+}
+
+.gv-cbp-mc-form .aspddl {    
+	line-height: 1.5;
+	font-size: 12px;
+	padding: 5px 0;
+	color: #3b525c;
+	display: block;
+	width: 115%;
+	background: transparent;
+    border: 1px solid #949a9d;
+    border-radius: 2px;
+}
+
+.gv-cbp-mc-form input,
+.gv-cbp-mc-form textarea {
+	border: 1px solid #949a9d;
+}
+
+.gv-cbp-mc-form textarea {
+	min-height: 100px;
+}
+
+.gv-cbp-mc-form input:focus,
+.gv-cbp-mc-form .aspddl:focus,
+.gv-cbp-mc-form textarea:focus,
+.gv-cbp-mc-form label:active + input,
+.gv-cbp-mc-form label:active + textarea {
+	outline: none;
+	border: 1px solid #10689a;
+}
+
+.gv-cbp-mc-form select:focus {
+	outline: none;
+}
+
+.gv-cbp-mc-submit-wrap {
+	text-align: center;
+	padding-top: 40px;
+	clear: both;
+}
+
+.gv-cbp-mc-form input .gv-cbp-mc-submit {
+	background: #10689a;
+	border: none;
+	color: #fff;
+	width: auto;
+	cursor: pointer;
+	text-transform: capitalize;
+	display: inline-block;
+	padding: 15px 30px;
+	font-size: 1.1em;
+	border-radius: 2px;
+	letter-spacing: 1px;
+}
+
+.gv-cbp-mc-form input .gv-cbp-mc-submit:hover {
+	background: #1478b1;
+}
+
+/*@media screen and (max-width: 70em) {
+	.gv-cbp-mc-column {
+		width: 50%;
+	}
+	.gv-cbp-mc-column:nth-child(3) {
+		width: 94%;
+	}
+}*/
+
+@media only screen and (max-width: 768px) {
+	.gv-cbp-mc-column {
+		width: 94%;
+		padding: 10px 0px 10px 0;
+	}
+
+    .gv-cbp-mc-form .aspddl {    
+	line-height: 1.5;
+	font-size: 12px;
+	padding: 5px 0;
+	color: #3b525c;
+	display: block;
+	width: 102%;
+	background: transparent;
+    border: 1px solid #949a9d;
+    border-radius: 2px;
+}
+}
+
+/********************************************************/
+/*****************Grid Form Horizontal Input CSS *****************/
+/********************************************************/
+
+.hr-cbp-mc-form {
+	position: relative;    
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.hr-cbp-mc-form:before, 
+.hr-cbp-mc-form:after { 
+	content: " "; display: table; 
+}
+
+.hr-cbp-mc-form:after { 
+	clear: both; 
+}
+
+.hr-cbp-mc-column {
+	width: 96%;
+	padding: 2px 2px;
+	float: left;    
+    
+}
+
+.hr-cbp-mc-column-inner {
+    width:20%;
+    float:left;
+    margin-right:20px;
+    padding-right:20px;               
+}
+
+.hr-cbp-mc-column-inner-remark {
+    width:67%;
+    float:left;
+    margin-right:20px;
+    padding-right:20px;                   
+}
+
+.hr-cbp-mc-form label {
+	display: block;
+	padding: 5px 5px 5px 2px;
+	font-size: 12px;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	cursor: pointer;
+    color: #3b525c;
+}
+
+.hr-cbp-mc-form input,
+.hr-cbp-mc-form textarea,
+.hr-cbp-mc-form select {	
+	line-height: 1.5;
+	font-size: 12px;
+	padding: 5px 10px;
+	color: #3b525c;
+	display: block;
+	width: 100%;
+	background: transparent;
+    border-radius: 2px;
+}
+
+.hr-cbp-mc-form .radiobutton {    
+    width: 110%  !important;
+    padding:2px; 
+    margin-top:-10px;        
+}
+
+.hr-cbp-mc-form .aspddl {    
+	line-height: 1.5;
+	font-size: 12px;
+	padding: 6px 0;
+	color: #3b525c;
+	display: block;
+	width: 110%;
+	background: transparent;
+    border: 1px solid #949a9d;
+    border-radius: 2px;
+}
+
+.hr-cbp-mc-form input,
+.hr-cbp-mc-form textarea {
+	border: 1px solid #949a9d;
+}
+
+.hr-cbp-mc-form textarea {
+	min-height: 50px;
+}
+
+.hr-cbp-mc-form input:focus,
+.hr-cbp-mc-form .aspddl:focus,
+.hr-cbp-mc-form .aspddlSmall:focus,
+.hr-cbp-mc-form textarea:focus,
+.hr-cbp-mc-form label:active + input,
+.hr-cbp-mc-form label:active + textarea {
+	outline: none;
+	border: 1px solid #10689a;
+}
+
+.hr-cbp-mc-form select:focus {
+	outline: none;
+}
+
+.hr-cbp-mc-submit-wrap {
+	text-align: center;
+	padding-top: 40px;
+	clear: both;
+}
+
+.hr-cbp-mc-form input .hr-cbp-mc-submit {
+	background: #10689a;
+	border: none;
+	color: #fff;
+	width: auto;
+	cursor: pointer;
+	text-transform: capitalize;
+	display: inline-block;
+	padding: 15px 30px;
+	font-size: 1.1em;
+	border-radius: 2px;
+	letter-spacing: 1px;
+}
+
+.hr-cbp-mc-form input .hr-cbp-mc-submit:hover {
+	background: #1478b1;
+}
+
+/*@media screen and (max-width: 70em) {
+	.gv-cbp-mc-column {
+		width: 50%;
+	}
+	.gv-cbp-mc-column:nth-child(3) {
+		width: 94%;
+	}
+}*/
+
+@media only screen and (max-width: 768px) {
+	.hr-cbp-mc-column {
+		width: 94%;
+		padding: 10px 0px 10px 0;
+	}
+
+    .hr-cbp-mc-column-inner {
+    width:100%;
+    float:none;               
+    }
+    .hr-cbp-mc-form .aspddl {    
+	line-height: 1.5;
+	font-size: 12px;
+	padding: 5px 0;
+	color: #3b525c;
+	display: block;
+	width: 100%;
+	background: transparent;
+    border: 1px solid #949a9d;
+    border-radius: 2px;
+}
+    .hr-cbp-mc-column-inner-remark {
+    width:100%;
+    float:none;                   
+}
+}

@@ -1,0 +1,107 @@
+/*General styles*/
+#table-border
+{
+	width: 960px;
+	margin: 10px auto 0 auto;
+	background: white;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	padding: 30px;
+	border: 1px solid #adaa9f;
+	/*-moz-box-shadow: 0 0 1px #9c9c9c;
+	-webkit-box-shadow: 0 0 1px #9c9c9c;*/
+}
+
+/*Features table------------------------------------------------------------*/
+.features-table
+{
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  /*text-shadow: 0 1px 0 #fff;*/
+  color: #ffffff;
+  background: #fafafa;  
+  background-image: -moz-linear-gradient(top, #fff, #eaeaea, #fff); /* Firefox 3.6 */
+  background-image: -webkit-gradient(linear,center bottom,center top,from(#fff),color-stop(0.5, #eaeaea),to(#fff)); 
+}
+
+.features-table td
+{
+  height: 50px;
+  line-height: 40px;
+  padding: 5px 20px 0 10px;
+  border-bottom: 1px solid #cdcdcd;
+  box-shadow: 0 1px 0 white;
+  -moz-box-shadow: 0 1px 0 white;
+  -webkit-box-shadow: 0 1px 0 white;
+  text-align: center;
+}
+
+/*Body*/
+.features-table tbody td
+{
+  text-align: left;
+  font: normal 12px Arial, Helvetica;
+  width: 230px;
+  line-height:20px;
+}
+
+.features-table tbody td:first-child
+{
+  width: auto;
+  text-align: left;
+}
+
+.features-table td:nth-child(2)
+{
+  background: #ee9d00;
+  background: rgba(245,126,32,0.9);
+  border-right: 1px solid white;
+}
+
+.features-table td:nth-child(3)
+{
+  background: #ee9d00;
+  background: rgba(0,121,241,0.9);
+  border-right: 1px solid white;
+}
+
+.features-table td:nth-child(4)
+{
+  background: #e7f3d4;  
+  background: rgba(0,158,47,0.9);
+}
+
+/*Header*/
+.features-table thead td
+{
+  font: bold 1.3em Arial;  
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-topleft: 10px; 
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top: 1px solid #eaeaea;
+  background-color:#bebebe;
+}
+
+.features-table thead td:first-child
+{
+  border-top: none;
+}
+
+/*Footer*/
+.features-table tfoot td
+{
+  font: bold 1.4em Arial, Helvetica, sans-serif;  
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px; 
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom: 1px solid #dadada;
+}
+
+.features-table tfoot td:first-child
+{
+  border-bottom: none;
+}

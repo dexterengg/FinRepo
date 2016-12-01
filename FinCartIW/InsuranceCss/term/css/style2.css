@@ -1,0 +1,248 @@
+
+
+
+
+
+/**************************************************************footer starts*/
+.footer{
+	background: #353b47; /*#434955*/
+	padding:3% 0;
+}
+
+.footer-grid h4 {
+	font-size: 1em;
+	text-transform: none;
+	color: #9ca2ac;
+	padding-bottom:1.2em;
+}
+.recent-tweet p {
+	color:#ffffff !important;
+	line-height:1.5em;
+	font-size:12px;
+	
+}
+.recent-tweet a {
+    color:#ffffff;	
+	line-height:1.5em;
+	font-size:12px;
+	
+}
+
+.recent-tweet p a:hover {
+	color:#ffa540;
+}
+i.phone{
+	width: 20px;
+	height: 20px;
+	float:left;
+	background: url(../images/img-sprite.png) no-repeat -37px -105px;
+	vertical-align: middle;
+	margin:0px 6px 6px 0px;
+}
+i.mail{
+	width: 20px;
+	height: 20px;
+	float:left;
+	background: url(../images/img-sprite.png) no-repeat -68px -104px;
+	vertical-align: middle;
+	margin:0px 6px 6px 0px;
+}
+.footer-grid-last {
+	float: left;
+}
+.footer-grid-last h4 {
+	font-size: 1em;
+	text-transform: none;
+	color: #9ca2ac;
+	padding-bottom: 0;
+}
+.footer-grid-last p {
+	color:#919295;
+	font-size: 0.775em;
+	margin-bottom: 0;
+	line-height:1.5em;
+}
+
+#pscroller1 { font-family:Roboto; padding-top:3px; height:160px; text-align:left; font-size:12px; color:#dddddd;}
+
+/* footer bottom */
+.footer-bottom {
+	background: #434955; /*#353b47*/
+	padding: 37px 0;
+}
+.copy{
+	float:left;
+	margin-top:7px;
+}
+.copy p{
+	color:#cccccc;
+	font-size: 0.75em;
+	text-align:center;
+}
+.copy p a{
+	color:#FFA540;
+}
+.copy p a:hover{
+	color:#919295;
+}
+
+.copy p span{
+	color:#fd9500;
+    padding-top:10px;
+}
+.social {
+	width:100%;
+	text-align:center;
+	margin-top:10px;
+	float: left;
+}
+.social ul li:first-child, ol li:first-child {
+	margin-top: 0px;
+	margin-left: 0;
+}
+.social li {
+	background: none;
+	display: inline-block;
+}
+
+
+li.facebook a span {
+	height: 30px;
+	width: 30px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -279px -105px;
+}
+li.facebook a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -279px -136px;
+}
+
+li.linkedin a span {
+	height: 30px;
+	width: 30px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -313px -105px;
+}
+li.linkedin a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -313px -138px;
+}
+
+li.twitter a span {
+	height: 30px;
+	width: 30px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -346px -105px;
+}
+li.twitter a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -345px -136px;
+}
+
+li.youtube a span {
+	height: 30px;
+	width: 30px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -279px -174px;
+}
+
+li.youtube a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -279px -206px;
+}
+
+li.googleplus a span {
+	height: 30px;
+	width: 30px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -314px -174px;
+}
+
+li.googleplus a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -314px -206px;
+}
+/*  fixed footer */
+.footer-fixed {
+	background: #555555;
+	padding: 0;
+	width:100%;
+	bottom:0;
+	position:fixed;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.footer-fixed a {
+	color:#FFF;
+    text-align:center;
+}
+
+.footer-fixed a:hover {
+	color:#ffa540;
+}
+
+.footer-inner {
+	width:auto;
+    margin-right:9%;	    
+	font-size:12px;
+    float:right;    
+}
+
+.footer-fixed1 {
+	float:left;
+	margin:4px 0 0 5px;
+	width:auto;
+	height:auto;
+	padding:0 15px;
+	color:#FFF;
+	border-right:solid 1px #FFFFFF;
+	text-align:right;
+}
+
+.footer-fixed2 {
+	float:left;
+	width:auto;
+	height:auto;
+	padding:0 15px;
+	color:#FFF;
+	border-right:solid 1px #FFFFFF;
+	text-align:right;
+	margin:4px 0 0 0;
+}
+
+.footer-fixed3 {
+	float:left;
+	width:auto;
+	height:auto;
+	padding:0 15px;
+	color:#FFF;
+	border-right:solid 1px #FFFFFF;
+	text-align:right;
+	margin:4px 0 0 0;
+}
+
+.footer-fixed4 {
+	float:left;
+	width:auto;
+	height:auto;
+	padding:0 10px 0 15px;
+	color:#FFF;
+	text-align:right;
+	margin:4px 0 0 0;
+}
+
+.footer-fixed5 {
+	float:left;
+	width:auto;
+	height:auto;
+	padding:0 15px 0 15px;
+	color:#FFF;	
+	margin:4px 0 0 0;
+}
+
+.footer-fixed6 {
+	float:left;
+	width:auto;
+	height:auto;
+	padding:0 15px 6px 15px;
+	color:#FFF;
+	text-align:right;
+	margin:4px 0 0 0;
+}
+
