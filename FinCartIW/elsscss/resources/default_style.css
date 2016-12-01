@@ -1,0 +1,238 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0; padding:0}
+
+.clearFix{clear:both}
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('../fonts/OpenSans-Light-webfont.eot');
+    src: url('../fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Light-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.border-radius{border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; -khtml-border-radius: 4px}
+
+.siteWrap{width:100%; margin:auto}
+
+.siteWrap header{background:#353b47}
+.siteWrap header .headerContent{max-width:980px; margin:auto; position:relative}
+.siteWrap header .headerContent .logo{float:left; margin-top:10px}
+.siteWrap header .headerContent .loginStat{float:right; padding:10px 0; font-size:14px; color:#1a95d1}
+.siteWrap header .headerContent .menu{float:right; padding-bottom:20px}
+.siteWrap header .headerContent .menu ul{float:right; list-style:none; position:absolute; right:0; top:40px}
+.siteWrap header .headerContent .menu ul li{font:normal 17px 'open_sanslight'; padding:0 0 0 20px; list-style:none; text-transform:lowercase; display:inline; color:#ffffff; letter-spacing:-1px; cursor:pointer}
+
+.siteWrap header .headerContent .menu ul li a{font:normal 17px 'open_sanslight'; padding:0 0 0 0px; list-style:none; text-decoration:none; text-transform:lowercase; display:inline; color:#ffffff; letter-spacing:-1px; cursor:pointer}
+
+.siteWrap header .headerContent .menu ul li a:hover{color:#1C8ACB}
+
+
+.siteWrap .flashContent{width:100%; background:#000}
+.siteWrap .flashContent .fContent{max-width:1080px; position:relative; margin:auto; height:640px}
+.siteWrap .flashContent .fContent .bannerImg{max-width:100%; height:auto; display:block; border:none}
+.siteWrap .flashContent .fContent h1{position:absolute; top:0; color:#ffffff; float:left; font-size:60px; font-family:Verdana; margin-top:333px; font-weight:bold; display:block}
+.siteWrap .flashContent .fContent h1 span{font-weight:normal; display:block; font-size:36px}
+.siteWrap .flashContent .fContent .getstartedForm{float:right; top:130px; right:0; width:400px; position:absolute;}
+.siteWrap .flashContent .fContent .getstartedForm input[type="text"]{padding:13px 10px; border:none; background:url(../img/form_input_bg.png) repeat-x; width:378px; margin:5px 0; color:#464646}
+.siteWrap .flashContent .fContent .getstartedForm .comodo{margin:5px 0}
+.siteWrap .flashContent .fContent .getstartedForm .comodo img{float:left; padding-right:10px}
+.siteWrap .flashContent .fContent .getstartedForm .comodo span{color:#ffffff; display:block; font-size:12px}
+.siteWrap .flashContent .fContent .getstartedForm input[type="button"]{background:url(../img/button_orange_bg.jpg) repeat-x;  height:71px; border:none; width:402px; font:bold 36px arial; color:#ffffff; margin:10px 0}
+.siteWrap .flashContent .fContent h3{color:#ffffff; font-weight:normal; margin:0; text-align:center}
+
+.siteWrap .infoVideo{background:#0076a3; width:100%; height:600px}
+.siteWrap .infoVideo .vContent{background:#0076a3 url(../img/divider_video.png) no-repeat center -28px; height:60px; max-width:980px; margin:auto}
+
+.siteWrap .elessknowMore{border-top:solid 20px #01374c; background:#025271; height:200px; padding:30px 0; text-align:center}
+.siteWrap .elessknowMore h2{color:#ffffff; font-weight:normal; margin:20px 0; font-size:36px}
+.siteWrap .elessknowMore input[type="button"]{background:url(../img/button_orange_bg.jpg) repeat-x;  height:71px; border:none; width:402px; font:bold 36px arial; color:#ffffff; margin:20px 0}
+
+
+.siteWrap .featurednewsChannels{background:#01374c}
+.siteWrap .featurednewsChannels .contentCarousel{text-align:center; max-width:100%; margin:auto; background-color:#333333}
+.siteWrap .featurednewsChannels .contentCarousel h3{color:#b3c3ca; font-weight:normal; font-size:24px; padding:70px 0 30px  0}
+.siteWrap .featurednewsChannels .contentCarousel .clients{text-align:center; display:block; padding-bottom:40px}
+
+
+
+footer .footerOnewrap{background:#353b47; margin:auto; width:100%}	
+footer .footerOne{margin:auto; max-width:1280px; }	
+footer .footerOne .footerContent{display:block; color:#ffffff; font-size:14px; float:left; padding:20px 0 20px 50px}
+footer .footerOne .footerContent span{color:#bfc2c5; display:block; padding:10px 0}
+
+
+footer .footerTwowrap{background:#434955; margin:auto; width:100%}
+footer .footerTwo{margin:auto; max-width:1180px}
+footer .footerTwo .footerContent{display:block; font-size:14px; line-height:18px; padding:30px 0; color:#bfc2c5; text-align:center}
+footer .footerTwo .poweredBy{text-align:center; display:block}
+footer .footerTwo .socialConnect table{text-align:center}
+
+
+footer .footerThreewrap{background:#555555; margin:auto; width:100%}
+footer .footerThree{margin:auto; max-width:980px; text-align:right; padding:5px 0;}
+footer .footerThree input[type="text"]{border:none; padding:4px 10px; font-size:12px; width:160px}
+footer .footerThree input[type="button"]{background:#1b6ed7; border:none; color:#ffffff; padding:5px 10px; font-size:14px}
+
+
+   .footer-inner {
+width: auto;
+margin-right: 9%;
+font-size: 12px;
+float: right;
+}
+
+.footer-fixed1 {
+float: left;
+margin: 4px 0 0 5px;
+width: auto;
+height: auto;
+padding: 0 15px;
+color: #FFF;
+border-right: solid 1px #FFFFFF;
+text-align: right;
+font-size:12px
+}
+
+.footer-fixed2 {
+float: left;
+width: auto;
+height: auto;
+padding: 0 15px;
+color: #FFF;
+border-right: solid 1px #FFFFFF;
+text-align: right;
+margin: 4px 0 0 0;
+font-size:12px
+}
+
+.footer-fixed3 {
+float: left;
+width: auto;
+height: auto;
+padding: 0 15px;
+color: #FFF;
+border-right: solid 1px #FFFFFF;
+text-align: right;
+margin: 4px 0 0 0;
+font-size:12px
+}
+
+.footer-fixed {
+background: #555555;
+padding: 0;
+width: 100%;
+bottom: 0;
+position: fixed;
+height: auto;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+margin-top: -5px;
+}
+
+
+
+
+/* media queries */	
+
+/* responsive css*/
+@media only screen and (max-width: 1024px) {	
+
+}
+
+@media only screen and (max-width: 919px) {
+
+header .logo{margin-left:20px}
+.siteWrap header .headerContent .loginStat{margin-right:20px}	
+.siteWrap header .headerContent .menu ul{margin-right:20px}	
+.siteWrap .flashContent .fContent h1{margin-left:20px; font-size:48px}
+.siteWrap .flashContent .fContent .getstartedForm{margin-right:20px}
+footer .footerThree input[type="button"]{margin-right:20px}
+}
+
+@media only screen and (max-width: 768px) {
+
+.siteWrap header{width:751px}	
+.siteWrap header .headerContent .loginStat{margin-right:20px}	
+.siteWrap header .headerContent .menu ul{margin-right:20px}
+.siteWrap .flashContent .fContent h1{font-size:36px; margin-top:400px}
+.siteWrap .flashContent .fContent h1 span{font-size:24px}
+.siteWrap .flashContent .fContent{height:600px}
+.siteWrap .flashContent .fContent h3{margin-top:100px}
+.siteWrap .flashContent .fContent .getstartedForm{width:360px}
+.siteWrap .flashContent .fContent .getstartedForm input[type="text"]{width:340px}	
+.siteWrap .flashContent .fContent .getstartedForm .comodo img{display:block}
+.siteWrap .flashContent .fContent .getstartedForm span{width:270px; display:block; margin-top:5px; float:right}
+.siteWrap .flashContent .fContent .getstartedForm input[type="button"]{width:360px}
+.siteWrap .featurednewsChannels .contentCarousel h3{width:700px}
+.siteWrap .featurednewsChannels .contentCarousel .clients img{width:600px}
+footer .footerOne .footerContent{width:620px; text-align:center}
+footer .footerTwo{width:700px}
+}
+
+@media only screen and (max-width: 640px) {
+
+.siteWrap header{width:623px}	
+.siteWrap header .headerContent .loginStat{margin-right:20px}	
+.siteWrap header .headerContent .menu ul{margin-right:20px}
+.siteWrap .flashContent .fContent h1{font-size:24px; margin-top:445px}
+.siteWrap .flashContent .fContent h1 span{font-size:18px}
+.siteWrap .flashContent .fContent .getstartedForm{width:320px}
+.siteWrap .flashContent .fContent .getstartedForm input[type="text"]{width:300px}	
+.siteWrap .flashContent .fContent .getstartedForm .comodo img{display:block; margin-top:5px}
+.siteWrap .flashContent .fContent .getstartedForm span{width:230px; display:block; margin-top:5px; margin-right:0; float:right}
+.siteWrap .flashContent .fContent .getstartedForm input[type="button"]{width:319px}
+.siteWrap .flashContent .fContent h3{margin-top:180px}
+.siteWrap .featurednewsChannels .contentCarousel h3{width:600px}
+footer .footerOne .footerContent{width:520px}
+footer .footerTwo{width:570px}
+}
+
+@media only screen and (max-width: 480px) {
+	
+.siteWrap header{width:463px; height:110px}	
+.siteWrap header .headerContent .loginStat{margin:20px 20px 0 0}	
+.siteWrap header .headerContent .menu ul{width:100%; text-align:center; margin-top:30px}
+.siteWrap .flashContent .fContent h1{font-size:24px; float:none; margin-top:110px}
+.siteWrap .flashContent .fContent h1 span{font-size:16px}
+.siteWrap .flashContent .fContent .getstartedForm{width:420px; margin-left:0}
+.siteWrap .flashContent .fContent .getstartedForm input[type="text"]{width:399px}	
+.siteWrap .flashContent .fContent .getstartedForm span{width:330px; display:block; margin-top:5px; margin-right:0; float:right}
+.siteWrap .flashContent .fContent .getstartedForm input[type="button"]{width:419px; margin-top:15px}
+.siteWrap .flashContent .fContent h3{margin-top:270px}
+.siteWrap .featurednewsChannels .contentCarousel h3{width:435px}
+.siteWrap .featurednewsChannels .contentCarousel .clients img{width:400px}
+footer .footerOne .footerContent{width:355px}
+footer .footerTwo{width:415px}
+}
+
+@media only screen and (max-width: 320px) {
+
+.siteWrap header{width:303px; height:110px}	
+.siteWrap header .headerContent .menu ul li{font-size:14px; margin:0; padding-left:20px}
+.siteWrap .flashContent .fContent .getstartedForm{width:260px; margin-left:0}
+.siteWrap .flashContent .fContent .getstartedForm input[type="text"]{width:240px}	
+.siteWrap .flashContent .fContent .getstartedForm .comodo span{width:170px; font-size:9px; margin-right:0; float:right}
+.siteWrap .flashContent .fContent .getstartedForm input[type="button"]{width:260px; padding:10px 0; font-size:24px; margin-top:15px}
+.siteWrap .flashContent .fContent h3{margin-top:370px; font-size:14px; width:280px; text-align:center}
+.siteWrap .elessknowMore h2{font-size:24px}
+.siteWrap .elessknowMore input[type="button"]{width:260px; padding:10px 0; font-size:24px; margin-top:15px}
+.siteWrap .featurednewsChannels .contentCarousel h3{width:302px; font-size:18px}
+.siteWrap .featurednewsChannels .contentCarousel .clients img{width:260px}
+footer .footerOne .footerContent{width:200px}
+footer .footerTwo{width:260px}
+}
+
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
