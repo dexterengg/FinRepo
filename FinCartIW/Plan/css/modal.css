@@ -1,0 +1,176 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+body {
+    margin:0;
+    padding:0;  
+    font-family:Roboto; 
+    font-size:12px; 
+}
+.schemeChart {
+            float:left;
+            height:420px;
+            width:98%;
+            margin-top:10px;    
+            border: solid 1% #111111;
+            font-size:12px;
+                    }
+
+        .goalname {
+            float: right;
+            font-size:12px;
+            width:100%;
+            text-align:right;
+        }
+
+        .schemename {
+            float: right;
+            font-size:12px !important;
+        }
+
+/*** CSS for Extra div based table ****/
+
+.schemeDetailArea {
+    border:solid 1px #dddddd;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    border-radius:8px;
+    -moz-border-radius:8px;
+	-webkit-border-radius:8px;
+    margin-top:5px;
+    padding:0 10px 10px 10px;
+    height:auto;
+}
+
+.sdetail {
+    width:260px;
+    padding:10px;
+    font-size:30px;
+    background-color:#cccccc;
+    margin:auto;
+    text-align:center;
+    border-radius: 0px 0px 10px 10px;
+    -moz-border-radius:0px 0px 10px 10px;
+	-webkit-border-radius:0px 0px 10px 10px;
+    border:solid 1px #dddddd;
+}
+
+.schemename {
+    font-size:20px;
+}
+.resultBodyDiff
+{
+    display:table;
+    width:100%;
+    border-collapse: collapse;  
+    margin-top:30px;     
+}
+
+.TableHeaderDiffHead
+{
+    font-weight: 500;
+    display:table-row;
+    background-color:#012e58;
+    text-align: right;
+    line-height: 20px;
+    font-size: 12px;     
+    color:#ffffff;
+    width:auto;    
+    font-weight:normal;  
+    text-transform:uppercase;
+    border-radius: 0px 5px 0px 0px;
+    -moz-border-radius:0px 5px 0px 0px;
+	-webkit-border-radius:0px 5px 0px 0px;
+    border:solid 1px #012e58;
+}
+
+.TableHeaderDiff
+{
+    font-weight: 500;
+    display:table-row;
+    background-color:#025db1;
+    text-align: right;
+    line-height: 20px;
+    font-size: 11px;     
+    color:#ffffff;
+    width:auto;    
+    font-weight:normal;  
+    text-transform:uppercase;
+}
+
+
+.TableRowDiff
+{
+    display:table-row;
+    text-align: right;
+    background-color:#def4f7;
+    width:auto;
+    font-size:12px;
+}
+
+.TableRow2Diff
+{
+    display:table-row;
+    text-align: right;
+    background-color:#a7d2e4;
+    width:auto;
+    font-size:12px;
+}
+
+.colDiff
+{
+    display:table-cell;    
+    padding:2px;    
+}
+
+.colLeftDiff {
+    text-align:left;
+}
+
+.colRightLineDiff
+{
+    display:table-cell;    
+    padding:2px; 
+    border-right:solid 1px #ffffff;   
+}
+
+.sip-calendar {    
+    margin-top: 20px;
+    width:100%;
+    margin-bottom:20px;
+    float:left;
+}
+
+.SIPArea {
+    float:left;
+    width:25%;
+    border:solid 1px #dddddd;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    border-radius:8px;
+    min-height:100px;
+    font-size:12px;
+    padding:1%;
+}
+
+.SIPArea h3 {
+    background-color:#ffc051;
+    color:#111111;
+    font-weight:bold;
+    text-align:center;
+    padding:5px;
+}
+
+.Calendar-chart {
+    float:left;
+    width:70%;
+    margin-left:2%;
+    border:solid 1px #dddddd;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    border-radius:8px;
+    min-height:100px;
+    padding:1%;
+}

@@ -1,0 +1,673 @@
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head><title>
+	Insta SIP Plan
+</title>
+    <script type="text/javascript" src="http://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script src="../ChartNew/amcharts/amchartsNew.js" type="text/javascript"></script> 
+    <script src="../ChartNew/amcharts/serial.js" type="text/javascript"></script>  
+    <script src="../ChartNew/amcharts/pie.js" type="text/javascript"></script> 
+
+    <style type="text/css">   
+    .ErrorControl
+    {
+        background-color: #ffffff !important;
+        border: solid 1px #f00 !important;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#myModal").modal('show');
+        }, 5000);
+    });
+</script>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" /><link href="images/favi.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" /><link href="css/website.css" rel="stylesheet" type="text/css" media="all" /><link href="../css/style420.css" rel="stylesheet" type="text/css" media="all" /><link href="../css/style768.css" rel="stylesheet" type="text/css" media="all" /><link href="../css/style1024.css" rel="stylesheet" type="text/css" media="all" /><link href="css/formitems.css" rel="stylesheet" type="text/css" media="all" /><link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" /><link href="../font-awesome-4.5.0/css/font-awesome.css" type="text/css" rel="stylesheet" /><link href="../font-awesome-4.5.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        #pscroller1 { PADDING-TOP: 3px; width:100%; HEIGHT: 160px; text-align:justify; }
+    </style>
+
+    <script src="../testimonials/pauseScroller.js" type="text/javascript"></script>
+    <script src="../testimonials/scroll.js" type="text/javascript"></script>
+    
+     <link rel="stylesheet" type="text/css" href="../modal/css/component.css" />
+	<script src="../modal/js/modernizr.custom.js"></script>   
+    <script type="text/javascript">//<![CDATA[
+        var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+        document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+        //]]>
+</script>
+    		
+<link href="/FinCartIW/WebResource.axd?d=aNo9DpTBGzB8T0RdqJcTdvbL2WJn9T_MXopPhMi0fB7w8ZlQ9_UAefi-QsfU4EysarXy_ROLfidK8XEKnYPGqQfS6drvgpsXhtFzELR3MFKjSpxCcn5w0e_5KtSoXQ-owiIl6p04gEBkxwtxoE96AlPrDJOwXkveuSj6fW7_-Wc1&amp;t=633312653520000000" type="text/css" rel="stylesheet" /></head>
+<body>
+    <form method="post" action="instaSIP-plan.aspx?amt=30000&amp;score=27.5&amp;invage=5&amp;LoginType=XXX" onsubmit="javascript:return WebForm_OnSubmit();" id="form1" class="registration-form">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5NDE4MTEzMTMPFgYeBkFtb3VudAUFMzAwMDAeBVNjb3JlBQQyNy41HgZQZXJpb2QFATUWAmYPZBYCAgMPZBYGAgMPDxYCHgRUZXh0BQ1XZWxjb21lIEd1ZXN0ZGQCCw8PFgIeB1Zpc2libGVoZGQCDQ9kFgwCAQ8PFgIeCEltYWdlVXJsBRFpbWFnZXMvcmlzay1hLnBuZ2RkAgMPFgIfAwW9DjxzY3JpcHQgdHlwZT0ndGV4dC9qYXZhc2NyaXB0Jz4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhciBjaGFydDE7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXIgbGVnZW5kMTsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFyIGNoYXJ0RGF0YTEgPSBbeyBjb3VudHJ5OiAnSHlicmlkOiBFcXVpdHkgT3JpZW50ZWQnLCBsaXRyZXM6IDYwLCBjb2xvcjogJyM2N2JiZmUnfSx7IGNvdW50cnk6ICdIeWJyaWQ6IE1vbnRobHkgSW5jb21lJywgbGl0cmVzOiA0MCwgY29sb3I6ICcjNjdmZWY5J31dO0FtQ2hhcnRzLnJlYWR5KGZ1bmN0aW9uICgpIHsNCiAgICAgICAgICAgICAgICAgICAgICAgIC8vIFBJRSBDSEFSVA0KICAgICAgICAgICAgICAgICAgICAgICAgY2hhcnQxID0gbmV3IEFtQ2hhcnRzLkFtUGllQ2hhcnQoKTsNCiAgICAgICAgICAgICAgICAgICAgICAgIGNoYXJ0MS5kYXRhUHJvdmlkZXIgPSBjaGFydERhdGExOw0KICAgICAgICAgICAgICAgICAgICAgICAgY2hhcnQxLnRpdGxlRmllbGQgPSAnY291bnRyeSc7DQogICAgICAgICAgICAgICAgICAgICAgICBjaGFydDEudmFsdWVGaWVsZCA9ICdsaXRyZXMnOw0KCQkJCQkJY2hhcnQxLmxhYmVsc0VuYWJsZWQgPSB0cnVlOw0KICAgICAgICAgICAgICAgICAgICAgICAgY2hhcnQxLmxhYmVsVGV4dCA9ICdbW3BlcmNlbnRzXV0lJzsNCgkJCQkJCWNoYXJ0MS5sYWJlbFJhZGl1cyA9IDU7DQogICAgICAgICAgICAgICAgICAgICAgICBjaGFydDEuZm9udFNpemUgPSAxMjsNCgkJCQkJCWNoYXJ0MS5kZXB0aDNEID0gMTA7DQoJCQkJCQljaGFydDEubWluUmFkaXVzID0gMjA7DQoJCQkJCQljaGFydDEucmFkaXVzID0gNzA7DQogICAgICAgICAgICAgICAgICAgICAgICBjaGFydDEuY29sb3JGaWVsZCA9ICdjb2xvcic7DQogICAgICAgICAgICAgICAgICAgICAgICBjaGFydDEuZm9udEZhbWlseSA9ICdSb2JvdG8nOw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgDQogICAgICAgICAgICAgICAgICAgICAgICAvLyBMRUdFTkQNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICANCgkJCQkJCWxlZ2VuZDEgPSBuZXcgQW1DaGFydHMuQW1MZWdlbmQoKTsNCiAgICAgICAgICAgICAgICAgICAgICAgIGxlZ2VuZDEuYWxpZ24gPSAnYm90dG9tJzsNCiAgICAgICAgICAgICAgICAgICAgICAgIGxlZ2VuZDEubWFya2VyVHlwZSA9ICdjaXJjbGUnOw0KICAgICAgICAgICAgICAgICAgICAgICAgbGVnZW5kMS5tYXJrZXJTaXplID0gNzsNCiAgICAgICAgICAgICAgICAgICAgICAgIGxlZ2VuZDEuZXF1YWxXaWR0aHMgPSBmYWxzZTsNCiAgICAgICAgICAgICAgICAgICAgICAgIGxlZ2VuZDEubWFyZ2luTGVmdCA9IDU7DQogICAgICAgICAgICAgICAgICAgICAgICBsZWdlbmQxLm1hcmdpblJpZ2h0ID0gNTsNCiAgICAgICAgICAgICAgICAgICAgICAgIGxlZ2VuZDEuc3BhY2luZyA9IDQ7DQogICAgICAgICAgICAgICAgICAgICAgICBjaGFydDEuYWRkTGVnZW5kKGxlZ2VuZDEpOw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgDQogICAgICAgICAgICAgICAgICAgICAgICAvLyBXUklURQ0KICAgICAgICAgICAgICAgICAgICAgICAgY2hhcnQxLndyaXRlKCdBc3NldENoYXJ0Jyk7DQogICAgICAgICAgICAgICAgICAgIH0pOyAgPC9zY3JpcHQ+ZAIIDw8WAh8DBQUzMDAwMGRkAgwPFgIfAwXmDTxTY3JpcHQ+DQogICAgICAgIFN5cy5XZWJGb3Jtcy5QYWdlUmVxdWVzdE1hbmFnZXIuZ2V0SW5zdGFuY2UoKS5hZGRfZW5kUmVxdWVzdChFbmRSZXF1ZXN0SGFuZGxlcik7DQogICAgICAgICAgICBTeXMuV2ViRm9ybXMuUGFnZVJlcXVlc3RNYW5hZ2VyLmdldEluc3RhbmNlKCkuYmVnaW5Bc3luY1Bvc3RCYWNrKCk7DQogICAgICAgICAgICBmdW5jdGlvbiBFbmRSZXF1ZXN0SGFuZGxlcihzZW5kZXIsIGFyZ3MpIHsNCiAgICAgICAgdmFyIGNoYXJ0ID0gQW1DaGFydHMubWFrZUNoYXJ0KCdTY2hlbWVNYXRyaXgnLCB7DQogICAgICAgICAgJ3R5cGUnOiAnc2VyaWFsJywNCiAgICAgICAgICAndGhlbWUnOiAnbm9uZScsDQogICAgICAgICAgJ3JvdGF0ZSc6IHRydWUsDQogICAgICAgICAgJ2RhdGFQcm92aWRlcic6IFsgeyBjYXRlZ29yeTogJ0lDSUNJIFBydSAtIEJhbGFuY2VkIEFkdmFudGFnZSBGdW5kIFJlZyAoRyknLCB2aXNpdHM6IDEyMDAwLjAwMDAwMCwgc2hvcnQ6IDQwfSx7IGNhdGVnb3J5OiAnQmlybGEgU0wgLSBNSVAgSUkgV2VhbHRoIDI1IFBsYW4gUmVnIChHKScsIHZpc2l0czogMTIwMDAuMDAwMDAwLCBzaG9ydDogNDB9LHsgY2F0ZWdvcnk6ICdJQ0lDSSBQcnUgLSBFcXVpdHkgSW5jb21lIEZ1bmQgLSBSZWcgKEcpJywgdmlzaXRzOiA2MDAwLjAwMDAwMCwgc2hvcnQ6IDIwfV0sJ3ZhbHVlQXhlcyc6IFt7DQogICAgICAgICAgICAnZ3JpZENvbG9yJzogJyM5OTk5OTknLA0KICAgICAgICAgICAgJ2dyaWRBbHBoYSc6IDAuMiwNCiAgICAgICAgICAgICdkYXNoTGVuZ3RoJzogMA0KICAgICAgICAgIH1dLCAgICAgICAgICAgICAgICAgICAgICAgIA0KICAgICAgICAgICdzdGFydER1cmF0aW9uJzogMSwNCiAgICAgICAgICAnZ3JhcGhzJzogW3sNCiAgICAgICAgICAgICdiYWxsb29uVGV4dCc6ICdbW2NhdGVnb3J5XV06IDxiPltbdmFsdWVdXTwvYj4nLA0KICAgICAgICAgICAgJ2ZpbGxBbHBoYXMnOiAxLA0KICAgICAgICAgICAgJ2xpbmVBbHBoYSc6IDAuMiwNCiAgICAgICAgICAgICdmaWxsQ29sb3JzJzogWycjZDVlZGZmJywgJyNiMGRjZmYnXSwNCiAgICAgICAgICAgICd0eXBlJzogJ2NvbHVtbicsDQogICAgICAgICAgICAvLydsYWJlbFRleHQnOiAnW1tjYXRlZ29yeV1dJywNCiAgICAgICAgICAgICd2YWx1ZUZpZWxkJzogJ3Zpc2l0cycNCiAgICAgICAgICB9XSwNCiAgICAgICAgICAnY2hhcnRDdXJzb3InOiB7DQogICAgICAgICAgICAnY2F0ZWdvcnlCYWxsb29uRW5hYmxlZCc6IGZhbHNlLA0KICAgICAgICAgICAgJ2N1cnNvckFscGhhJzogMCwNCiAgICAgICAgICAgICd6b29tYWJsZSc6IGZhbHNlDQogICAgICAgICAgfSwNCiAgICAgICAgICAnY2F0ZWdvcnlGaWVsZCc6ICdjYXRlZ29yeScsDQogICAgICAgICAgJ2NhdGVnb3J5QXhpcyc6IHsNCiAgICAgICAgICAgICdncmlkUG9zaXRpb24nOiAnbWlkZGxlJywNCiAgICAgICAgICAgICdncmlkQWxwaGEnOiAwLjIsDQogICAgICAgICAgICAnbGFiZWxGdW5jdGlvbic6IGZ1bmN0aW9uKHZhbHVlVGV4dCwgc2VyaWFsRGF0YUl0ZW0sIGNhdGVnb3J5QXhpcykgew0KICAgICAgICAgICAgICBpZiAodmFsdWVUZXh0Lmxlbmd0aCA+IDE1KQ0KICAgICAgICAgICAgICAgIHJldHVybiB2YWx1ZVRleHQuc3Vic3RyaW5nKDAsIDE1KSArICcuLi4nOw0KICAgICAgICAgICAgICBlbHNlDQogICAgICAgICAgICAgICAgcmV0dXJuIHZhbHVlVGV4dDsNCiAgICAgICAgICAgIH0NCiAgICAgICAgICB9DQogICAgICAgIH0pOw0KfQ0KPC9TY3JpcHQ+ZAIPDzwrABEDAA8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIDZAEQFgAWABYADBQrAAAWAmYPZBYIAgEPZBYOZg8PFgIfAwUrSUNJQ0kgUHJ1IC0gQmFsYW5jZWQgQWR2YW50YWdlIEZ1bmQgUmVnIChHKWRkAgEPDxYCHwMFBTI0LjgyZGQCAg8PFgIfAwUGMTAsNjExZGQCAw8PFgIfAwUHLTIuNDc1NGRkAgQPDxYCHwMFBzEzLjE2MjdkZAIFDw8WAh8DBQYxMy4wNzFkZAIGDw8WAh8DBQEwZGQCAg9kFg5mDw8WAh8DBShCaXJsYSBTTCAtIE1JUCBJSSBXZWFsdGggMjUgUGxhbiBSZWcgKEcpZGQCAQ8PFgIfAwUHMjkuMTgzN2RkAgIPDxYCHwMFBTEsMDM4ZGQCAw8PFgIfAwUHLTAuMjk4NmRkAgQPDxYCHwMFBzEyLjE1MzNkZAIFDw8WAh8DBQYxMC43OTZkZAIGDw8WAh8DBQY4Ljg1MzVkZAIDD2QWDmYPDxYCHwMFKElDSUNJIFBydSAtIEVxdWl0eSBJbmNvbWUgRnVuZCAtIFJlZyAoRylkZAIBDw8WAh8DBQQxMC4yZGQCAg8PFgIfAwUDNTk2ZGQCAw8PFgIfAwUHLTAuNDg3OGRkAgQPDxYCHwMFATBkZAIFDw8WAh8DBQEwZGQCBg8PFgIfAwUBMGRkAgQPDxYCHwRoZGQCEQ8WAh8EZ2QYAgUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgQFI2N0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkV1Rfb25saW5lBSFjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJFdUX3NhdmUFIWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkV1Rfc2F2ZQUTY3RsMDAkYnV0TmV3c2xldHRlcgUtY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRHVlNjaGVtZVBlcmZvcm1hbmNlDzwrAAwBCAIBZNfvya2QM04VYyN2C/+fnu6E0Y4eYZFBIKpFuiZeOt83" />
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var theForm = document.forms['form1'];
+    if (!theForm) {
+        theForm = document.form1;
+    }
+    function __doPostBack(eventTarget, eventArgument) {
+        if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+            theForm.__EVENTTARGET.value = eventTarget;
+            theForm.__EVENTARGUMENT.value = eventArgument;
+            theForm.submit();
+        }
+    }
+    //]]>
+</script>
+
+
+<script src="/FinCartIW/WebResource.axd?d=YaiJBTqC-zGEumFL73fbYH_-ySU37rsxk6PxV1OE38AlAQQtnh4bsgHXP3Kgk2bRwU4231EIwTlPEyoO1usZ9MDs0IeVHJXeZV0mqknMn_s1&amp;t=634773912100000000" type="text/javascript"></script>
+
+
+<script src="/FinCartIW/ScriptResource.axd?d=f3sqV6EF6figBRiPmPBYxVTYmRFV0n42iM3zF0IeZ9Z0JCwHIXXJxZfTWOzVjdEBq-RMiOw9-QLi5ZA3XzeovPtEJcetOqzVutd1JgYeSHURdwNLYLvv7OTHTuAmni9cOO2-nhOxw9pjkfNSdeV7MyvmTnQLkpRucuTlv0MUlqk1&amp;t=2f7a99f5" type="text/javascript"></script>
+<script src="/FinCartIW/ScriptResource.axd?d=Y2Iui5oY4CVZuiozijUceDPlunYr1q-eN5iH1kUA1BhgUfk7Yz256Am5ezr-sWKVL_Qw2RNax2rCuzvaraKpUGuYxjNdYQJx-GB1WOqu0_aUww553JsPM7lCZ-XyXamD8KghQw2uAuJRLB3VOk17fkUaKQud9BMLIg595KBprBbcO1s8TVV-B95-EmdJz0A-0&amp;t=6119e399" type="text/javascript"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+    //]]>
+</script>
+
+<script src="/FinCartIW/ScriptResource.axd?d=2UXgrjsEaYWf6PJHR4Q-92bicrBHcrLAbU4kNp18s1tzTn96n22f0OonR1LrpCHwKNjnSTKGuBgC-6_blBx1HzQOcqQLOsrr0AWeLTOofa7HS4czY_2eELGB8Nr10KLyMXEIa1EPYVw-xfJDjp9CjX_Zyn-P1bFrqhIxl0wEMgx_c3SRObrCkvUx8-ELMMJ_0&amp;t=6119e399" type="text/javascript"></script>
+<script src="/FinCartIW/ScriptResource.axd?d=LfbBWvlm_jFLjbASJtIP_AFTb6g8EZWcsSmRx96POwAHOKsbjYVJA5a0LUsLdVSYls10TmuQvRAl_rIiF6EHpV6z2CXKjrTBebrNZHQa3bWCrLWj24u0p2z1lbDUXJj8wh907KC-Oc3EwTRqik34HJOkXWfI8Z-GcI7GHCmxZcY1&amp;t=dce2543" type="text/javascript"></script>
+<script src="/FinCartIW/ScriptResource.axd?d=_mVgJ_Usfl3VYuXcC95FUx9ih1-0on5ysiUR7bA-XQ9u-RyvGFqzSiOcn7Vgdhf0JsoiXqfOWaW5O9tdWo7BwXiADEfrQQQStipl1kxLk61tcK7SsDjASfEG0nnLlY7eOL7Y4QbWiGEQNCND5efcg8QkoQpoC4C7htsFJ4ghpRc1&amp;t=dce2543" type="text/javascript"></script>
+<script src="/FinCartIW/ScriptResource.axd?d=6UyH5pIDcP6LNe9Lp0mT5aVhGQ3ZXIE9NYFqK_9OydVF9qZQG3536C4jEWfS1zvlsM2mfnB72i9TzhS4VlJNtUAXqtB7j1afhWnHmS7JYJs8nlTTupoph9wR7u_WxPuH26Js4MkpTbUiS55zNmaAw9WfWSS9lHOeC_M1CgwYYh02Cuoj9R_Sc0dwxtOouef60&amp;t=dce2543" type="text/javascript"></script>
+<script src="/FinCartIW/ScriptResource.axd?d=rMQ9bLMaqvDA350b84IZaIdW0GMWxmXKVUf8otb6Agh58kX4ljlhs-v0rZx2MtjYCImqM9L38RER3IyIVAEg2j0LdGU49gYjPC2RQifSNI2db5wKVjgkK1M3MR2hONPfrzu83wMmXhUOtGXaJA10ES_fulufSy9cjBe6hztmvRc1&amp;t=dce2543" type="text/javascript"></script>
+<script src="/FinCartIW/ScriptResource.axd?d=boTRGjFnVIoYy-gnkjdMq6jlG17BfP8hVnzM_2_tt-lXR8xzIwwAtWf1jbRaJouUjj1YyeZppK5Of7zOzqIahKNrvKMoL-tbdVfGLxC8V2AbcHU1hrQHmYoVHjs6HRj56fFXxDpVao_DIQthXNOPNI7WRGva53ruBG8gVnBvVf01&amp;t=dce2543" type="text/javascript"></script>
+<script src="/FinCartIW/ScriptResource.axd?d=7NMucGi_SpKi63bx-YM_-VuynQs0ksmopGLONH9TLfqzcPd6H9PvRNdoeKj100PrPlu1TRloqc1YJSxJkaG8oXzW5nZTrjVoG-VU7fbVII3RgXmLQAIBZ5m03syQNtx5lqI2-ndZoCBn7EDn7gsUbJaRl2F4-fihv-MUO_23_kA1&amp;t=dce2543" type="text/javascript"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    function WebForm_OnSubmit() {
+        if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+        return true;
+    }
+    //]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdABKj/I5SrCEtVvs827Z2fuEcTDObNvixABqkU9It7cIchQrna2EJZVwlVzVkCNGH2UQr/2XmzEAsEaPOe/xAUpiAAcSuHkbwo/FmFSv75+JscT3x02RtwO9aiYjNjalSt/VxCU4raJpypjE+eBD3OSJIeOOzCLKGb6Doqh3ChsL98zmuy5sVdInIWUe0M4xzn04KaTc4+03WF9biF2IT9yYe1CASm/lBM2+WmoG9ktW+Z/tmhOb0P0tB3FvJQdFYGRtdDXodrnd/WvQQIm/a8Jzft0GqqGmTunmU8BFOEDL5JBp27H5MnXjaS3EP6vbk6N/kAtx/D+1XJvSOXVdt2i7YsrKVUYa0hYlAW/0kEtlNAMh0inFVSXRKbo9HwTp8ZJwkA11SvJEMc6zvZuuoSo2KjRFnySRckWH3QSJdCWamxQ==" />
+</div>
+    <script type="text/javascript">
+        //<![CDATA[
+        Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'form1', ['tctl00$upMain','upMain','tctl00$UpdatePanel1','UpdatePanel1'], [], [], 90, 'ctl00');
+        //]]>
+</script>
+
+    <div class="header-top">
+		<div class="header-inner">
+	        <div class="logo"><a href="../Default.aspx"><img src="images/fincart.png" alt=""/></a></div>
+            <div class="guest"><span id="lblWelcome">Welcome Guest</span></div>
+		    <div class="h_menu4">
+				<a class="toggleMenu" href="#"><i class="fa fa-bars fa-2x"></i></a>
+				<ul class="nav">
+                   <li><a href="../OurStory.aspx">Our Story</a></li>
+					
+						<!--<ul>
+							<li><a href="#">Dropdown</a></li>
+							<li><a href="#">Dropdown</a></li>
+							<li><a href="#">Dropdown</a></li>
+						</ul>-->
+					
+                    <li><a href="../WorkShop.aspx">Workshop</a></li>                    
+                    <li id="signup"><a href="Registration.aspx">Sign UP</a></li> 
+                    <li>                        
+                        <a id="signin" href="javascript:__doPostBack(&#39;ctl00$signin&#39;,&#39;&#39;)">Sign IN</a>
+                        
+                    </li>  
+                                        
+				</ul>                
+				<script type="text/javascript" src="js/nav.js"></script>
+			</div>
+			<div class="clear"></div>
+        </div>  
+	</div>
+
+    <div class="bodyContainer">
+            
+    <div class="MainContainer">
+        <div class="planAreaBg">
+        <div class="planArea">
+            <div class="row">
+                <div class="col-sm-6">
+                    &nbsp;
+                </div>                               
+            </div>
+            <div class="row">
+                <div class="col-sm-3 FPOLeft">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>My Risk Appetite</h3>
+                            <p><img id="ContentPlaceHolder1_imgRisk" src="images/risk-a.png" /></p>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p><a href="instaSIP.aspx">Change My Risk Profile</a></p>                            
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 line-separator">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Asset Allocation</h3>
+                            <script type='text/javascript'>
+                                var chart1;
+                                var legend1;
+                                    
+                                var chartData1 = [{ country: 'Hybrid: Equity Oriented', litres: 60, color: '#67bbfe'},{ country: 'Hybrid: Monthly Income', litres: 40, color: '#67fef9'}];AmCharts.ready(function () {
+                                    // PIE CHART
+                                    chart1 = new AmCharts.AmPieChart();
+                                    chart1.dataProvider = chartData1;
+                                    chart1.titleField = 'country';
+                                    chart1.valueField = 'litres';
+                                    chart1.labelsEnabled = true;
+                                    chart1.labelText = '[[percents]]%';
+                                    chart1.labelRadius = 5;
+                                    chart1.fontSize = 12;
+                                    chart1.depth3D = 10;
+                                    chart1.minRadius = 20;
+                                    chart1.radius = 70;
+                                    chart1.colorField = 'color';
+                                    chart1.fontFamily = 'Roboto';
+                                                    
+                                    
+                                    // LEGEND
+                                                    
+                                    legend1 = new AmCharts.AmLegend();
+                                    legend1.align = 'bottom';
+                                    legend1.markerType = 'circle';
+                                    legend1.markerSize = 7;
+                                    legend1.equalWidths = false;
+                                    legend1.marginLeft = 5;
+                                    legend1.marginRight = 5;
+                                    legend1.spacing = 4;
+                                    chart1.addLegend(legend1);
+                                    
+                                    // WRITE
+                                    chart1.write('AssetChart');
+                                });  </script>                      
+                            <div id="AssetChart" style="width: 100%; height: 280px;"></div>  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9 FPORight">
+                    
+                   <div class="row">
+                       
+                        <div class="col-sm-12 line-separator">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h3>Scheme Matrix</h3>
+                                </div>
+                                <div class="col-sm-6 textAlignRight">
+                                    <div class="form-inline" role="form">
+                                      <div class="form-group">                            
+                                        <label>Amount Rs.</label>
+                                          <input name="ctl00$ContentPlaceHolder1$txtAmount_BoundControl" type="text" id="ContentPlaceHolder1_txtAmount_BoundControl" class="form-input-borderless" style="width:90px;" />
+                                        <input name="ctl00$ContentPlaceHolder1$txtAmount" type="text" value="30000" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$txtAmount\&#39;,\&#39;\&#39;)&#39;, 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="ContentPlaceHolder1_txtAmount" class="form-control" style="width:80px;" />                                                                                     
+                                            
+                                      </div>                                                                       
+                                    </div>                                    
+                                </div>
+                            </div> 
+                            
+                            <Script>
+                                Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+                                Sys.WebForms.PageRequestManager.getInstance().beginAsyncPostBack();
+                                function EndRequestHandler(sender, args) {
+                                    var chart = AmCharts.makeChart('SchemeMatrix', {
+                                        'type': 'serial',
+                                        'theme': 'none',
+                                        'rotate': true,
+                                        'dataProvider': [ { category: 'ICICI Pru - Balanced Advantage Fund Reg (G)', visits: 12000.000000, short: 40},{ category: 'Birla SL - MIP II Wealth 25 Plan Reg (G)', visits: 12000.000000, short: 40},{ category: 'ICICI Pru - Equity Income Fund - Reg (G)', visits: 6000.000000, short: 20}],'valueAxes': [{
+                                            'gridColor': '#999999',
+                                            'gridAlpha': 0.2,
+                                            'dashLength': 0
+                                        }],                        
+                                        'startDuration': 1,
+                                        'graphs': [{
+                                            'balloonText': '[[category]]: <b>[[value]]</b>',
+                                            'fillAlphas': 1,
+                                            'lineAlpha': 0.2,
+                                            'fillColors': ['#d5edff', '#b0dcff'],
+                                            'type': 'column',
+                                            //'labelText': '[[category]]',
+                                            'valueField': 'visits'
+                                        }],
+                                        'chartCursor': {
+                                            'categoryBalloonEnabled': false,
+                                            'cursorAlpha': 0,
+                                            'zoomable': false
+                                        },
+                                        'categoryField': 'category',
+                                        'categoryAxis': {
+                                            'gridPosition': 'middle',
+                                            'gridAlpha': 0.2,
+                                            'labelFunction': function(valueText, serialDataItem, categoryAxis) {
+                                                if (valueText.length > 15)
+                                                    return valueText.substring(0, 15) + '...';
+                                                else
+                                                    return valueText;
+                                            }
+                                        }
+                                    });
+                                }
+</Script>                                                                              
+                            <div id="SchemeMatrix" style="width: 100%; height: 160px;"></div>                            
+                        </div>
+                       
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Scheme Performance(% CAGR)</h3>
+                            <div class="goalGrid">
+                                <div>
+	<table cellspacing="0" id="ContentPlaceHolder1_GVSchemePerformance" style="width:100%;border-collapse:collapse;">
+		<tr class="GV-HeaderStyle">
+			<th align="left" scope="col">Scheme </th><th class="GV-HeaderStyleRight" align="right" scope="col">Current NAV</th><th class="GV-HeaderStyleRight" align="right" scope="col">Corpus(Cr.)</th><th class="GV-HeaderStyleRight" align="right" scope="col">1 Year</th><th class="GV-HeaderStyleRight" align="right" scope="col">3 Year</th><th class="GV-HeaderStyleRight" align="right" scope="col">5 Year</th><th class="GV-HeaderStyleRight" align="right" scope="col">10 Year</th>
+		</tr><tr class="GV-RowStyle">
+			<td align="left">ICICI Pru - Balanced Advantage Fund Reg (G)</td><td align="right">24.82</td><td align="right">10,611</td><td align="right">-2.4754</td><td align="right">13.1627</td><td align="right">13.071</td><td align="right">0</td>
+		</tr><tr class="GV-AlternatingRowStyle">
+			<td align="left">Birla SL - MIP II Wealth 25 Plan Reg (G)</td><td align="right">29.1837</td><td align="right">1,038</td><td align="right">-0.2986</td><td align="right">12.1533</td><td align="right">10.796</td><td align="right">8.8535</td>
+		</tr><tr class="GV-RowStyle">
+			<td align="left">ICICI Pru - Equity Income Fund - Reg (G)</td><td align="right">10.2</td><td align="right">596</td><td align="right">-0.4878</td><td align="right">0</td><td align="right">0</td><td align="right">0</td>
+		</tr>
+	</table>
+</div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="ContentPlaceHolder1_OpenFreeAc" class="col-sm-12 textAlignRight">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Looks Great! Open Free Account</button>                            
+                        </div> 
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal for Invest Now -->        
+            <div class="modal fade" id="myModal">
+                <div class="vertical-alignment-helper">
+                    <div class="modal-dialog vertical-align-center">
+                        
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                
+                                 <h4 class="modal-title" id="myModalLabel">Open Free Secure Online Account</h4>                                 
+                            </div>
+                            <div class="modal-body">
+                                <p>Get your customized investment plan.</p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <span id="ContentPlaceHolder1_emailValidate" class="validateEmail"></span>
+                                    </div>
+                                </div>
+                                <div role="form">
+                                    <div class="form-group">                    
+                                        <input name="ctl00$ContentPlaceHolder1$name" id="ContentPlaceHolder1_name" tabindex="1" type="text" name="name" placeholder="Enter Name" class="form-control" />                    
+                                        <span id="ContentPlaceHolder1_RequiredFieldValidator1" class="mandatory" style="display:none;"></span>
+                                    </div>
+                                    <div class="form-group">                    
+                                        <div class="input-group">
+                                            <span class="input-group-addon">+91</span>
+                                            
+                                            <input name="ctl00$ContentPlaceHolder1$mobile" maxlength="10" id="ContentPlaceHolder1_mobile" type="text" name="mobile" Placeholder="Enter Mobile No." class="form-control" />
+                                            <span id="ContentPlaceHolder1_RequiredFieldValidator2" class="mandatory" style="display:none;"></span>
+                                        </div>                    
+                                    </div>
+                                    <div class="form-group">                    
+                                        <input name="ctl00$ContentPlaceHolder1$email" id="ContentPlaceHolder1_email" type="text" name="email" placeholder="Enter Email" class="form-control" />                    
+                                        <span id="ContentPlaceHolder1_RequiredFieldValidator3" class="mandatory" style="display:none;"></span>
+                                    </div>
+                                    <div class="form-group">                    
+                                        <input name="ctl00$ContentPlaceHolder1$txtPassword" id="ContentPlaceHolder1_txtPassword" type="password" name="password" placeholder="password" class="form-control" />                    
+                                        <span id="ContentPlaceHolder1_RequiredFieldValidator4" class="mandatory" style="display:none;"></span>
+                                    </div> 
+                                    <div class="form-group"> 
+                                        <label class="radio-inline"><input id="ContentPlaceHolder1_WT_online" type="radio" name="ctl00$ContentPlaceHolder1$worktype" value="WT_online" checked="checked" />Online Transact</label>
+                                        <label class="radio-inline"><input id="ContentPlaceHolder1_WT_save" type="radio" name="ctl00$ContentPlaceHolder1$worktype" value="WT_save" />Save for Future</label>
+                                    </div>               
+                                    <div class="form-group">
+                                        <input type="submit" name="ctl00$ContentPlaceHolder1$RegisterButton" value="Get Started Now" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$RegisterButton&quot;, &quot;&quot;, true, &quot;RegisterInfo&quot;, &quot;&quot;, false, false))" id="ContentPlaceHolder1_RegisterButton" type="submit" name="RegisterButton" class="btn btn-info btn-block btn-md" />                    
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>                               
+                              
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    <script type="text/javascript">
+        function WebForm_OnSubmit() {
+            if (typeof (ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) {
+                for (var i in Page_Validators) {
+                    try {
+                        var control = document.getElementById(Page_Validators[i].controltovalidate);
+                        if (!Page_Validators[i].isvalid) {
+                            control.className = "form-control ErrorControl";
+                        } else {
+                            control.className = "form-control";
+                        }
+                    } catch (e) { }
+                }
+                return false;
+            }
+            return true;
+        }
+</script>
+
+     </div>   
+    
+    <div class="footerArea">
+	    <!-- -----------------------------------footer starts-->
+	<div class="footer">
+        <div class="wrap2">
+            <div class="footer-grid">
+                <h4>Reach us at</h4>
+                <div class="recent-tweet"><p>T: (91) 11 30018181</p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p>E: <a href="mailto:info@fincart.com">info@fincart.com</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p>E: <a href="mailto:careers@fincart.com">careers@fincart.com</a></p></div>
+                <div class="clear"> </div>
+
+                <div class="recent-tweet"><p><a href="#" class="md-trigger" data-modal="Modal-CallMe" >Call Me</a></p></div>
+                <div class="clear"> </div>
+                <br>                
+            </div>
+            
+            
+            <div class="footer-grid" style="display:none">
+                <h4>Products</h4>
+                <div class="recent-tweet"><p><a href="../Products.aspx">Mutual Fund</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../InstaSip.aspx">InstaSIP</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../LifeInsurance.aspx">Term Insurance</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../HealthInsurance.aspx">Health Insurance</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../HealthInsurance.aspx">Fixed Deposits</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../TaxSaving.aspx">Tax-Saving Option</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../NPS.aspx">New Pension Scheme</a></p></div>
+                <div class="clear"> </div>
+                
+                <br>
+                
+                <h4>Services</h4>
+                <div class="recent-tweet"><p><a href="../FinancialPlanning.aspx">Financial Planning</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../InsurancePlanning.aspx">Insurance Planning</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../InvestmentPlanning.aspx">Investment Planning</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="#">Tax Planning</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../RetirementPlanning.aspx">Retirement Planning</a></p></div>
+                <div class="clear"> </div>
+            </div>
+           
+            
+            <div class="footer-grid">
+                <h4>Resources</h4>
+                <div class="recent-tweet"><p><a href="../Media.aspx">Media</a></p></div>
+                <div class="clear"> </div>                               
+                
+                <div class="recent-tweet"><p><a href="../Blog.aspx">Blog</a></p></div>
+                <div class="clear"> </div>                
+                
+                <div class="recent-tweet"><p><a href="../FCVideo.aspx">Video</a></p></div>
+                <div class="clear"> </div>
+                <br>
+            </div>                        
+            <div class="footer-grid">                                
+                <h4>Legal</h4>
+                <div class="recent-tweet"><p><a href="../TermsOfUse.aspx">Terms of Use</a></p></div>
+                <div class="clear"> </div>
+                
+                <div class="recent-tweet"><p><a href="../PrivacyPolicy.aspx">Privacy Policy</a></p></div>
+                <div class="clear"> </div>
+            </div>
+            <div class="footer-grid-last">
+                <h4>Reviews</h4><br>
+                <p><SCRIPT type=text/javascript>new pausescroller(pausecontent_LIFE, "pscroller1", "someclass", 7000)</SCRIPT></p>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+	</div>
+<!-- -----------------------------------footer ends-->
+
+<!-- -----------------------------------footer bottom starts-->
+	<div class="footer-bottom">
+          <div class="wrap2">
+            <div class="copy">
+               <p>Fincart is an online initiative of 3E Advisors Private Limited. 3E refers to Educate, Empower and Enable. Our vision is to be the most ethical personal finance portal that helps people make great progress with money by educating investors, empowering to make informed decisions and enabling with an online platform to help Plan, Transact and Track your life investments.<br>
+        CIN # U74140DL2012PTC245046 | ARN # 86903 | Logo Trademark # 2523746 | ISO 9001:2000  Registration # PCMS/QMS/2019-2013
+        	   </p><br>
+                <div style="margin:auto; text-align:center; width:100px">                
+                            <script language="JavaScript" type="text/javascript">
+                                TrustLogo("https://www.fincart.com/Plan/images/comodo_sa_52x63_white.png", "SC6", "none");
+</script>
+                    </div>
+                <br />
+               <p>Fincart.com TM + © 2012-2015. All rights reserved. Last Update: 15 October 2015.<br></p>
+           </div>
+            
+           <div class="social">	
+               <ul>	
+                 <li class="facebook"><a href="https://www.facebook.com/Fincartfp" target="_blank"><span> </span></a></li>
+                 <li class="linkedin"><a href="https://www.linkedin.com/profile/view?id=377256067" target="_blank"><span> </span></a></li>
+                 <li class="twitter"><a href="https://twitter.com/Fincartfp" target="_blank"><span> </span></a></li>
+                 <li class="youtube"><a href="https://www.youtube.com/channel/UCPgKy0xW3ysR4aAJkwh0oEg/videos" target="_blank"><span> </span></a></li>
+                 <li class="googleplus"><a href="https://plus.google.com/+Fincartfpc" target="_blank"><span> </span></a></li>
+               </ul>
+           </div>
+           <div class="clear"></div>
+          </div>
+      </div>
+<!-- -----------------------------------footer bottom ends-->
+      
+<!-- -----------------------------------footer fixed starts-->
+		<div class="footer-fixed">
+		  <div class="footer-inner">
+       		<div class="footer-fixed1">Call (91) 11 30018181</div>
+            <div class="footer-fixed2"><a href="#" class="md-trigger" data-modal="Modal-CallMe" >Call Me</a>
+                <div class="md-modal md-effect-1" id='Modal-CallMe'>
+			        <div class="md-content">
+				        <h3>Call Me Request<span><a href="#" class="md-close" style="text-decoration:none;">X</a></span></h3>
+                        <div>
+                            <div id="upMain">
+	                   
+                                    <div id="formtop"> 
+                                        <input name="ctl00$txtCountryCode" type="text" value="+91" maxlength="3" id="txtCountryCode" class="inputfield" style="width:30px;" />   
+                                        <input name="ctl00$txtMobile" type="text" maxlength="10" id="txtMobile" placeholder="Mobile" class="inputfield" style="width:75px;" />
+                                        
+                                        <input name="ctl00$txtName" type="text" id="txtName" placeholder="Name" class="inputfield" style="width:120px;" />
+                                        
+                                        <input name="ctl00$txtEmail" type="text" id="txtEmail" placeholder="Email" class="inputfield" style="width:210px;" />
+                                        
+                                        <a id="CallBackSubmit" class="MainButton" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$CallBackSubmit&quot;, &quot;&quot;, true, &quot;callback&quot;, &quot;&quot;, false, true))">Submit</a>
+                                    </div>
+                                    <span id="lblCallBackSubmit"></span>
+                                
+</div>                            
+                        </div>				                        
+			        </div>
+		        </div>
+                <div class="md-overlay"></div><!-- the overlay element --> 
+            </div>
+            <div class="footer-fixed3"><a href="../feedback.aspx" >Feedback</a></div>
+            
+            <div class="footer-fixed5">
+              
+               	<div id="UpdatePanel1">
+	
+                        
+                        <input name="ctl00$newsletter" type="text" id="newsletter" class="fixedfrmSubmit" placeholder=" Enter Email ID for Newsletter" />
+                        <span id="RFNewsletter" class="mandatory" style="display:none;">*</span>
+                        <span id="RegularExpressionValidator2" class="mandatoryfooter" style="display:none;">Please Enter Valid Email ID</span>
+                        <input type="image" name="ctl00$butNewsletter" id="butNewsletter" src="../images/go1.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$butNewsletter&quot;, &quot;&quot;, true, &quot;subscription&quot;, &quot;&quot;, false, false))" />                        
+
+                    
+</div>
+              
+            </div>
+            
+         </div>   
+       </div>
+<!-- -----------------------------------footer fixed ends-->
+    </div>
+ 
+<script type="text/javascript">
+    //<![CDATA[
+    var Page_Validators =  new Array(document.getElementById("ContentPlaceHolder1_RequiredFieldValidator1"), document.getElementById("ContentPlaceHolder1_RequiredFieldValidator2"), document.getElementById("ContentPlaceHolder1_RequiredFieldValidator3"), document.getElementById("ContentPlaceHolder1_RequiredFieldValidator4"), document.getElementById("RFNewsletter"), document.getElementById("RegularExpressionValidator2"));
+    //]]>
+</script>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var ContentPlaceHolder1_RequiredFieldValidator1 = document.all ? document.all["ContentPlaceHolder1_RequiredFieldValidator1"] : document.getElementById("ContentPlaceHolder1_RequiredFieldValidator1");
+    ContentPlaceHolder1_RequiredFieldValidator1.controltovalidate = "ContentPlaceHolder1_name";
+    ContentPlaceHolder1_RequiredFieldValidator1.display = "Dynamic";
+    ContentPlaceHolder1_RequiredFieldValidator1.validationGroup = "RegisterInfo";
+    ContentPlaceHolder1_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ContentPlaceHolder1_RequiredFieldValidator1.initialvalue = "";
+    var ContentPlaceHolder1_RequiredFieldValidator2 = document.all ? document.all["ContentPlaceHolder1_RequiredFieldValidator2"] : document.getElementById("ContentPlaceHolder1_RequiredFieldValidator2");
+    ContentPlaceHolder1_RequiredFieldValidator2.controltovalidate = "ContentPlaceHolder1_mobile";
+    ContentPlaceHolder1_RequiredFieldValidator2.display = "Dynamic";
+    ContentPlaceHolder1_RequiredFieldValidator2.validationGroup = "RegisterInfo";
+    ContentPlaceHolder1_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ContentPlaceHolder1_RequiredFieldValidator2.initialvalue = "";
+    var ContentPlaceHolder1_RequiredFieldValidator3 = document.all ? document.all["ContentPlaceHolder1_RequiredFieldValidator3"] : document.getElementById("ContentPlaceHolder1_RequiredFieldValidator3");
+    ContentPlaceHolder1_RequiredFieldValidator3.controltovalidate = "ContentPlaceHolder1_email";
+    ContentPlaceHolder1_RequiredFieldValidator3.display = "Dynamic";
+    ContentPlaceHolder1_RequiredFieldValidator3.validationGroup = "RegisterInfo";
+    ContentPlaceHolder1_RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ContentPlaceHolder1_RequiredFieldValidator3.initialvalue = "";
+    var ContentPlaceHolder1_RequiredFieldValidator4 = document.all ? document.all["ContentPlaceHolder1_RequiredFieldValidator4"] : document.getElementById("ContentPlaceHolder1_RequiredFieldValidator4");
+    ContentPlaceHolder1_RequiredFieldValidator4.controltovalidate = "ContentPlaceHolder1_txtPassword";
+    ContentPlaceHolder1_RequiredFieldValidator4.display = "Dynamic";
+    ContentPlaceHolder1_RequiredFieldValidator4.validationGroup = "RegisterInfo";
+    ContentPlaceHolder1_RequiredFieldValidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ContentPlaceHolder1_RequiredFieldValidator4.initialvalue = "";
+    var RFNewsletter = document.all ? document.all["RFNewsletter"] : document.getElementById("RFNewsletter");
+    RFNewsletter.controltovalidate = "newsletter";
+    RFNewsletter.errormessage = "*";
+    RFNewsletter.display = "Dynamic";
+    RFNewsletter.validationGroup = "subscription";
+    RFNewsletter.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    RFNewsletter.initialvalue = "";
+    var RegularExpressionValidator2 = document.all ? document.all["RegularExpressionValidator2"] : document.getElementById("RegularExpressionValidator2");
+    RegularExpressionValidator2.controltovalidate = "newsletter";
+    RegularExpressionValidator2.errormessage = "Please Enter Valid Email ID";
+    RegularExpressionValidator2.display = "Dynamic";
+    RegularExpressionValidator2.validationGroup = "subscription";
+    RegularExpressionValidator2.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    RegularExpressionValidator2.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+    //]]>
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    var Page_ValidationActive = false;
+    if (typeof(ValidatorOnLoad) == "function") {
+        ValidatorOnLoad();
+    }
+
+    function ValidatorOnSubmit() {
+        if (Page_ValidationActive) {
+            return ValidatorCommonOnSubmit();
+        }
+        else {
+            return true;
+        }
+    }
+    Sys.Application.add_init(function() {
+        $create(AjaxControlToolkit.SliderBehavior, {"BoundControlID":"ContentPlaceHolder1_txtAmount_BoundControl","EnableHandleAnimation":true,"Maximum":1000000,"Minimum":5000,"Steps":996,"TooltipText":"Current Amount : {0}","id":"txtAmount"}, null, null, $get("ContentPlaceHolder1_txtAmount"));
+    });
+
+    document.getElementById('ContentPlaceHolder1_RequiredFieldValidator1').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ContentPlaceHolder1_RequiredFieldValidator1'));
+    }
+
+    document.getElementById('ContentPlaceHolder1_RequiredFieldValidator2').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ContentPlaceHolder1_RequiredFieldValidator2'));
+    }
+
+    document.getElementById('ContentPlaceHolder1_RequiredFieldValidator3').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ContentPlaceHolder1_RequiredFieldValidator3'));
+    }
+
+    document.getElementById('ContentPlaceHolder1_RequiredFieldValidator4').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ContentPlaceHolder1_RequiredFieldValidator4'));
+    }
+
+    document.getElementById('RFNewsletter').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('RFNewsletter'));
+    }
+
+    document.getElementById('RegularExpressionValidator2').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('RegularExpressionValidator2'));
+    }
+    //]]>
+</script>
+</form>  
+    <script src="../modal/js/classie.js"></script>
+		<script src="../modal/js/modalEffects.js"></script>		
+		<script>
+		    // this is important for IEs
+		    var polyfilter_scriptpath = '../modal/js/';
+		</script>
+		<script src="../modal/js/cssParser.js"></script>
+		<script src="../modal/js/css-filters-polyfill.js"></script> 
+    <!--Start of Zopim Live Chat Script-->
+
+<!--End of Zopim Live Chat Script-->  
+
+ 
+</body>
+</html>
