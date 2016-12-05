@@ -46,13 +46,22 @@ public partial class FinAdmin_Tickets : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string GetReportTo(string depid, string assignuserid)
+    public static string addticket(string qry, string depid,string roleid,string assigntoemail,string reporttoemail,string status,string priority)
     {
         TicketSystem tsystem = new TicketSystem();
         Ticket tc = new Ticket();
+        tc.Query = qry.Trim();
+        tc.Attachment = "";
+        tc.DepId = depid.Trim();
+        tc.RoleId = roleid.Trim();
+        tc.CreatorEmail = HttpContext.Current.Session["AdminSessionID"].ToString();
+        tc.AssignerRoleId = HttpContext.Current.Session["roleid"].ToString();
+        tc.AssignToEmail = assigntoemail.Trim();
+        tc.ReportToEmail = reporttoemail.Trim();
+        tc.Status = Convert.ToInt32(status.Trim());
+        tc.Priority = Convert.ToInt32(priority.Trim());
+        int i = tsystem.CreateTicket(tc);
 
-        int i =tsystem.CreateTicket(tc);
-
-        return i == 1 ? "sucess" : "error";
+        return i==1?"y":"n";
     }
 }

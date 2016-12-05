@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FinAdmin/MasterPage.master" AutoEventWireup="true" CodeFile="Tickets.aspx.cs" Inherits="FinAdmin_Tickets" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FinAdmin/MasterPage.master" AutoEventWireup="true" CodeFile="Tickets.aspx.cs" Inherits="FinAdmin_Tickets" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="Server">
     <!-- Bootstrap Select Css -->
@@ -32,6 +32,14 @@
 
         function fillReportTo() {
             assignToChange($('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'));
+        }
+
+        function changeReportTo() {
+            reportToToChange($('#<%=ddlReportTo.ClientID%>'));
+        }
+
+        function addticket() {
+            createticket($('#<%=txtquery.ClientID%>'), $('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'), $('#<%=ddlStatus.ClientID%>'), $('#<%=ddlPriority.ClientID%>'));
         }
     </script>
 </asp:Content>
@@ -106,7 +114,7 @@
                                         <p>
                                             <b>Report To</b>
                                         </p>
-                                        <asp:DropDownList ID="ddlReportTo" runat="server" CssClass="form-control show-tick">
+                                        <asp:DropDownList ID="ddlReportTo" runat="server" CssClass="form-control show-tick" onchange="changeReportTo()">
                                             <asp:ListItem>Select Report To</asp:ListItem>
                                         </asp:DropDownList>
 
@@ -136,7 +144,7 @@
 
                                 <div class="row clearfix">
                                     <div class="col-md-12" style="text-align: right">
-                                        <asp:Button ID="btn_submit" runat="server" Text="Submit" CssClass="btn btn-success" OnClientClick="" OnClick="btn_submit_Click"/>
+                                        <asp:Button ID="btn_submit" runat="server" Text="Submit" CssClass="btn btn-success" OnClientClick="addticket(); return false;"/>
                                     </div>
                                 </div>
 
