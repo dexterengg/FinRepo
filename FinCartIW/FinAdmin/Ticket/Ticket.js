@@ -7,7 +7,7 @@
 
     $.ajax({
         type: "POST",
-        url: "Tickets.aspx/GetDepartments",
+        url: "AddTicket.aspx/GetDepartments",
         data: '{}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -70,7 +70,7 @@ function departmentChange(ddlDepartment, ddlDesignation, ddlAssignTo, ddlReportT
 
     $.ajax({
         type: "POST",
-        url: "Tickets.aspx/GetRoles",
+        url: "AddTicket.aspx/GetRoles",
         data: '{depid:"' + ddlDepartment.val() + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -108,7 +108,7 @@ function designationChange(ddlDesignation, ddlAssignTo, ddlReportTo) {
 
     $.ajax({
         type: "POST",
-        url: "Tickets.aspx/GetAssignTo",
+        url: "AddTicket.aspx/GetAssignTo",
         data: '{roleid:"' + ddlDesignation.val() + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -140,7 +140,7 @@ function assignToChange(ddlDepartment, ddlAssignTo, ddlReportTo) {
 
     $.ajax({
         type: "POST",
-        url: "Tickets.aspx/GetReportTo",
+        url: "AddTicket.aspx/GetReportTo",
         data: '{depid:"' + ddlDepartment.val() + '",assignuserid:"' + ddlAssignTo.val() + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -186,7 +186,7 @@ function createticket(txtquery,ddlDepartment, ddlDesignation, ddlAssignTo, ddlRe
                 if (result) {
                     $.ajax({
                         type: "POST",
-                        url: "Tickets.aspx/addticket",
+                        url: "AddTicket.aspx/addticket",
                         data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -215,7 +215,7 @@ function createticket(txtquery,ddlDepartment, ddlDesignation, ddlAssignTo, ddlRe
     else {
         $.ajax({
             type: "POST",
-            url: "Tickets.aspx/addticket",
+            url: "AddTicket.aspx/addticket",
             data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:""}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
