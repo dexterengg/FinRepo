@@ -39,7 +39,7 @@
         }
 
         function addticket() {
-            createticket($('#<%=txtquery.ClientID%>'), $('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'), $('#<%=ddlStatus.ClientID%>'), $('#<%=ddlPriority.ClientID%>'));
+            createticket($('#<%=txtquery.ClientID%>'), $('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'), $('#<%=ddlStatus.ClientID%>'), $('#<%=ddlPriority.ClientID%>'), $('#<%=fileattachment.ClientID%>'));
         }
     </script>
 </asp:Content>

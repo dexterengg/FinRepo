@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -46,12 +47,12 @@ public partial class FinAdmin_Tickets : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string addticket(string qry, string depid,string roleid,string assigntoemail,string reporttoemail,string status,string priority)
+    public static string addticket(string qry, string depid,string roleid,string assigntoemail,string reporttoemail,string status,string priority,string attachfile)
     {
         TicketSystem tsystem = new TicketSystem();
         Ticket tc = new Ticket();
         tc.Query = qry.Trim();
-        tc.Attachment = "";
+        tc.Attachment = attachfile;
         tc.DepId = depid.Trim();
         tc.RoleId = roleid.Trim();
         tc.CreatorEmail = HttpContext.Current.Session["AdminSessionID"].ToString();
@@ -62,6 +63,7 @@ public partial class FinAdmin_Tickets : System.Web.UI.Page
         tc.Priority = Convert.ToInt32(priority.Trim());
         int i = tsystem.CreateTicket(tc);
 
-        return i==1?"y":"n";
+        return i>0?"y":"n";
     }
+
 }

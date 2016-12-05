@@ -163,26 +163,74 @@ function reportToToChange(ddlReportTo) {
     $('#ddlReportToli' + ddlReportTo.prop('selectedIndex')).addClass('selected');
 }
 
-function createticket(txtquery,ddlDepartment, ddlDesignation, ddlAssignTo, ddlReportTo, ddlStatus, ddlPriority) {
+function createticket(txtquery,ddlDepartment, ddlDesignation, ddlAssignTo, ddlReportTo, ddlStatus, ddlPriority, fileattachment) {
     startPreloader("Submitting Ticket...");
 
-    $.ajax({
-        type: "POST",
-        url: "Tickets.aspx/addticket",
-        data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '"}',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (r) {
-            alert(r);
-            if (r === 'y') {
-                endPreloader("");
-            }
-            else {
+    var fileUpload = fileattachment.get(0);
+    var files = fileUpload.files;
+
+    if (files) {
+        var data = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            data.append(files[i].name, files[i]);
+        }
+
+        $.ajax({
+            url: "AttachmentHandler.ashx",
+            type: "POST",
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                debugger;
+                if (result) {
+                    $.ajax({
+                        type: "POST",
+                        url: "Tickets.aspx/addticket",
+                        data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (r) {
+                            if (r.d === 'y') {
+                                $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait...");
+                            }
+                            else {
+                                endPreloader("Error");
+                            }
+                        },
+                        error: function (r) {
+                            endPreloader("Error");
+                        }
+                    });
+                }
+                else {
+                    endPreloader("Error");
+                }
+            },
+            error: function (err) {
                 endPreloader("Error");
             }
-        },
-        error: function (r) {
-            endPreloader("Error");
-        }
-    });
+        });
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: "Tickets.aspx/addticket",
+            data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:""}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (r) {
+                if (r.d === 'y') {
+                    $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait...");
+                }
+                else {
+                    endPreloader("Error");
+                }
+            },
+            error: function (r) {
+                endPreloader("Error");
+            }
+        });
+    }
 }
+
