@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" Runat="Server">
      <!-- Bootstrap Select Css -->
     <link href="/FinAdmin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+        <!-- Light Gallery Plugin Css -->
+    <link href="/FinAdmin/plugins/light-gallery/css/lightgallery.css" rel="stylesheet" />
+        <!-- Light Gallery Plugin Js -->
+    <script src="/FinAdmin/plugins/light-gallery/js/lightgallery-all.js"></script>
     <script src="Ticket.js"></script>
     <style>
         .preloaderoverlay {

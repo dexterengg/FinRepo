@@ -61,7 +61,7 @@
                                                         <a href="<%#Eval("Attachment") %>" data-sub-html="<%#Eval("Attachment").ToString().Substring(Eval("Attachment").ToString().IndexOf('_') + 1).Replace("_"," ") %>">
                                                             <img class="img-responsive thumbnail" src="<%#Eval("Attachment") %>" style="max-width: 40px;">
                                                         </a>
-                                                    &nbsp;</div>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td><%#Eval("DepName") %></td>
@@ -82,7 +82,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li><a href="javascript:void(0);">View</a></li>
                                                         <li><a href="javascript:void(0);">Update</a></li>
-                                                        <li><asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>'>Delete</asp:LinkButton></li>
+                                                        <li><asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>' OnClientClick="delcofirm()">Delete</asp:LinkButton></li>
                                                     </ul>
                                                 </div>
                                             </td>

@@ -242,6 +242,5 @@ $(function () {
 });
 
 function delcofirm() {
-    $("<div class='preloaderoverlay'><div class='md-preloader pl-size-md' style='top:40%;left:40%;position:relative; z-index: 2'><svg viewbox='0 0 75 75'><circle cx='37.5' cy='37.5' r='33.5' class='pl-red' stroke-width='4' /></svg></div><p id='preloaderoverlaymsg' style='top:40%;left:36%;position:relative; z-index: 2'></p></div>")
-    .appendTo($("#preloaderoverlay").css("position", "relative"));
+     return false;
 }
