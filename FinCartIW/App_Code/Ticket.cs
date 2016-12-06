@@ -19,12 +19,18 @@ public class Ticket
     public string TicketId { get; set; }
     public string Query { get; set; }
     public string Attachment { get; set; }
+    public string DepName { get; set; }
     public string DepId { get; set; }
+    public string Role { get; set; }
     public string RoleId { get; set; }
+    public string CreatorName { get; set; }
     public string CreatorEmail { get; set; }
     public string AssignerRoleId { get; set; }
+    public string AssignByName { get; set; }
     public string AssignByEmail { get; set; }
+    public string AssignToName { get; set; }
     public string AssignToEmail { get; set; }
+    public string ReportToName { get; set; }
     public string ReportToEmail { get; set; }
     public string UpdatedByEmail { get; set; }
     public int Status { get; set; }

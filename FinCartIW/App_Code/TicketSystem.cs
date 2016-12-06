@@ -41,6 +41,7 @@ public class TicketSystem
             cmd.Parameters.AddWithValue("@Action", "INSERT");
             Con.Open();
             res=cmd.ExecuteNonQuery();
+            Con.Close();
         }
 
         return res;
@@ -62,6 +63,7 @@ public class TicketSystem
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             Con.Open();
             res = cmd.ExecuteNonQuery();
+            Con.Close();
         }
 
         return res;
@@ -82,6 +84,23 @@ public class TicketSystem
             cmd.Parameters.AddWithValue("@Action", "REASSIGN");
             Con.Open();
             res = cmd.ExecuteNonQuery();
+            Con.Close();
+        }
+
+        return res;
+    }
+    public int DeleteTicket(string TicketId)
+    {
+        int res = 0;
+
+        using (SqlCommand cmd = new SqlCommand("fp_SpManageTickets", Con))
+        {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TicketId", TicketId);
+            cmd.Parameters.AddWithValue("@Action", "DELETE");
+            Con.Open();
+            res = cmd.ExecuteNonQuery();
+            Con.Close();
         }
 
         return res;
@@ -109,12 +128,18 @@ public class TicketSystem
                     tc.TicketId = Convert.ToString(DSticket.Tables[0].Rows[0]["TicketId"]);
                     tc.Query = Convert.ToString(DSticket.Tables[0].Rows[0]["Query"]);
                     tc.Attachment = Convert.ToString(DSticket.Tables[0].Rows[0]["Attachment"]);
+                    tc.DepName = Convert.ToString(DSticket.Tables[0].Rows[0]["DepName"]);
                     tc.DepId = Convert.ToString(DSticket.Tables[0].Rows[0]["DepId"]);
+                    tc.Role = Convert.ToString(DSticket.Tables[0].Rows[0]["Role"]);
                     tc.RoleId = Convert.ToString(DSticket.Tables[0].Rows[0]["RoleId"]);
+                    tc.CreatorName = Convert.ToString(DSticket.Tables[0].Rows[0]["CreatorName"]);
                     tc.CreatorEmail = Convert.ToString(DSticket.Tables[0].Rows[0]["CreatorEmail"]);
                     tc.AssignerRoleId = Convert.ToString(DSticket.Tables[0].Rows[0]["AssignerRoleId"]);
+                    tc.AssignByName = Convert.ToString(DSticket.Tables[0].Rows[0]["AssignByName"]);
                     tc.AssignByEmail = Convert.ToString(DSticket.Tables[0].Rows[0]["AssignByEmail"]);
+                    tc.AssignToName = Convert.ToString(DSticket.Tables[0].Rows[0]["AssignToName"]);
                     tc.AssignToEmail = Convert.ToString(DSticket.Tables[0].Rows[0]["AssignToEmail"]);
+                    tc.ReportToName = Convert.ToString(DSticket.Tables[0].Rows[0]["ReportToName"]);
                     tc.ReportToEmail = Convert.ToString(DSticket.Tables[0].Rows[0]["ReportToEmail"]);
                     tc.UpdatedByEmail = Convert.ToString(DSticket.Tables[0].Rows[0]["UpdatedByEmail"]);
                     tc.Status = Convert.ToInt32(DSticket.Tables[0].Rows[0]["Status"]);
@@ -153,12 +178,18 @@ public class TicketSystem
                         tc.TicketId = Convert.ToString(dr["TicketId"]);
                         tc.Query = Convert.ToString(dr["Query"]);
                         tc.Attachment = Convert.ToString(dr["Attachment"]);
+                        tc.DepName = Convert.ToString(dr["DepName"]);
                         tc.DepId = Convert.ToString(dr["DepId"]);
+                        tc.Role = Convert.ToString(dr["Role"]);
                         tc.RoleId = Convert.ToString(dr["RoleId"]);
+                        tc.CreatorName = Convert.ToString(dr["CreatorName"]);
                         tc.CreatorEmail = Convert.ToString(dr["CreatorEmail"]);
                         tc.AssignerRoleId = Convert.ToString(dr["AssignerRoleId"]);
+                        tc.AssignByName = Convert.ToString(dr["AssignByName"]);
                         tc.AssignByEmail = Convert.ToString(dr["AssignByEmail"]);
+                        tc.AssignToName = Convert.ToString(dr["AssignToName"]);
                         tc.AssignToEmail = Convert.ToString(dr["AssignToEmail"]);
+                        tc.ReportToName = Convert.ToString(dr["ReportToName"]);
                         tc.ReportToEmail = Convert.ToString(dr["ReportToEmail"]);
                         tc.UpdatedByEmail = Convert.ToString(dr["UpdatedByEmail"]);
                         tc.Status = Convert.ToInt32(dr["Status"]);
@@ -198,12 +229,18 @@ public class TicketSystem
                         tc.TicketId = Convert.ToString(dr["TicketId"]);
                         tc.Query = Convert.ToString(dr["Query"]);
                         tc.Attachment = Convert.ToString(dr["Attachment"]);
+                        tc.DepName = Convert.ToString(dr["DepName"]);
                         tc.DepId = Convert.ToString(dr["DepId"]);
+                        tc.Role = Convert.ToString(dr["Role"]);
                         tc.RoleId = Convert.ToString(dr["RoleId"]);
+                        tc.CreatorName = Convert.ToString(dr["CreatorName"]);
                         tc.CreatorEmail = Convert.ToString(dr["CreatorEmail"]);
                         tc.AssignerRoleId = Convert.ToString(dr["AssignerRoleId"]);
+                        tc.AssignByName = Convert.ToString(dr["AssignByName"]);
                         tc.AssignByEmail = Convert.ToString(dr["AssignByEmail"]);
+                        tc.AssignToName = Convert.ToString(dr["AssignToName"]);
                         tc.AssignToEmail = Convert.ToString(dr["AssignToEmail"]);
+                        tc.ReportToName = Convert.ToString(dr["ReportToName"]);
                         tc.ReportToEmail = Convert.ToString(dr["ReportToEmail"]);
                         tc.UpdatedByEmail = Convert.ToString(dr["UpdatedByEmail"]);
                         tc.Status = Convert.ToInt32(dr["Status"]);
