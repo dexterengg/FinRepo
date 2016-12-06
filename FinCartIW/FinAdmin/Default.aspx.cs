@@ -9,6 +9,16 @@ public partial class FinAdmin_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["AdminSessionID"] != null)
+        {
+            if (!IsPostBack)
+            {
 
+            }
+        }
+        else
+        {
+            Response.Redirect("/FinAdmin/");
+        }
     }
 }

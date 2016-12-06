@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FinAdmin/MasterPage.master" AutoEventWireup="true" CodeFile="AllTickets.aspx.cs" Inherits="FinAdmin_Ticket_AllTickets" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="Server">
+    <title>Fincart Workcenter | All Tickets</title>
     <!-- JQuery DataTable Css -->
     <link href="/FinAdmin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" />
     <!-- Light Gallery Plugin Css -->
@@ -30,8 +31,20 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>All Tickets
+                            <h2>Tickets
                             </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                         <!-- Exportable Table -->
                         <div class="body">
@@ -47,7 +60,7 @@
                                         <th>Assignee</th>
                                         <th>Status</th>
                                         <th>Priority</th>
-                                        <th>Dated</th>
+                                        <th>Last Updated</th>
                                     </tr>
                                 </thead>
                                 <asp:Repeater ID="TicketsRepeater" runat="server" OnItemCommand="TicketsRepeater_ItemCommand">
@@ -61,7 +74,7 @@
                                                         <a href="<%#Eval("Attachment") %>" data-sub-html="<%#Eval("Attachment").ToString().Substring(Eval("Attachment").ToString().IndexOf('_') + 1).Replace("_"," ") %>">
                                                             <img class="img-responsive thumbnail" src="<%#Eval("Attachment") %>" style="max-width: 40px;">
                                                         </a>
-                                                    </div>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;</div>
                                                 </div>
                                             </td>
                                             <td><%#Eval("DepName") %></td>
@@ -87,7 +100,7 @@
                                                 </div>
                                             </td>
                                             <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
-                                            <td><%#Eval("OpenDate") %></td>
+                                            <td><%#Eval("UpdateDate") %></td>
                                         </tr>
                                     </ItemTemplate>
                                 </asp:Repeater>

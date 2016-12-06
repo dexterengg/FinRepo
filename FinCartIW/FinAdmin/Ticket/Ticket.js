@@ -169,7 +169,7 @@ function createticket(txtquery,ddlDepartment, ddlDesignation, ddlAssignTo, ddlRe
     var fileUpload = fileattachment.get(0);
     var files = fileUpload.files;
 
-    if (files) {
+    if (files.length>0) {
         var data = new FormData();
         for (var i = 0; i < files.length; i++) {
             data.append(files[i].name, files[i]);
@@ -192,7 +192,8 @@ function createticket(txtquery,ddlDepartment, ddlDesignation, ddlAssignTo, ddlRe
                         dataType: "json",
                         success: function (r) {
                             if (r.d === 'y') {
-                                $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait...");
+                                $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait Redirecting...");
+                                setTimeout(function () { window.location = "AllTickets"; }, 1000);
                             }
                             else {
                                 endPreloader("Error");
@@ -221,7 +222,8 @@ function createticket(txtquery,ddlDepartment, ddlDesignation, ddlAssignTo, ddlRe
             dataType: "json",
             success: function (r) {
                 if (r.d === 'y') {
-                    $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait...");
+                    $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait Redirecting...");
+                    setTimeout(function () { window.location = "AllTickets"; }, 1000);
                 }
                 else {
                     endPreloader("Error");
@@ -242,5 +244,5 @@ $(function () {
 });
 
 function delcofirm() {
-     return false;
+     return confirm('Are you sure?');
 }

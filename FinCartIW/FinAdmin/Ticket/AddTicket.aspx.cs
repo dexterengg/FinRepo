@@ -11,9 +11,16 @@ public partial class FinAdmin_Ticket_AddTicket : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Session["AdminSessionID"] != null)
         {
-            //filldepartment();
+            if (!IsPostBack)
+            {
+               
+            }
+        }
+        else
+        {
+            Response.Redirect("/FinAdmin/");
         }
 
     }

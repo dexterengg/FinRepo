@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FinAdmin/MasterPage.master" AutoEventWireup="true" CodeFile="AddTicket.aspx.cs" Inherits="FinAdmin_Ticket_AddTicket" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" Runat="Server">
+    <title>Fincart Workcenter| New Ticket</title>
      <!-- Bootstrap Select Css -->
     <link href="/FinAdmin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
         <!-- Light Gallery Plugin Css -->

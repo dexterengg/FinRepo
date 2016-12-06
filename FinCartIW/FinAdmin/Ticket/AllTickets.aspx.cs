@@ -12,36 +12,41 @@ public partial class FinAdmin_Ticket_AllTickets : System.Web.UI.Page
     TicketSystem tsystem = new TicketSystem();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Session["AdminSessionID"] != null)
         {
-            bindTickets();
+            if (!IsPostBack)
+            {
+                bindTickets("R");
+            }
+        }
+        else
+        {
+            Response.Redirect("/FinAdmin/");
         }
 
     }
 
-    [WebMethod]
-    public static List<Ticket> GetTickets()
+    void bindTickets(string gridfor)
     {
-        TicketSystem tsystem = new TicketSystem();
-        return tsystem.SelectTicketByEmail(HttpContext.Current.Session["AdminSessionID"].ToString());
+        if (gridfor == "R")
+        {
+            TicketsRepeater.DataSource = tsystem.SelectTicketByReportingEmail(Session["AdminSessionID"].ToString());
+            TicketsRepeater.DataBind();
+        }
+        else
+        {
+            TicketsRepeater.DataSource = tsystem.SelectTicketByAssigneeEmail(Session["AdminSessionID"].ToString());
+            TicketsRepeater.DataBind();
+        }
+        
     }
 
-    void bindTickets()
-    {
-        TicketsRepeater.DataSource = tsystem.SelectTicketByEmail(HttpContext.Current.Session["AdminSessionID"].ToString());
-        TicketsRepeater.DataBind();
-    }
-    protected void OnPaging(object sender, GridViewPageEventArgs e)
-    {
-        //TicketsRepeater.PageIndex = e.NewPageIndex;
-        //TicketsRepeater.DataBind();
-    }
     protected void TicketsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         if (e.CommandName == "D")
         {
             int id = tsystem.DeleteTicket(e.CommandArgument.ToString());
-            bindTickets();
+            bindTickets("R");
         }
     }
 }
