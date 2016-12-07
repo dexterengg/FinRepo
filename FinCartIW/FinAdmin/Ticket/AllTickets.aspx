@@ -20,6 +20,16 @@
     <!-- Light Gallery Plugin Js -->
     <script src="/FinAdmin/plugins/light-gallery/js/lightgallery-all.js"></script>
     <script src="Ticket.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#mainmenu li.active').removeClass('active');
+            $('#liTickets').addClass('active');
+            $('#liTickets').children(":first").addClass("menu-toggle waves-effect waves-block toggled");
+            $('#liTickets').children(":nth-child(2)").css("display", "block");
+            $('#liAllTicket').addClass('active');
+            $('#liAllTicket').children(":first").addClass("toggled waves-effect waves-block");
+         });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section class="content">

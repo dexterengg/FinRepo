@@ -29,6 +29,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             bindDepartment($('#<%=ddlDepartment.ClientID%>'));
+            $('#mainmenu li.active').removeClass('active');
+            $('#liTickets').addClass('active');
+            $('#liTickets').children(":first").addClass("menu-toggle waves-effect waves-block toggled");
+            $('#liTickets').children(":nth-child(2)").css("display", "block");
+            $('#liNewTicket').addClass('active');
+            $('#liNewTicket').children(":first").addClass("toggled waves-effect waves-block");
         });
 
         function fillDesignation() {
