@@ -42,9 +42,6 @@
     <!-- Select Plugin Js -->
     <script src="/FinAdmin/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="/FinAdmin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
     <!-- Waves Effect Plugin Js -->
     <script src="/FinAdmin/plugins/node-waves/waves.js"></script>
 
@@ -188,9 +185,9 @@
                 <!-- #User Info -->
                 <!-- Menu -->
                 <div class="menu">
-                    <ul class="list">
+                    <ul class="list" id="mainmenu">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li class="active">
+                        <li class="active" id="lihome">
                             <a href="/FinAdmin/Default.aspx">
                                 <i class="material-icons">home</i>
                                 <span>Home</span>
@@ -209,16 +206,16 @@
                             </asp:LinkButton>
                         </li>
 
-                        <li>
+                        <li id="liTickets">
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <i class="material-icons">sms</i>
                                 <span>Tickets</span>
                             </a>
                             <ul class="ml-menu">
-                                <li>
+                                <li id="liNewTicket">
                                     <a href="/FinAdmin/Ticket/AddTicket.aspx">New Ticket</a>
                                 </li>
-                                <li>
+                                <li id="liAllTicket">
                                     <a href="/FinAdmin/Ticket/AllTickets.aspx">All Tickets</a>
                                 </li>
                             </ul>
