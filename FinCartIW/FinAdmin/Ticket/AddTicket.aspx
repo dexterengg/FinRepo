@@ -6,8 +6,12 @@
     <link href="/FinAdmin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
         <!-- Light Gallery Plugin Css -->
     <link href="/FinAdmin/plugins/light-gallery/css/lightgallery.css" rel="stylesheet" />
+     <!-- Animation Css -->
+    <link href="/FinAdmin/plugins/animate-css/animate.css" rel="stylesheet" />
         <!-- Light Gallery Plugin Js -->
     <script src="/FinAdmin/plugins/light-gallery/js/lightgallery-all.js"></script>
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="/FinAdmin/plugins/bootstrap-notify/bootstrap-notify.js"></script>
     <script src="Ticket.js"></script>
     <style>
         .preloaderoverlay {
@@ -44,7 +48,18 @@
         }
 
         function addticket() {
-            createticket($('#<%=txtquery.ClientID%>'), $('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'), $('#<%=ddlStatus.ClientID%>'), $('#<%=ddlPriority.ClientID%>'), $('#<%=fileattachment.ClientID%>'));
+            if (!$('#<%=txtquery.ClientID%>').val()) {
+                $('#rqtxtquery').text("Please Enter Query");
+            }
+            else if ($('#<%=ddlDepartment.ClientID%>').val() === "0") {
+                $('#rqtxtquery').text("");
+                $('#rqddlDepartment').text("Please Select Department");
+            }
+            else {
+                alert("kk");
+                <%--createticket($('#<%=txtquery.ClientID%>'), $('#<%=ddlDepartment.ClientID%>'), $('#<%=ddlDesignation.ClientID%>'), $('#<%=ddlAssignTo.ClientID%>'), $('#<%=ddlReportTo.ClientID%>'), $('#<%=ddlStatus.ClientID%>'), $('#<%=ddlPriority.ClientID%>'), $('#<%=fileattachment.ClientID%>'));--%>
+            }
+            
         }
     </script>
 </asp:Content>
@@ -65,7 +80,7 @@
                                 <div class="row clearfix">
                                     <div class="col-md-8">
                                         <p>
-                                            <b>Query</b>
+                                            <b>Query <span id="rqtxtquery" class="badge bg-red"></span></b>
                                         </p>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -87,7 +102,7 @@
                                 <div class="row clearfix">
                                     <div class="col-md-4">
                                         <p>
-                                            <b>Department</b>
+                                            <b>Department <span id="rqddlDepartment" class="badge bg-red"></span></b>
                                         </p>
                                         <asp:DropDownList ID="ddlDepartment" runat="server" CssClass="form-control show-tick" onchange="fillDesignation()">
                                             <asp:ListItem>Select Department</asp:ListItem>
@@ -96,7 +111,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <p>
-                                            <b>Designation</b>
+                                            <b>Designation <span id="rqddlDesignation" class="badge bg-red"></span></b>
                                         </p>
                                         <asp:DropDownList ID="ddlDesignation" runat="server" CssClass="form-control show-tick" onchange="fillAssignTo()">
                                             <asp:ListItem>Select Designation</asp:ListItem>
@@ -105,7 +120,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <p>
-                                            <b>Assign To</b>
+                                            <b>Assign To <span id="rqddlAssignTo" class="badge bg-red"></span></b>
                                         </p>
                                         <asp:DropDownList ID="ddlAssignTo" runat="server" CssClass="form-control show-tick" onchange="fillReportTo()">
                                             <asp:ListItem>Select Assign To</asp:ListItem>
@@ -117,7 +132,7 @@
                                 <div class="row clearfix">
                                     <div class="col-md-4">
                                         <p>
-                                            <b>Report To</b>
+                                            <b>Report To <span id="rqddlReportTo" class="badge bg-red"></span></b>
                                         </p>
                                         <asp:DropDownList ID="ddlReportTo" runat="server" CssClass="form-control show-tick" onchange="changeReportTo()">
                                             <asp:ListItem>Select Report To</asp:ListItem>
@@ -149,7 +164,7 @@
 
                                 <div class="row clearfix">
                                     <div class="col-md-12" style="text-align: right">
-                                        <asp:Button ID="btn_submit" runat="server" Text="Submit" CssClass="btn btn-success" OnClientClick="addticket(); return false;"/>
+                                        <a href="javascript:void(0);" class="btn btn-success" onclick="addticket()">Submit</a>
                                     </div>
                                 </div>
 
