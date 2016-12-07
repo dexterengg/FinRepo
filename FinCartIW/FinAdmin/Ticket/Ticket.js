@@ -232,56 +232,63 @@ function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlR
 
     if (txtquery.val() && ddlDepartment.val() != "0" && ddlDesignation.val() != "0" && ddlAssignTo.val() != "0" && ddlReportTo.val() != "0") {
 
-        startPreloader("Submitting Ticket...");
-
         var fileUpload = fileattachment.get(0);
         var files = fileUpload.files;
 
         if (files.length > 0) {
-            var data = new FormData();
-            for (var i = 0; i < files.length; i++) {
-                data.append(files[i].name, files[i]);
+            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            if ($.inArray(fileattachment.val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                $('#rqfileattachment').html("Only .jpeg, .jpg, .png, .gif, .bmp formats are allowed." + " " + "<a href='javascript:void(0)' class='btn bg-green waves-effect' onclick='removeimagefile()'>Remove File</a>");
             }
+            else {
+                startPreloader("Submitting Ticket...");
+                $('#rqfileattachment').html("");
+                var data = new FormData();
+                for (var i = 0; i < files.length; i++) {
+                    data.append(files[i].name, files[i]);
+                }
 
-            $.ajax({
-                url: "AttachmentHandler.ashx",
-                type: "POST",
-                data: data,
-                contentType: false,
-                processData: false,
-                success: function (result) {
-                    debugger;
-                    if (result) {
-                        $.ajax({
-                            type: "POST",
-                            url: "AddTicket.aspx/addticket",
-                            data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function (r) {
-                                if (r.d === 'y') {
-                                    $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait Redirecting...");
-                                    setTimeout(function () { window.location = "AllTickets"; }, 1000);
-                                }
-                                else {
+                $.ajax({
+                    url: "AttachmentHandler.ashx",
+                    type: "POST",
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        debugger;
+                        if (result) {
+                            $.ajax({
+                                type: "POST",
+                                url: "AddTicket.aspx/addticket",
+                                data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (r) {
+                                    if (r.d === 'y') {
+                                        $('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait Redirecting...");
+                                        setTimeout(function () { window.location = "AllTickets"; }, 1000);
+                                    }
+                                    else {
+                                        endPreloader("Error");
+                                    }
+                                },
+                                error: function (r) {
                                     endPreloader("Error");
                                 }
-                            },
-                            error: function (r) {
-                                endPreloader("Error");
-                            }
-                        });
-                    }
-                    else {
+                            });
+                        }
+                        else {
+                            endPreloader("Error");
+                        }
+                    },
+                    error: function (err) {
                         endPreloader("Error");
                     }
-                },
-                error: function (err) {
-                    endPreloader("Error");
-                }
-            });
+                });
+            }
         }
         else {
+            startPreloader("Submitting Ticket...");
             $.ajax({
                 type: "POST",
                 url: "AddTicket.aspx/addticket",
@@ -343,7 +350,7 @@ function removefile(fileattachment) {
     var name = fileUpload.attr("name");
 
     //Create a new FileUpload element.
-    var newFileUpload = $('<input type = "file" CssClass="form-control" onchange="fileattachmentchange()"/>');
+    var newFileUpload = $('<input type = "file" class="form-control" onchange="fileattachmentchange()"/>');
 
     //Append it next to the original FileUpload.
     fileUpload.after(newFileUpload);
