@@ -18,6 +18,15 @@ public partial class FinAdmin_MasterPage : System.Web.UI.MasterPage
                 emp = es.EmployeeDetails(Session["AdminSessionID"].ToString());
                 lblEmpEmail.Text = emp.UserID;
                 lblEmpName.Text = emp.Name;
+
+                if (HttpContext.Current.Session["AdminSessionCode"] != null)
+                {
+                    olddashboard.Visible = true;
+                }
+                else
+                {
+                    olddashboard.Visible = false;
+                }
             }
         }
         else

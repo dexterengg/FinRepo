@@ -16,7 +16,7 @@ function validateuser() {
                 }
                 else {
                     $("#usermsg").text("Welcome " + resp.name);
-                    $("#redirect-button").attr("href", '/admin/' + resp.page);
+                    $("#redirect-button").attr("href", resp.page);
                     $("#redirect-button").text("Go To Dashboard");
                     $("#redirect-button").show();
                     $('.form').fadeOut(500);

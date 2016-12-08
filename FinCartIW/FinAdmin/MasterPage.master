@@ -199,7 +199,7 @@
                             <span>Trash</span>
                         </a>
                     </li>--%>
-                        <li>
+                        <li id="olddashboard" runat="server">
                             <asp:LinkButton ID="LinkButton_oldDashboard" runat="server" OnClick="LinkButton_oldDashboard_Click">
                              <i class="material-icons">dashboard</i>
                             <span>Old Dashboard</span>

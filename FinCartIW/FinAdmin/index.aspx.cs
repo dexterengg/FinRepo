@@ -58,27 +58,27 @@ public partial class FinAdmin_index : System.Web.UI.Page
                     case "Admin":
                         userauthentication.name = DS.Tables[0].Rows[0]["PlannerName"].ToString();
                         userauthentication.error = "";
-                        userauthentication.page = "AdminDB.aspx";
+                        userauthentication.page = "/admin/AdminDB.aspx";
                         break;
                     case "Operator":
                         userauthentication.name = DS.Tables[0].Rows[0]["PlannerName"].ToString();
                         userauthentication.error = "";
-                        userauthentication.page = "OperatorLMS.aspx";
+                        userauthentication.page = "/admin/OperatorLMS.aspx";
                         break;
                     case "Planner":
                         userauthentication.name = DS.Tables[0].Rows[0]["PlannerName"].ToString();
                         userauthentication.error = "";
-                        userauthentication.page = "PlannerLMS.aspx";
+                        userauthentication.page = "/admin/PlannerLMS.aspx";
                         break;
                     case "BDM":
                         userauthentication.name = DS.Tables[0].Rows[0]["PlannerName"].ToString();
                         userauthentication.error = "";
-                        userauthentication.page = "PlannerLMS.aspx";
+                        userauthentication.page = "/admin/PlannerLMS.aspx";
                         break;
                     case "Management":
                         userauthentication.name = DS.Tables[0].Rows[0]["PlannerName"].ToString();
                         userauthentication.error = "";
-                        userauthentication.page = "PlannerLMS.aspx";
+                        userauthentication.page = "/admin/PlannerLMS.aspx";
                         break;
                     default:
                         userauthentication.name = "";
@@ -90,9 +90,34 @@ public partial class FinAdmin_index : System.Web.UI.Page
             }
             else
             {
-                userauthentication.name = "";
-                userauthentication.error = "Invalid Username or Password";
-                userauthentication.page = "";
+                query = "select Name as PlannerName,Userid,PRole=(select Role from [dbo].[fp_EmployeeRole] where code=roleid),depid,roleid,empcode from [dbo].[fp_Employee] where userid='" + username + "' and Pwd='" + password + "'";
+
+                SqlDataAdapter DA1 = new SqlDataAdapter(query, Con);
+
+                DataSet DS1 = new DataSet();
+                Con.Open();
+                DA1.Fill(DS1);
+                Con.Close();
+
+                if (DS1.Tables[0].Rows.Count > 0)
+                {
+                    //Redirection to parent page
+                    HttpContext.Current.Session["AdminSessionID"] = DS1.Tables[0].Rows[0]["UserId"].ToString();
+                    HttpContext.Current.Session["AdminSessionCode"] = null;
+                    HttpContext.Current.Session["LoginRole"] = DS1.Tables[0].Rows[0]["PRole"].ToString();
+                    HttpContext.Current.Session["roleid"] = DS1.Tables[0].Rows[0]["RoleId"].ToString();
+
+                    userauthentication.name = DS1.Tables[0].Rows[0]["PlannerName"].ToString();
+                    userauthentication.error = "";
+                    userauthentication.page = "/FinAdmin/Default.aspx";
+                }
+                else
+                {
+                    userauthentication.name = "";
+                    userauthentication.error = "Invalid Username or Password";
+                    userauthentication.page = "";
+                }
+
             }
         }
         else
