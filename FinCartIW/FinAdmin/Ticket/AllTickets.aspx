@@ -31,6 +31,7 @@
          });
     </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section class="content">
         <div class="container-fluid">
@@ -63,6 +64,7 @@
                         <!-- Exportable Table -->
                         <div class="body">
                             <div id="tableReport" runat="server">
+                                 <div class="table-responsive">  
                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
                                     <tr>
@@ -105,6 +107,7 @@
                                                     <br />
                                                     <br />
                                                 </div>
+
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Action <span class="caret"></span>
@@ -123,7 +126,10 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </table>
-                                </div>
+                             </div> 
+                            </div>
+                            
+                                <div class="table-responsive">
                             <div id="tableAssign" runat="server">
                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
@@ -167,8 +173,9 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </table>
-                                </div>
-                        </div>
+                            </div>
+                     </div> 
+                            </div> 
                         <!-- #END# Exportable Table -->
                     </div>
                 </div>

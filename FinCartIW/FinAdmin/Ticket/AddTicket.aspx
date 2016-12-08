@@ -26,6 +26,7 @@
             color:#f44336;
         }
     </style>
+
     <script type="text/javascript">
         $(document).ready(function () {
             bindDepartment($('#<%=ddlDepartment.ClientID%>'));
@@ -70,6 +71,7 @@
         }
     </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section class="content">
         <div class="container-fluid">
