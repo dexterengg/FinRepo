@@ -363,3 +363,69 @@ function removefile(fileattachment) {
     newFileUpload.attr("name", name);
     return false;
 }
+
+function viewTicket(ticketid,createdbymail) {
+    var $loading = $('#cardLoader').waitMe({
+        effect: "timer",
+        text: 'Loading...',
+        bg: 'rgba(255,255,255,0.90)',
+        color: "lightBlue"
+    });
+
+    $('#viewTicketPanel').modal('show');
+
+    $.ajax({
+        type: "POST",
+        url: "AllTickets.aspx/GetTicketDetails",
+        data: '{tid:"' + ticketid + '",creatoremail:"'+createdbymail+'"}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            tdetails = result.d;
+            if (tdetails) {
+
+                //if (tdetails.Status === "0") {
+                //    $('#statusopen').css("display", "block");
+                //    $('#statusclose').css("display", "none");
+                //}
+                //else {
+                //    $('#statusopen').css("display", "none");
+                //    $('#statusclose').css("display", "block");
+                //}
+
+                //if (tdetails.Priority === "0") {
+                //    $('#phigh').css("display", "block");
+                //    $('#pmoderate').css("display", "none");
+                //    $('#plow').css("display", "none");
+                //}
+                //else if (tdetails.Priority === "1") {
+                //    $('#phigh').css("display", "none");
+                //    $('#pmoderate').css("display", "block");
+                //    $('#plow').css("display", "none");
+                //}
+                //else {
+                //    $('#phigh').css("display", "none");
+                //    $('#pmoderate').css("display", "none");
+                //    $('#plow').css("display", "block");
+                //}
+
+                $('#lbltickedid').text(tdetails.TicketId);
+                $('#lbllastupdated').text(tdetails.UpdateDate);
+                $('#lblDepartment').text(tdetails.DepName);
+                $('#lblCreatedby').text(tdetails.CreatorName);
+                $('#lblAssignTo').text(tdetails.AssignToName);
+                $('#lblquery').text(tdetails.Query);
+                $('#imgattachment').attr("src", tdetails.Attachment);
+
+            }
+            $loading.waitMe('hide');
+        },
+        error: function (err) {
+            $loading.waitMe('hide');
+        }
+    });    
+}
+
+function closeTicketPanel() {
+    $('#viewTicketPanel').modal('hide');
+}

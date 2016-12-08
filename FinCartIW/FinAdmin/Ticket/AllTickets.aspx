@@ -6,6 +6,8 @@
     <link href="/FinAdmin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" />
     <!-- Light Gallery Plugin Css -->
     <link href="/FinAdmin/plugins/light-gallery/css/lightgallery.css" rel="stylesheet" />
+    <!--WaitMe Css-->
+    <link href="/FinAdmin/plugins/waitme/waitMe.css" rel="stylesheet" />
     <!-- Jquery DataTable Plugin Js -->
     <script src="/FinAdmin/plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="/FinAdmin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
@@ -19,6 +21,8 @@
     <script src="/FinAdmin/js/pages/tables/jquery-datatable.js"></script>
     <!-- Light Gallery Plugin Js -->
     <script src="/FinAdmin/plugins/light-gallery/js/lightgallery-all.js"></script>
+    <!-- Wait Me Plugin Js -->
+    <script src="/FinAdmin/plugins/waitme/waitMe.js"></script>
     <script src="Ticket.js"></script>
     <script>
         $(document).ready(function () {
@@ -28,7 +32,7 @@
             $('#liTickets').children(":nth-child(2)").css("display", "block");
             $('#liAllTicket').addClass('active');
             $('#liAllTicket').children(":first").addClass("toggled waves-effect waves-block");
-         });
+        });
     </script>
 </asp:Content>
 
@@ -64,118 +68,118 @@
                         <!-- Exportable Table -->
                         <div class="body">
                             <div id="tableReport" runat="server">
-                                 <div class="table-responsive">  
-                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                <thead>
-                                    <tr>
-                                        <th>Ticket ID</th>
-                                        <th>Query</th>
-                                        <th>Attachment</th>
-                                        <th>Department</th>
-                                        <th>Designation</th>
-                                        <th>Creator</th>
-                                        <th>Assignee</th>
-                                        <th>Status</th>
-                                        <th>Priority</th>
-                                        <th>Last Updated</th>
-                                    </tr>
-                                </thead>
-                                <asp:Repeater ID="ReportTicketsRepeater" runat="server" OnItemCommand="TicketsRepeater_ItemCommand">
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td><%#Eval("TicketId") %></td>
-                                            <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
-                                            <td>
-                                                <div class="aniimated-thumbnials list-unstyled row clearfix">
-                                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                        <a href="<%#Eval("Attachment") %>" data-sub-html="<%#Eval("Attachment").ToString().Substring(Eval("Attachment").ToString().IndexOf('_') + 1).Replace("_"," ") %>">
-                                                            <img class="img-responsive thumbnail" src="<%#Eval("Attachment") %>" style="max-width: 40px;">
-                                                        </a>
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><%#Eval("DepName") %></td>
-                                            <td><%#Eval("Role") %></td>
-                                            <td><%#Eval("CreatorName") %></td>
-                                            <td><%#Eval("AssignToName") %></td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <%#Eval("Status").ToString()=="0"?"<button class='btn bg-green waves-effect' type='button' disabled='disabled'>OPEN</button>":"<button class='btn bg-red waves-effect' type='button' disabled='disabled'>Closed</button>" %>
-                                                </div>
-                                                <div class="btn-group">
-                                                    <br />
-                                                    <br />
-                                                </div>
-
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="javascript:void(0);">View</a></li>
-                                                        <li><a href="javascript:void(0);">Update</a></li>
-                                                        <li>
-                                                            <asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>' OnClientClick="delcofirm()">Delete</asp:LinkButton></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
-                                            <td><%#Eval("UpdateDate") %></td>
-                                        </tr>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </table>
-                             </div> 
-                            </div>
-                            
                                 <div class="table-responsive">
-                            <div id="tableAssign" runat="server">
-                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                <thead>
-                                    <tr>
-                                        <th>Ticket ID</th>
-                                        <th>Query</th>
-                                        <th>Attachment</th>
-                                        <th>Department</th>
-                                        <th>Designation</th>
-                                        <th>Creator</th>
-                                        <th>Assignee</th>
-                                        <th>Status</th>
-                                        <th>Priority</th>
-                                        <th>Last Updated</th>
-                                    </tr>
-                                </thead>
-                                <asp:Repeater ID="AssignTicketsRepeater" runat="server">
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td><%#Eval("TicketId") %></td>
-                                            <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
-                                            <td>
-                                                <div class="aniimated-thumbnials list-unstyled row clearfix">
-                                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                        <a href="<%#Eval("Attachment") %>" data-sub-html="<%#Eval("Attachment").ToString().Substring(Eval("Attachment").ToString().IndexOf('_') + 1).Replace("_"," ") %>">
-                                                            <img class="img-responsive thumbnail" src="<%#Eval("Attachment") %>" style="max-width: 40px;">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><%#Eval("DepName") %></td>
-                                            <td><%#Eval("Role") %></td>
-                                            <td><%#Eval("CreatorName") %></td>
-                                            <td><%#Eval("AssignToName") %></td>
-                                            <td>
-                                                <%#Eval("Status").ToString()=="0"?"<button class='btn bg-green waves-effect' type='button' disabled='disabled'>OPEN</button>":"<button class='btn bg-red waves-effect' type='button' disabled='disabled'>Closed</button>" %>
-                                            </td>
-                                            <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
-                                            <td><%#Eval("UpdateDate") %></td>
-                                        </tr>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </table>
+                                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                        <thead>
+                                            <tr>
+                                                <th>Ticket ID</th>
+                                                <th>Query</th>
+                                                <th>Attachment</th>
+                                                <th>Department</th>
+                                                <th>Designation</th>
+                                                <th>Creator</th>
+                                                <th>Assignee</th>
+                                                <th>Status</th>
+                                                <th>Priority</th>
+                                                <th>Last Updated</th>
+                                            </tr>
+                                        </thead>
+                                        <asp:Repeater ID="ReportTicketsRepeater" runat="server" OnItemCommand="TicketsRepeater_ItemCommand">
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td><%#Eval("TicketId") %></td>
+                                                    <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
+                                                    <td>
+                                                        <div class="aniimated-thumbnials list-unstyled row clearfix">
+                                                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                                                <a href="<%#Eval("Attachment") %>" data-sub-html="<%#Eval("Attachment").ToString().Substring(Eval("Attachment").ToString().IndexOf('_') + 1).Replace("_"," ") %>">
+                                                                    <img class="img-responsive thumbnail" src="<%#Eval("Attachment") %>" style="max-width: 40px;">
+                                                                </a>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><%#Eval("DepName") %></td>
+                                                    <td><%#Eval("Role") %></td>
+                                                    <td><%#Eval("CreatorName") %></td>
+                                                    <td><%#Eval("AssignToName") %></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <%#Eval("Status").ToString()=="0"?"<button class='btn bg-green waves-effect' type='button' disabled='disabled'>OPEN</button>":"<button class='btn bg-red waves-effect' type='button' disabled='disabled'>Closed</button>" %>
+                                                        </div>
+                                                        <div class="btn-group">
+                                                            <br />
+                                                            <br />
+                                                        </div>
+
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Action <span class="caret"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="javascript:void(0);" onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')">View</a></li>
+                                                                <li><a href="javascript:void(0);">Update</a></li>
+                                                                <li>
+                                                                    <asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>' OnClientClick="delcofirm()">Delete</asp:LinkButton></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                    <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
+                                                    <td><%#Eval("UpdateDate") %></td>
+                                                </tr>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </table>
+                                </div>
                             </div>
-                     </div> 
-                            </div> 
+
+                            <div class="table-responsive">
+                                <div id="tableAssign" runat="server">
+                                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                        <thead>
+                                            <tr>
+                                                <th>Ticket ID</th>
+                                                <th>Query</th>
+                                                <th>Attachment</th>
+                                                <th>Department</th>
+                                                <th>Designation</th>
+                                                <th>Creator</th>
+                                                <th>Assignee</th>
+                                                <th>Status</th>
+                                                <th>Priority</th>
+                                                <th>Last Updated</th>
+                                            </tr>
+                                        </thead>
+                                        <asp:Repeater ID="AssignTicketsRepeater" runat="server">
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td><%#Eval("TicketId") %></td>
+                                                    <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
+                                                    <td>
+                                                        <div class="aniimated-thumbnials list-unstyled row clearfix">
+                                                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                                                <a href="<%#Eval("Attachment") %>" data-sub-html="<%#Eval("Attachment").ToString().Substring(Eval("Attachment").ToString().IndexOf('_') + 1).Replace("_"," ") %>">
+                                                                    <img class="img-responsive thumbnail" src="<%#Eval("Attachment") %>" style="max-width: 40px;">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><%#Eval("DepName") %></td>
+                                                    <td><%#Eval("Role") %></td>
+                                                    <td><%#Eval("CreatorName") %></td>
+                                                    <td><%#Eval("AssignToName") %></td>
+                                                    <td>
+                                                        <%#Eval("Status").ToString()=="0"?"<button class='btn bg-green waves-effect' type='button' disabled='disabled'>OPEN</button>":"<button class='btn bg-red waves-effect' type='button' disabled='disabled'>Closed</button>" %>
+                                                    </td>
+                                                    <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
+                                                    <td><%#Eval("UpdateDate") %></td>
+                                                </tr>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                         <!-- #END# Exportable Table -->
                     </div>
                 </div>
@@ -183,5 +187,72 @@
             <!-- #END# Striped Rows -->
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="viewTicketPanel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card" id="cardLoader">
+                        <div class="header bg-light-blue">
+                            <h2>
+                                <%--<span class="pull-right">
+                                    Status - <span class='badge bg-green waves-effect'  id="statusopen">Open</span>
+                                    <span class='badge bg-red waves-effect' id="statusclose">Close</span>
+
+                                    Priority - <span class='badge bg-red waves-effect' id="phigh">High</span>
+                                    <span class='badge bg-orange waves-effect' id="pmoderate">Moderate</span>
+                                    <span class='badge bg-green waves-effect' id="plow">Low</span>
+                                </span>--%>
+                                Ticket ID - <span id="lbltickedid"></span> <small>Last Updated: <span id="lbllastupdated"></span></small>
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-md-4">
+                                    <p>
+                                        <b>Department: </b><span id="lblDepartment"></span>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        <b>Creator: </b><span id="lblCreatedby"></span>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        <b>Assignee: </b><span id="lblAssignTo"></span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-12">
+                                    <p>
+                                        <b>Query: </b>
+                                    </p>
+                                    <span id="lblquery"></span>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-12">
+                                    <p>
+                                        <b>Attachment: </b>
+                                    </p>
+                                    <img class="img-responsive" id="imgattachment" style="max-width: 80%;" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="header">
+                            <a href="javascript:void(0)" onclick="closeTicketPanel()" class="btn btn-warning pull-right">ok</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 

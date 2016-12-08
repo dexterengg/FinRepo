@@ -63,4 +63,11 @@ public partial class FinAdmin_Ticket_AllTickets : System.Web.UI.Page
     {
         bindTickets("R");
     }
+
+    [WebMethod]
+    public static Ticket GetTicketDetails(string tid,string creatoremail)
+    {
+        TicketSystem tsystem = new TicketSystem();
+        return tsystem.SelectTicketByTicketId(tid,creatoremail);
+    }
 }
