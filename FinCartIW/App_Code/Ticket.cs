@@ -17,6 +17,8 @@ public class Ticket
 
     public Int64 Id { get; set; }
     public string TicketId { get; set; }
+    public string Subject { get; set; }
+    public string Tat { get; set; }
     public string Query { get; set; }
     public string Attachment { get; set; }
     public string DepName { get; set; }

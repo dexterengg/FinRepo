@@ -28,6 +28,8 @@ public class TicketSystem
         using (SqlCommand cmd = new SqlCommand("fp_SpManageTickets", Con))
         {
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Sub", tc.Subject);
+            cmd.Parameters.AddWithValue("@Tat", tc.Tat);
             cmd.Parameters.AddWithValue("@Query", tc.Query);
             cmd.Parameters.AddWithValue("@Attachment", tc.Attachment);
             cmd.Parameters.AddWithValue("@DepId", tc.DepId);
@@ -54,6 +56,8 @@ public class TicketSystem
         {
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", tc.Id);
+            cmd.Parameters.AddWithValue("@Sub", tc.Subject);
+            cmd.Parameters.AddWithValue("@Tat", tc.Tat);
             cmd.Parameters.AddWithValue("@Query", tc.Query);
             cmd.Parameters.AddWithValue("@Attachment", tc.Attachment);
             cmd.Parameters.AddWithValue("@DepId", tc.DepId);
@@ -126,6 +130,8 @@ public class TicketSystem
                 {
                     tc.Id = Convert.ToInt64(DSticket.Tables[0].Rows[0]["Id"]);
                     tc.TicketId = Convert.ToString(DSticket.Tables[0].Rows[0]["TicketId"]);
+                    tc.Subject = Convert.ToString(DSticket.Tables[0].Rows[0]["Subject"]);
+                    tc.Tat = Convert.ToString(DSticket.Tables[0].Rows[0]["TAT"]);
                     tc.Query = Convert.ToString(DSticket.Tables[0].Rows[0]["Query"]);
                     tc.Attachment = Convert.ToString(DSticket.Tables[0].Rows[0]["Attachment"]);
                     tc.DepName = Convert.ToString(DSticket.Tables[0].Rows[0]["DepName"]);
@@ -176,6 +182,8 @@ public class TicketSystem
                         tc = new Ticket();
                         tc.Id = Convert.ToInt64(dr["Id"]);
                         tc.TicketId = Convert.ToString(dr["TicketId"]);
+                        tc.Subject = Convert.ToString(dr["Subject"]);
+                        tc.Tat = Convert.ToString(dr["TAT"]);
                         tc.Query = Convert.ToString(dr["Query"]);
                         tc.Attachment = Convert.ToString(dr["Attachment"]);
                         tc.DepName = Convert.ToString(dr["DepName"]);
@@ -228,6 +236,8 @@ public class TicketSystem
                         tc = new Ticket();
                         tc.Id = Convert.ToInt64(dr["Id"]);
                         tc.TicketId = Convert.ToString(dr["TicketId"]);
+                        tc.Subject = Convert.ToString(dr["Subject"]);
+                        tc.Tat = Convert.ToString(dr["TAT"]);
                         tc.Query = Convert.ToString(dr["Query"]);
                         tc.Attachment = Convert.ToString(dr["Attachment"]);
                         tc.DepName = Convert.ToString(dr["DepName"]);
@@ -279,6 +289,8 @@ public class TicketSystem
                         tc = new Ticket();
                         tc.Id = Convert.ToInt64(dr["Id"]);
                         tc.TicketId = Convert.ToString(dr["TicketId"]);
+                        tc.Subject = Convert.ToString(dr["Subject"]);
+                        tc.Tat = Convert.ToString(dr["TAT"]);
                         tc.Query = Convert.ToString(dr["Query"]);
                         tc.Attachment = Convert.ToString(dr["Attachment"]);
                         tc.DepName = Convert.ToString(dr["DepName"]);
