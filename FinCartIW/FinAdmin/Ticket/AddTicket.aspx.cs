@@ -54,10 +54,12 @@ public partial class FinAdmin_Ticket_AddTicket : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string addticket(string qry, string depid, string roleid, string assigntoemail, string reporttoemail, string status, string priority, string attachfile)
+    public static string addticket(string sub, string tat, string qry, string depid, string roleid, string assigntoemail, string reporttoemail, string status, string priority, string attachfile)
     {
         TicketSystem tsystem = new TicketSystem();
         Ticket tc = new Ticket();
+        tc.Subject = sub.Trim();
+        tc.Tat = tat.Trim();
         tc.Query = qry.Trim();
         tc.Attachment = attachfile;
         tc.DepId = depid.Trim();

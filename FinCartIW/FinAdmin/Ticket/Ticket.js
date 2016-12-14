@@ -192,13 +192,41 @@ function reportToToChange(ddlReportTo) {
     }
 }
 
-function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlReportTo, ddlStatus, ddlPriority, fileattachment) {
+function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlReportTo, ddlStatus, ddlPriority, fileattachment, txtsub, txttat) {
 
     if (!txtquery.val()) {
         $('#rqtxtquery').text("Please Enter Query");
     }
     else {
         $('#rqtxtquery').text("");
+    }
+
+    if (!txtsub.val()) {
+        $('#rqSubject').text("Please Enter Subject");
+    }
+    else {
+        $('#rqSubject').text("");
+    }
+
+    if (!txttat.val()) {
+        $('#rqTAT').text("Please Enter Tat");
+    }
+    else {
+        if (isDate(txttat.val())) {
+            var mindatetime = 15 * 60 * 1000; /* ms *///15 mins
+            var newdatetime = new Date(txttat.val())
+            var currdatetime = new Date();
+
+            if ((newdatetime.getTime() - currdatetime.getTime()) < mindatetime) {
+                $('#rqTAT').text("Tat Must Be greater than 15 mins");
+            }
+            else {
+                $('#rqTAT').text("");
+            }
+        }
+        else {
+            $('#rqTAT').text("Invalid Date");
+        }
     }
 
     if (ddlDepartment.val() === "0") {
@@ -230,7 +258,7 @@ function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlR
         $('#rqddlReportTo').text("");
     }
 
-    if (txtquery.val() && ddlDepartment.val() != "0" && ddlDesignation.val() != "0" && ddlAssignTo.val() != "0" && ddlReportTo.val() != "0") {
+    if (txtquery.val() && ddlDepartment.val() != "0" && ddlDesignation.val() != "0" && ddlAssignTo.val() != "0" && ddlReportTo.val() != "0" && $('#rqTAT').text()==="") {
 
         var fileUpload = fileattachment.get(0);
         var files = fileUpload.files;
@@ -255,12 +283,11 @@ function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlR
                     contentType: false,
                     processData: false,
                     success: function (result) {
-                        debugger;
                         if (result) {
                             $.ajax({
                                 type: "POST",
                                 url: "AddTicket.aspx/addticket",
-                                data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
+                                data: '{sub:"' + txtsub.val() + '",tat:"' + txttat.val() + '",qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (r) {
@@ -292,7 +319,7 @@ function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlR
             $.ajax({
                 type: "POST",
                 url: "AddTicket.aspx/addticket",
-                data: '{qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:""}',
+                data: '{sub:"' + txtsub.val() + '",tat:"' + txttat.val() + '",qry:"' + txtquery.val() + '",depid:"' + ddlDepartment.val() + '",roleid:"' + ddlDesignation.val() + '",assigntoemail:"' + ddlAssignTo.val() + '",reporttoemail:"' + ddlReportTo.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:""}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (r) {
@@ -329,6 +356,38 @@ function querychange(txtquery) {
     }
     else {
         $('#rqtxtquery').text("");
+    }
+}
+
+function subchange(txtsub) {
+    if (!txtsub.val()) {
+        $('#rqSubject').text("Please Enter Subject");
+    }
+    else {
+        $('#rqSubject').text("");
+    }
+}
+
+function tatchange(txttat) {
+    if (!txttat.val()) {
+        $('#rqTAT').text("Please Enter Tat");
+    }
+    else {
+        if (isDate(txttat.val())) {
+            var mindatetime = 15 * 60 * 1000; /* ms *///15 mins
+            var newdatetime = new Date(txttat.val())
+            var currdatetime = new Date();
+
+            if ((newdatetime.getTime() - currdatetime.getTime()) < mindatetime) {
+                $('#rqTAT').text("Tat Must Be greater than 15 mins");
+            }
+            else {
+                $('#rqTAT').text("");
+            }
+        }
+        else {
+            $('#rqTAT').text("Invalid Date");
+        }
     }
 }
 
@@ -428,4 +487,9 @@ function viewTicket(ticketid,createdbymail) {
 
 function closeTicketPanel() {
     $('#viewTicketPanel').modal('hide');
+}
+
+function isDate(val) {
+    var d = new Date(val);
+    return !isNaN(d.valueOf());
 }

@@ -170,6 +170,11 @@
                                                     <td><%#Eval("AssignToName") %></td>
                                                     <td>
                                                         <%#Eval("Status").ToString()=="0"?"<button class='btn bg-green waves-effect' type='button' disabled='disabled'>OPEN</button>":"<button class='btn bg-red waves-effect' type='button' disabled='disabled'>Closed</button>" %>
+                                                        <a href="javascript:void(0);" onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">pageview</i>
+                                                            </div>
+                                                        </a>
                                                     </td>
                                                     <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
                                                     <td><%#Eval("UpdateDate") %></td>
@@ -204,7 +209,7 @@
                                     <span class='badge bg-orange waves-effect' id="pmoderate">Moderate</span>
                                     <span class='badge bg-green waves-effect' id="plow">Low</span>
                                 </span>--%>
-                                Ticket ID - <span id="lbltickedid"></span> <small>Last Updated: <span id="lbllastupdated"></span></small>
+                                Ticket ID - <span id="lbltickedid"></span><small>Last Updated: <span id="lbllastupdated"></span></small>
                             </h2>
                         </div>
                         <div class="body">

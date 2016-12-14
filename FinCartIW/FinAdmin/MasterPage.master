@@ -46,7 +46,7 @@
     <script src="/FinAdmin/plugins/node-waves/waves.js"></script>
 
     <!-- Custom Js -->
-    <script src="/FinAdmin/js//admin.js"></script>
+    <script src="/FinAdmin/js/admin.js"></script>
 
 
 
