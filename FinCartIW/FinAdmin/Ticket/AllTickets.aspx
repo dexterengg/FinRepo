@@ -8,6 +8,8 @@
     <link href="/FinAdmin/plugins/light-gallery/css/lightgallery.css" rel="stylesheet" />
     <!--WaitMe Css-->
     <link href="/FinAdmin/plugins/waitme/waitMe.css" rel="stylesheet" />
+    <!-- JQuery Counter Css -->
+    <link href="/FinAdmin/plugins/countdown/countdown.css" rel="stylesheet" />
     <!-- Jquery DataTable Plugin Js -->
     <script src="/FinAdmin/plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="/FinAdmin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
@@ -19,11 +21,80 @@
     <script src="/FinAdmin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
     <script src="/FinAdmin/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
     <script src="/FinAdmin/js/pages/tables/jquery-datatable.js"></script>
+    <!-- Jquery counter Plugin Js -->
+    <script src="/FinAdmin/plugins/countdown/countdown.js"></script>
     <!-- Light Gallery Plugin Js -->
     <script src="/FinAdmin/plugins/light-gallery/js/lightgallery-all.js"></script>
     <!-- Wait Me Plugin Js -->
     <script src="/FinAdmin/plugins/waitme/waitMe.js"></script>
     <script src="Ticket.js"></script>
+    <style>
+        .flip-clock-wrapper ul {
+            width: 20px;
+            height: 30px;
+            margin: 0 2px;
+            padding: 0px;
+            background-color: aqua;
+        }
+
+            .flip-clock-wrapper ul li {
+                line-height: 30px;
+            }
+
+                .flip-clock-wrapper ul li a div div.inn {
+                    font-size: 20px;
+                }
+
+                .flip-clock-wrapper ul, .flip-clock-wrapper ul li a div div.inn {
+                    border-radius: 4px;
+                }
+
+                    .flip-clock-wrapper ul li a div.down {
+                        border-bottom-left-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                    }
+
+                    .flip-clock-wrapper ul li a div.up:after {
+                        top: 23px;
+                    }
+
+        .flip-clock-dot.top {
+            top: 8px;
+        }
+
+        .flip-clock-dot.bottom {
+            top: 15px;
+        }
+
+        .flip-clock-dot {
+            width: 4px;
+            height: 5px;
+            left: 2px;
+        }
+
+        .flip-clock-divider {
+            width: 8px;
+            padding: 0px;
+            margin: 0 auto;
+        }
+
+        .flip-clock-wrapper ul li a div {
+            width: 100%;
+        }
+
+
+        .flip-clock-divider .flip-clock-label {
+            right: -40px;
+        }
+
+        .flip-clock-divider.minutes .flip-clock-label {
+            right: -45px;
+        }
+
+        .flip-clock-divider.seconds .flip-clock-label {
+            right: -45px;
+        }
+    </style>
     <script>
         $(document).ready(function () {
             $('#mainmenu li.active').removeClass('active');
@@ -32,7 +103,27 @@
             $('#liTickets').children(":nth-child(2)").css("display", "block");
             $('#liAllTicket').addClass('active');
             $('#liAllTicket').children(":first").addClass("toggled waves-effect waves-block");
+            // 220880
         });
+
+        function settime(clockid, msgid) {
+            var clock;
+            clock = $('#' + clockid).FlipClock({
+                clockFace: 'HourlyCounter',
+                autoStart: false,
+                callbacks: {
+                    stop: function () {
+                        $('#' + msgid).html('Time Over!')
+                        $('#' + clockid).css("display", "none");
+                    }
+                }
+            });
+
+            clock.setTime(10);
+            clock.setCountdown(true);
+            clock.start();
+            // 220880
+        }
     </script>
 </asp:Content>
 
@@ -67,6 +158,7 @@
                         </div>
                         <!-- Exportable Table -->
                         <div class="body">
+
                             <div id="tableReport" runat="server">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
@@ -124,8 +216,13 @@
                                                             </ul>
                                                         </div>
                                                     </td>
-                                                    <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
-                                                    <td><%#Eval("UpdateDate") %></td>
+                                                    <%--<td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
+                                                    <td><%#Eval("UpdateDate") %></td>--%>
+                                                    <td>
+                                                        <div id="clock<%#Eval("TicketId") %>"></div>
+                                                        <div id="message<%#Eval("TicketId") %>"></div>
+
+                                                    </td>
                                                 </tr>
                                             </ItemTemplate>
                                         </asp:Repeater>
@@ -133,8 +230,8 @@
                                 </div>
                             </div>
 
-                            <div class="table-responsive">
-                                <div id="tableAssign" runat="server">
+                            <div id="tableAssign" runat="server">
+                                <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                         <thead>
                                             <tr>
@@ -184,6 +281,7 @@
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                         <!-- #END# Exportable Table -->
                     </div>
