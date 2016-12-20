@@ -98,6 +98,11 @@
         .flip-clock-divider.seconds .flip-clock-label {
             right: -45px;
         }
+		
+		 .flip-clock-wrapper{
+            width:14%;
+        }
+		
     </style>
     <script>
         $(document).ready(function () {
