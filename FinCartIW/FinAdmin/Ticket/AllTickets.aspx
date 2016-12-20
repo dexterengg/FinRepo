@@ -29,34 +29,38 @@
     <script src="/FinAdmin/plugins/waitme/waitMe.js"></script>
     <script src="Ticket.js"></script>
     <style>
-        .flip-clock-wrapper ul {
-            width: 20px;
-            height: 30px;
-            margin: 0 2px;
-            padding: 0px;
-            background-color: aqua;
+        .flip-clock-wrapper {
+            position: absolute;
+            margin-left: -0.2em;
         }
 
-            .flip-clock-wrapper ul li {
-                line-height: 30px;
+            .flip-clock-wrapper ul {
+                width: 20px;
+                height: 30px;
+                margin: 0 2px;
+                padding: 0px;
             }
 
-                .flip-clock-wrapper ul li a div div.inn {
-                    font-size: 20px;
+                .flip-clock-wrapper ul li {
+                    line-height: 30px;
                 }
 
-                .flip-clock-wrapper ul, .flip-clock-wrapper ul li a div div.inn {
-                    border-radius: 4px;
-                }
-
-                    .flip-clock-wrapper ul li a div.down {
-                        border-bottom-left-radius: 4px;
-                        border-bottom-right-radius: 4px;
+                    .flip-clock-wrapper ul li a div div.inn {
+                        font-size: 20px;
                     }
 
-                    .flip-clock-wrapper ul li a div.up:after {
-                        top: 23px;
+                    .flip-clock-wrapper ul, .flip-clock-wrapper ul li a div div.inn {
+                        border-radius: 4px;
                     }
+
+                        .flip-clock-wrapper ul li a div.down {
+                            border-bottom-left-radius: 4px;
+                            border-bottom-right-radius: 4px;
+                        }
+
+                        .flip-clock-wrapper ul li a div.up:after {
+                            top: 23px;
+                        }
 
         .flip-clock-dot.top {
             top: 8px;
@@ -105,25 +109,6 @@
             $('#liAllTicket').children(":first").addClass("toggled waves-effect waves-block");
             // 220880
         });
-
-        function settime(clockid, msgid) {
-            var clock;
-            clock = $('#' + clockid).FlipClock({
-                clockFace: 'HourlyCounter',
-                autoStart: false,
-                callbacks: {
-                    stop: function () {
-                        $('#' + msgid).html('Time Over!')
-                        $('#' + clockid).css("display", "none");
-                    }
-                }
-            });
-
-            clock.setTime(10);
-            clock.setCountdown(true);
-            clock.start();
-            // 220880
-        }
     </script>
 </asp:Content>
 
@@ -158,7 +143,6 @@
                         </div>
                         <!-- Exportable Table -->
                         <div class="body">
-
                             <div id="tableReport" runat="server">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
@@ -172,14 +156,14 @@
                                                 <th>Creator</th>
                                                 <th>Assignee</th>
                                                 <th>Status</th>
-                                                <th>Priority</th>
-                                                <th>Last Updated</th>
+                                                <%-- <th>Priority</th>--%>
+                                                <th>TAT</th>
                                             </tr>
                                         </thead>
                                         <asp:Repeater ID="ReportTicketsRepeater" runat="server" OnItemCommand="TicketsRepeater_ItemCommand">
                                             <ItemTemplate>
                                                 <tr>
-                                                    <td><%#Eval("TicketId") %></td>
+                                                    <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
                                                     <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
                                                     <td>
                                                         <div class="aniimated-thumbnials list-unstyled row clearfix">
@@ -216,12 +200,37 @@
                                                             </ul>
                                                         </div>
                                                     </td>
-                                                    <%--<td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
-                                                    <td><%#Eval("UpdateDate") %></td>--%>
+                                                    <%--<td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>--%>
                                                     <td>
+                                                        <div style="visibility: hidden"><%#Eval("UpdateDate") %></div>
                                                         <div id="clock<%#Eval("TicketId") %>"></div>
                                                         <div id="message<%#Eval("TicketId") %>"></div>
+                                                        <script>
+                                                            $(document).ready(function () {
+                                                                var duration = parseInt("<%#Eval("Tat") %>");
+                                                                if (duration > 0) {
+                                                                    var clock;
+                                                                    clock = $('#clock<%#Eval("TicketId") %>').FlipClock({
+                                                                    clockFace: 'HourlyCounter',
+                                                                    autoStart: false,
+                                                                    callbacks: {
+                                                                        stop: function () {
+                                                                            $('#message<%#Eval("TicketId") %>').html('Time Over!')
+                                                                            $('#clock<%#Eval("TicketId") %>').css("display", "none");
+                                                                        }
+                                                                    }
+                                                                });
 
+                                                                clock.setTime(duration);
+                                                                clock.setCountdown(true);
+                                                                clock.start();
+                                                            }
+                                                            else {
+                                                                $('#message<%#Eval("TicketId") %>').html('Time Over!')
+                                                                    $('#clock<%#Eval("TicketId") %>').css("display", "none");
+                                                                }
+                                                            });
+                                                        </script>
                                                     </td>
                                                 </tr>
                                             </ItemTemplate>
@@ -243,14 +252,14 @@
                                                 <th>Creator</th>
                                                 <th>Assignee</th>
                                                 <th>Status</th>
-                                                <th>Priority</th>
-                                                <th>Last Updated</th>
+                                                <%--<th>Priority</th>--%>
+                                                <th>TAT</th>
                                             </tr>
                                         </thead>
                                         <asp:Repeater ID="AssignTicketsRepeater" runat="server">
                                             <ItemTemplate>
                                                 <tr>
-                                                    <td><%#Eval("TicketId") %></td>
+                                                    <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
                                                     <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
                                                     <td>
                                                         <div class="aniimated-thumbnials list-unstyled row clearfix">
@@ -265,16 +274,38 @@
                                                     <td><%#Eval("Role") %></td>
                                                     <td><%#Eval("CreatorName") %></td>
                                                     <td><%#Eval("AssignToName") %></td>
+                                                    <td><%#Eval("Status").ToString()=="0"?"<button class='btn bg-green waves-effect' type='button' disabled='disabled'>OPEN</button>":"<button class='btn bg-red waves-effect' type='button' disabled='disabled'>Closed</button>" %></td>
+                                                    <%--<td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>--%>
                                                     <td>
-                                                        <%#Eval("Status").ToString()=="0"?"<button class='btn bg-green waves-effect' type='button' disabled='disabled'>OPEN</button>":"<button class='btn bg-red waves-effect' type='button' disabled='disabled'>Closed</button>" %>
-                                                        <a href="javascript:void(0);" onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')">
-                                                            <div class="demo-google-material-icon">
-                                                                <i class="material-icons">pageview</i>
-                                                            </div>
-                                                        </a>
+                                                        <div style="visibility: hidden"><%#Eval("UpdateDate") %></div>
+                                                        <div id="clock<%#Eval("TicketId") %>"></div>
+                                                        <div id="message<%#Eval("TicketId") %>"></div>
+                                                        <script>
+                                                            $(document).ready(function () {
+                                                                var duration = parseInt("<%#Eval("Tat") %>");
+                                                                if (duration > 0) {
+                                                                    var clock;
+                                                                    clock = $('#clock<%#Eval("TicketId") %>').FlipClock({
+                                                                        clockFace: 'HourlyCounter',
+                                                                        autoStart: false,
+                                                                        callbacks: {
+                                                                            stop: function () {
+                                                                                $('#message<%#Eval("TicketId") %>').html('Time Over!')
+                                                                            $('#clock<%#Eval("TicketId") %>').css("display", "none");
+                                                                        }
+                                                                    }
+                                                                    });
+                                                                clock.setTime(duration);
+                                                                clock.setCountdown(true);
+                                                                clock.start();
+                                                            }
+                                                            else {
+                                                                $('#message<%#Eval("TicketId") %>').html('Time Over!')
+                                                                    $('#clock<%#Eval("TicketId") %>').css("display", "none");
+                                                                }
+                                                            });
+                                                        </script>
                                                     </td>
-                                                    <td><%#Convert.ToInt32(Eval("Priority"))<1?"<button class='btn bg-pink btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>H</i></button>":Convert.ToInt32(Eval("Priority"))>1?"<button class='btn bg-green btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>L</i></button>":"<button class='btn bg-orange btn-circle waves-effect waves-circle waves-float' type='button'><i class='material-icons'>M</i></button>" %></td>
-                                                    <td><%#Eval("UpdateDate") %></td>
                                                 </tr>
                                             </ItemTemplate>
                                         </asp:Repeater>
