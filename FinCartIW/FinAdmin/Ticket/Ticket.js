@@ -424,7 +424,7 @@ function removefile(fileattachment) {
 }
 
 function viewTicket(ticketid,createdbymail) {
-    var $loading = $('#cardLoader').waitMe({
+    var $loading = $('#vcardLoader').waitMe({
         effect: "timer",
         text: 'Loading...',
         bg: 'rgba(255,255,255,0.90)',
@@ -484,8 +484,71 @@ function viewTicket(ticketid,createdbymail) {
     });    
 }
 
-function closeTicketPanel() {
-    $('#viewTicketPanel').modal('hide');
+function updateTicket(ticketid, createdbymail) {
+    var $loading = $('#ucardLoader').waitMe({
+        effect: "timer",
+        text: 'Loading...',
+        bg: 'rgba(255,255,255,0.90)',
+        color: "lightGreen"
+    });
+
+    $('#updateTicketPanel').modal('show');
+
+    $.ajax({
+        type: "POST",
+        url: "AllTickets.aspx/GetTicketDetails",
+        data: '{tid:"' + ticketid + '",creatoremail:"' + createdbymail + '"}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            tdetails = result.d;
+            if (tdetails) {
+
+                //if (tdetails.Status === "0") {
+                //    $('#statusopen').css("display", "block");
+                //    $('#statusclose').css("display", "none");
+                //}
+                //else {
+                //    $('#statusopen').css("display", "none");
+                //    $('#statusclose').css("display", "block");
+                //}
+
+                if (tdetails.Priority === 0) {
+                    $('#phigh').css("display", "block");
+                }
+                else if (tdetails.Priority === 1) {
+                    $('#pmoderate').css("display", "block");
+                }
+                else {
+                    $('#plow').css("display", "block");
+                }
+
+                $('#lbltickedid').text(tdetails.TicketId);
+                $('#lbllastupdated').text(tdetails.UpdateDate);
+                $('#lblDepartment').text(tdetails.DepName);
+                $('#lblCreatedby').text(tdetails.CreatorName);
+                $('#lblAssignTo').text(tdetails.AssignToName);
+                $('#lblSubject').text(tdetails.Subject);
+                $('#lblquery').text(tdetails.Query);
+                $('#imgattachment').attr("src", tdetails.Attachment);
+
+                // bindTat('#modaltatclock', '#modaltatmessage', tdetails.Tat);
+            }
+            $loading.waitMe('hide');
+        },
+        error: function (err) {
+            $loading.waitMe('hide');
+        }
+    });
+}
+
+function closeTicketPanel(type) {
+    if (type === "V") {
+        $('#viewTicketPanel').modal('hide');
+    }
+    else if (type === "U") {
+        $('#updateTicketPanel').modal('hide');
+    }
 }
 
 function isDate(val) {

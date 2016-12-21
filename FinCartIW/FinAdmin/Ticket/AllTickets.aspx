@@ -10,6 +10,8 @@
     <link href="/FinAdmin/plugins/waitme/waitMe.css" rel="stylesheet" />
     <!-- JQuery Counter Css -->
     <link href="/FinAdmin/plugins/countdown/countdown.css" rel="stylesheet" />
+     <!-- Bootstrap Select Css -->
+    <link href="/FinAdmin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     <!-- Jquery DataTable Plugin Js -->
     <script src="/FinAdmin/plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="/FinAdmin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
@@ -27,82 +29,14 @@
     <script src="/FinAdmin/plugins/light-gallery/js/lightgallery-all.js"></script>
     <!-- Wait Me Plugin Js -->
     <script src="/FinAdmin/plugins/waitme/waitMe.js"></script>
+     <!-- Moment Plugin Js -->
+    <script src="/FinAdmin/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Datetime Picker Plugin Js -->
+    <script src="/FinAdmin/plugins/bootstrap-material-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+    <link href="Ticket.css" rel="stylesheet" />
     <script src="Ticket.js"></script>
-    <style>
-        .flip-clock-wrapper {
-            position: absolute;
-            margin-left: -0.2em;
-        }
 
-            .flip-clock-wrapper ul {
-                width: 20px;
-                height: 30px;
-                margin: 0 2px;
-                padding: 0px;
-            }
-
-                .flip-clock-wrapper ul li {
-                    line-height: 30px;
-                }
-
-                    .flip-clock-wrapper ul li a div div.inn {
-                        font-size: 20px;
-                    }
-
-                    .flip-clock-wrapper ul, .flip-clock-wrapper ul li a div div.inn {
-                        border-radius: 4px;
-                    }
-
-                        .flip-clock-wrapper ul li a div.down {
-                            border-bottom-left-radius: 4px;
-                            border-bottom-right-radius: 4px;
-                        }
-
-                        .flip-clock-wrapper ul li a div.up:after {
-                            top: 23px;
-                        }
-
-        .flip-clock-dot.top {
-            top: 8px;
-        }
-
-        .flip-clock-dot.bottom {
-            top: 15px;
-        }
-
-        .flip-clock-dot {
-            width: 4px;
-            height: 5px;
-            left: 2px;
-        }
-
-        .flip-clock-divider {
-            width: 8px;
-            padding: 0px;
-            margin: 0 auto;
-        }
-
-        .flip-clock-wrapper ul li a div {
-            width: 100%;
-        }
-
-
-        .flip-clock-divider .flip-clock-label {
-            right: -40px;
-        }
-
-        .flip-clock-divider.minutes .flip-clock-label {
-            right: -45px;
-        }
-
-        .flip-clock-divider.seconds .flip-clock-label {
-            right: -45px;
-        }
-
-        .flip-clock-wrapper {
-            width: 14%;
-        }
-    </style>
     <script>
         $(document).ready(function () {
             $('#mainmenu li.active').removeClass('active');
@@ -198,8 +132,8 @@
                                                                 Action <span class="caret"></span>
                                                             </button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="javascript:void(0);" onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')">View</a></li>
-                                                                <li><a href="javascript:void(0);">Update</a></li>
+                                                                <li><a href="javascript:void(0);" onclick="updateTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')">Update</a></li>
+                                                                <li><a href="javascript:void(0);">Re-Assign</a></li>
                                                                 <li>
                                                                     <asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>' OnClientClick="delcofirm()">Delete</asp:LinkButton></li>
                                                             </ul>
@@ -209,7 +143,7 @@
                                                     <td>
                                                         <div style="visibility: hidden"><%#Eval("UpdateDate") %></div>
                                                         <div id="clock<%#Eval("TicketId") %>"></div>
-                                                        <div id="message<%#Eval("TicketId") %>"></div>
+                                                        <div id="message<%#Eval("TicketId") %>" class="badge bg-red"></div>
                                                         <script>
                                                             $(document).ready(function () {
                                                                 bindTat('#clock<%#Eval("TicketId") %>', '#message<%#Eval("TicketId") %>', "<%#Eval("Tat") %>");
@@ -263,7 +197,7 @@
                                                     <td>
                                                         <div style="visibility: hidden"><%#Eval("UpdateDate") %></div>
                                                         <div id="clock<%#Eval("TicketId") %>"></div>
-                                                        <div id="message<%#Eval("TicketId") %>"></div>
+                                                        <div id="message<%#Eval("TicketId") %>" class="badge bg-red"></div>
                                                         <script>
                                                             $(document).ready(function () {
                                                                 bindTat('#clock<%#Eval("TicketId") %>', '#message<%#Eval("TicketId") %>', "<%#Eval("Tat") %>");
@@ -286,12 +220,12 @@
         </div>
     </section>
 
-    <!-- Modal -->
+    <!-- Modal View-->
     <div class="modal fade" id="viewTicketPanel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card" id="cardLoader">
+                    <div class="card" id="vcardLoader">
                         <div class="header bg-light-blue">
                             <h2>
                                 <span class="pull-right">
@@ -362,7 +296,109 @@
                             </div>--%>
                         </div>
                         <div class="header">
-                            <a href="javascript:void(0)" onclick="closeTicketPanel()" class="btn btn-warning pull-right">ok</a>
+                            <a href="javascript:void(0)" onclick="closeTicketPanel('V')" class="btn btn-warning pull-right">ok</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update-->
+    <div class="modal fade" id="updateTicketPanel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card" id="ucardLoader">
+                        <div class="header bg-light-green">
+                            <h2>Ticket ID - <span id="ulbltickedid"></span><small>Last Updated: <span id="ulbllastupdated"></span></small>
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <p>
+                                        <b>Subject <span id="rqSubject" class="badge bg-red">R</span></b>
+                                    </p>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Enter Subject...." id="txtSubject" runat="server" onchange="txtchange('S')" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-12">
+                                    <p>
+                                        <b>Query <span id="rqtxtquery" class="badge bg-red">R</span></b>
+                                    </p>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="txtquery" runat="server" rows="1" class="form-control no-resize" placeholder="Type Your Query......" onchange="txtchange('Q')"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <p>
+                                        <b>TAT <span id="rqTAT" class="badge bg-red">R</span></b>
+                                    </p>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <div class='input-group date' id='datetimepicker'>
+                                                <input type="text" class="datetimepicker form-control" placeholder="Please choose date & time..." id="txtTat" runat="server" onblur="txtchange('T')" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-6">
+                                    <p>
+                                        <b>Status</b>
+                                    </p>
+                                    <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control show-tick">
+                                        <asp:ListItem Value="0">Open</asp:ListItem>
+                                        <asp:ListItem Value="1">Close</asp:ListItem>
+                                    </asp:DropDownList>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        <b>Priority</b>
+                                    </p>
+                                    <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control show-tick">
+                                        <asp:ListItem Value="0">High</asp:ListItem>
+                                        <asp:ListItem Value="1" Selected="True">Moderate</asp:ListItem>
+                                        <asp:ListItem Value="2">Low</asp:ListItem>
+                                    </asp:DropDownList>
+
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-12">
+                                    <p>
+                                        <b>Attachment (Optional) <span id="rqfileattachment" class="badge bg-red"></span></b>
+                                    </p>
+                                    <asp:FileUpload ID="fileattachment" runat="server" CssClass="form-control" onchange="fileattachmentchange()" />
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-12" style="text-align: right">
+                                    <a href="javascript:void(0);" class="btn btn-success" >Submit</a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
