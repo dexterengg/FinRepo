@@ -98,11 +98,10 @@
         .flip-clock-divider.seconds .flip-clock-label {
             right: -45px;
         }
-		
-		 .flip-clock-wrapper{
-            width:14%;
+
+        .flip-clock-wrapper {
+            width: 14%;
         }
-		
     </style>
     <script>
         $(document).ready(function () {
@@ -154,7 +153,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Ticket ID</th>
-                                                <th>Query</th>
+                                                <th>Subject</th>
                                                 <th>Attachment</th>
                                                 <th>Department</th>
                                                 <th>Designation</th>
@@ -169,7 +168,8 @@
                                             <ItemTemplate>
                                                 <tr>
                                                     <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
-                                                    <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
+                                                    <%--<td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>--%>
+                                                    <td><%#Eval("Subject") %></td>
                                                     <td>
                                                         <div class="aniimated-thumbnials list-unstyled row clearfix">
                                                             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -212,28 +212,7 @@
                                                         <div id="message<%#Eval("TicketId") %>"></div>
                                                         <script>
                                                             $(document).ready(function () {
-                                                                var duration = parseInt("<%#Eval("Tat") %>");
-                                                                if (duration > 0) {
-                                                                    var clock;
-                                                                    clock = $('#clock<%#Eval("TicketId") %>').FlipClock({
-                                                                    clockFace: 'HourlyCounter',
-                                                                    autoStart: false,
-                                                                    callbacks: {
-                                                                        stop: function () {
-                                                                            $('#message<%#Eval("TicketId") %>').html('Time Over!')
-                                                                            $('#clock<%#Eval("TicketId") %>').css("display", "none");
-                                                                        }
-                                                                    }
-                                                                });
-
-                                                                clock.setTime(duration);
-                                                                clock.setCountdown(true);
-                                                                clock.start();
-                                                            }
-                                                            else {
-                                                                $('#message<%#Eval("TicketId") %>').html('Time Over!')
-                                                                    $('#clock<%#Eval("TicketId") %>').css("display", "none");
-                                                                }
+                                                                bindTat('#clock<%#Eval("TicketId") %>', '#message<%#Eval("TicketId") %>', "<%#Eval("Tat") %>");
                                                             });
                                                         </script>
                                                     </td>
@@ -250,7 +229,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Ticket ID</th>
-                                                <th>Query</th>
+                                                <th>Subject</th>
                                                 <th>Attachment</th>
                                                 <th>Department</th>
                                                 <th>Designation</th>
@@ -265,7 +244,7 @@
                                             <ItemTemplate>
                                                 <tr>
                                                     <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
-                                                    <td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>
+                                                    <td><%#Eval("Subject") %></td>
                                                     <td>
                                                         <div class="aniimated-thumbnials list-unstyled row clearfix">
                                                             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -287,27 +266,7 @@
                                                         <div id="message<%#Eval("TicketId") %>"></div>
                                                         <script>
                                                             $(document).ready(function () {
-                                                                var duration = parseInt("<%#Eval("Tat") %>");
-                                                                if (duration > 0) {
-                                                                    var clock;
-                                                                    clock = $('#clock<%#Eval("TicketId") %>').FlipClock({
-                                                                        clockFace: 'HourlyCounter',
-                                                                        autoStart: false,
-                                                                        callbacks: {
-                                                                            stop: function () {
-                                                                                $('#message<%#Eval("TicketId") %>').html('Time Over!')
-                                                                            $('#clock<%#Eval("TicketId") %>').css("display", "none");
-                                                                        }
-                                                                    }
-                                                                    });
-                                                                clock.setTime(duration);
-                                                                clock.setCountdown(true);
-                                                                clock.start();
-                                                            }
-                                                            else {
-                                                                $('#message<%#Eval("TicketId") %>').html('Time Over!')
-                                                                    $('#clock<%#Eval("TicketId") %>').css("display", "none");
-                                                                }
+                                                                bindTat('#clock<%#Eval("TicketId") %>', '#message<%#Eval("TicketId") %>', "<%#Eval("Tat") %>");
                                                             });
                                                         </script>
                                                     </td>
@@ -335,14 +294,13 @@
                     <div class="card" id="cardLoader">
                         <div class="header bg-light-blue">
                             <h2>
-                                <%--<span class="pull-right">
-                                    Status - <span class='badge bg-green waves-effect'  id="statusopen">Open</span>
-                                    <span class='badge bg-red waves-effect' id="statusclose">Close</span>
-
-                                    Priority - <span class='badge bg-red waves-effect' id="phigh">High</span>
-                                    <span class='badge bg-orange waves-effect' id="pmoderate">Moderate</span>
-                                    <span class='badge bg-green waves-effect' id="plow">Low</span>
-                                </span>--%>
+                                <span class="pull-right">
+                                    <span class='badge bg-red waves-effect' id="phigh">High Priority</span>
+                                    <span class='badge bg-orange waves-effect' id="pmoderate">Moderate Priority</span>
+                                    <span class='badge bg-green waves-effect' id="plow">Low Priority</span>
+                                    <%--Status - <span class='badge bg-green waves-effect'  id="statusopen">Open</span>
+                                    <span class='badge bg-red waves-effect' id="statusclose">Close</span>--%>
+                                </span>
                                 Ticket ID - <span id="lbltickedid"></span><small>Last Updated: <span id="lbllastupdated"></span></small>
                             </h2>
                         </div>
@@ -369,6 +327,15 @@
                             <div class="row clearfix">
                                 <div class="col-md-12">
                                     <p>
+                                        <b>Subject: </b>
+                                    </p>
+                                    <span id="lblSubject"></span>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-12">
+                                    <p>
                                         <b>Query: </b>
                                     </p>
                                     <span id="lblquery"></span>
@@ -384,6 +351,15 @@
                                 </div>
                             </div>
 
+                            <%--<div class="row clearfix">
+                                <div class="col-md-12">
+                                    <p>
+                                        <b>TAT: </b>
+                                    </p>
+                                    <div id="modaltatclock"></div>
+                                    <div id="modaltatmessage"></div>
+                                </div>
+                            </div>--%>
                         </div>
                         <div class="header">
                             <a href="javascript:void(0)" onclick="closeTicketPanel()" class="btn btn-warning pull-right">ok</a>
