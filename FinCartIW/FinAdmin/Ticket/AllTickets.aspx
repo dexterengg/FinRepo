@@ -10,8 +10,10 @@
     <link href="/FinAdmin/plugins/waitme/waitMe.css" rel="stylesheet" />
     <!-- JQuery Counter Css -->
     <link href="/FinAdmin/plugins/countdown/countdown.css" rel="stylesheet" />
-     <!-- Bootstrap Select Css -->
+    <!-- Bootstrap Select Css -->
     <link href="/FinAdmin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+     <!-- Bootstrap Datetime Picker Css -->
+    <link href="/FinAdmin/plugins/bootstrap-material-datetimepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
     <!-- Jquery DataTable Plugin Js -->
     <script src="/FinAdmin/plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="/FinAdmin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
@@ -29,7 +31,7 @@
     <script src="/FinAdmin/plugins/light-gallery/js/lightgallery-all.js"></script>
     <!-- Wait Me Plugin Js -->
     <script src="/FinAdmin/plugins/waitme/waitMe.js"></script>
-     <!-- Moment Plugin Js -->
+    <!-- Moment Plugin Js -->
     <script src="/FinAdmin/plugins/momentjs/moment.js"></script>
     <!-- Bootstrap Datetime Picker Plugin Js -->
     <script src="/FinAdmin/plugins/bootstrap-material-datetimepicker/js/bootstrap-datetimepicker.js"></script>
@@ -45,8 +47,28 @@
             $('#liTickets').children(":nth-child(2)").css("display", "block");
             $('#liAllTicket').addClass('active');
             $('#liAllTicket').children(":first").addClass("toggled waves-effect waves-block");
+            $('#datetimepicker').datetimepicker();
             // 220880
         });
+
+        function txtchange(val) {
+            if (val === "Q") {
+                querychange($('#txtquery'));
+            }
+            else if (val === "S") {
+                subchange($('#txtSubject'))
+            }
+            else {
+                tatchange($('#txtTat'))
+            }
+        }
+
+        function fileattachmentchange() {
+            imageuploadchange($('#<%=fileattachment.ClientID%>'));
+        }
+        function removeimagefile() {
+            removefile($('#<%=fileattachment.ClientID%>'));
+        }
     </script>
 </asp:Content>
 
@@ -101,7 +123,7 @@
                                         <asp:Repeater ID="ReportTicketsRepeater" runat="server" OnItemCommand="TicketsRepeater_ItemCommand">
                                             <ItemTemplate>
                                                 <tr>
-                                                    <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
+                                                    <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>','V')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
                                                     <%--<td><%#Eval("Query").ToString().Length<10?Eval("Query").ToString():Eval("Query").ToString().Substring(0,10)+" ...." %></td>--%>
                                                     <td><%#Eval("Subject") %></td>
                                                     <td>
@@ -132,7 +154,7 @@
                                                                 Action <span class="caret"></span>
                                                             </button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="javascript:void(0);" onclick="updateTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')">Update</a></li>
+                                                                <li><a href="javascript:void(0);" onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>','U')">Update</a></li>
                                                                 <li><a href="javascript:void(0);">Re-Assign</a></li>
                                                                 <li>
                                                                     <asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>' OnClientClick="delcofirm()">Delete</asp:LinkButton></li>
@@ -177,7 +199,7 @@
                                         <asp:Repeater ID="AssignTicketsRepeater" runat="server">
                                             <ItemTemplate>
                                                 <tr>
-                                                    <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
+                                                    <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>','V')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
                                                     <td><%#Eval("Subject") %></td>
                                                     <td>
                                                         <div class="aniimated-thumbnials list-unstyled row clearfix">
@@ -317,13 +339,28 @@
                         <div class="body">
 
                             <div class="row clearfix">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <p>
-                                        <b>Subject <span id="rqSubject" class="badge bg-red">R</span></b>
+                                        <b>Subject <span id="rqSubject" class="badge bg-red"></span></b>
                                     </p>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Enter Subject...." id="txtSubject" runat="server" onchange="txtchange('S')" />
+                                            <textarea rows="1" class="form-control no-resize" placeholder="Enter Subject...." id="txtSubject" onchange="txtchange('S')" ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-sm-6">
+                                    <p>
+                                        <b>TAT <span id="rqTAT" class="badge bg-red"></span></b>
+                                    </p>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <div class='input-group date' id='datetimepicker'>
+                                                <input type="text" class="datetimepicker form-control" placeholder="Please choose date & time..." id="txtTat" onblur="txtchange('T')" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -332,54 +369,35 @@
                             <div class="row clearfix">
                                 <div class="col-md-12">
                                     <p>
-                                        <b>Query <span id="rqtxtquery" class="badge bg-red">R</span></b>
+                                        <b>Query <span id="rqtxtquery" class="badge bg-red"></span></b>
                                     </p>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea id="txtquery" runat="server" rows="1" class="form-control no-resize" placeholder="Type Your Query......" onchange="txtchange('Q')"></textarea>
+                                            <textarea id="txtquery" rows="1" class="form-control no-resize" placeholder="Type Your Query......" onchange="txtchange('Q')"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <p>
-                                        <b>TAT <span id="rqTAT" class="badge bg-red">R</span></b>
-                                    </p>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <div class='input-group date' id='datetimepicker'>
-                                                <input type="text" class="datetimepicker form-control" placeholder="Please choose date & time..." id="txtTat" runat="server" onblur="txtchange('T')" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-
-                            <div class="row clearfix">
                                 <div class="col-md-6">
                                     <p>
                                         <b>Status</b>
                                     </p>
-                                    <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control show-tick">
-                                        <asp:ListItem Value="0">Open</asp:ListItem>
-                                        <asp:ListItem Value="1">Close</asp:ListItem>
-                                    </asp:DropDownList>
-
+                                    <select id="ddlStatus" class="form-control show-tick">
+                                        <option value="0">Open</option>
+                                        <option value="1">Close</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6">
                                     <p>
                                         <b>Priority</b>
                                     </p>
-                                    <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control show-tick">
-                                        <asp:ListItem Value="0">High</asp:ListItem>
-                                        <asp:ListItem Value="1" Selected="True">Moderate</asp:ListItem>
-                                        <asp:ListItem Value="2">Low</asp:ListItem>
-                                    </asp:DropDownList>
+                                    <select id="ddlPriority" class="form-control show-tick">
+                                        <option value="0">High</option>
+                                        <option value="1">Moderate</option>
+                                        <option value="2">Low</option>
+                                    </select>
 
                                 </div>
                             </div>
@@ -394,8 +412,9 @@
                             </div>
 
                             <div class="row clearfix">
+                                <img class="img-responsive" id="uimgattachment" style="max-width: 30%;" />
                                 <div class="col-md-12" style="text-align: right">
-                                    <a href="javascript:void(0);" class="btn btn-success" >Submit</a>
+                                    <a href="javascript:void(0);" class="btn btn-success">Submit</a>
                                 </div>
                             </div>
 

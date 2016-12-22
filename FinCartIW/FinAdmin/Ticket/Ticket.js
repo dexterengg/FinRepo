@@ -258,7 +258,7 @@ function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlR
         $('#rqddlReportTo').text("");
     }
 
-    if (txtquery.val() && ddlDepartment.val() != "0" && ddlDesignation.val() != "0" && ddlAssignTo.val() != "0" && ddlReportTo.val() != "0" && $('#rqTAT').text()==="") {
+    if (txtquery.val() && ddlDepartment.val() != "0" && ddlDesignation.val() != "0" && ddlAssignTo.val() != "0" && ddlReportTo.val() != "0" && $('#rqTAT').text() === "") {
 
         var fileUpload = fileattachment.get(0);
         var files = fileUpload.files;
@@ -423,76 +423,28 @@ function removefile(fileattachment) {
     return false;
 }
 
-function viewTicket(ticketid,createdbymail) {
-    var $loading = $('#vcardLoader').waitMe({
-        effect: "timer",
-        text: 'Loading...',
-        bg: 'rgba(255,255,255,0.90)',
-        color: "lightBlue"
-    });
+function viewTicket(ticketid, createdbymail, type) {
+    var $loading;
+    if (type === "V") {
+        $loading = $('#vcardLoader').waitMe({
+            effect: "timer",
+            text: 'Loading...',
+            bg: 'rgba(255,255,255,0.90)',
+            color: "lightBlue"
+        });
 
-    $('#viewTicketPanel').modal('show');
+        $('#viewTicketPanel').modal('show');
+    }
+    else {
+        $loading = $('#ucardLoader').waitMe({
+            effect: "timer",
+            text: 'Loading...',
+            bg: 'rgba(255,255,255,0.90)',
+            color: "lightGreen"
+        });
 
-    $.ajax({
-        type: "POST",
-        url: "AllTickets.aspx/GetTicketDetails",
-        data: '{tid:"' + ticketid + '",creatoremail:"'+createdbymail+'"}',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            tdetails = result.d;
-            if (tdetails) {
-
-                //if (tdetails.Status === "0") {
-                //    $('#statusopen').css("display", "block");
-                //    $('#statusclose').css("display", "none");
-                //}
-                //else {
-                //    $('#statusopen').css("display", "none");
-                //    $('#statusclose').css("display", "block");
-                //}
-                $('#phigh').css("display", "none");
-                $('#pmoderate').css("display", "none");
-                $('#plow').css("display", "none");
-
-                if (tdetails.Priority === 0) {
-                    $('#phigh').css("display", "block");
-                }
-                else if (tdetails.Priority === 1) {
-                    $('#pmoderate').css("display", "block");
-                }
-                else {
-                    $('#plow').css("display", "block");
-                }
-
-                $('#lbltickedid').text(tdetails.TicketId);
-                $('#lbllastupdated').text(tdetails.UpdateDate);
-                $('#lblDepartment').text(tdetails.DepName);
-                $('#lblCreatedby').text(tdetails.CreatorName);
-                $('#lblAssignTo').text(tdetails.AssignToName);
-                $('#lblSubject').text(tdetails.Subject);
-                $('#lblquery').text(tdetails.Query);
-                $('#imgattachment').attr("src", tdetails.Attachment);
-
-               // bindTat('#modaltatclock', '#modaltatmessage', tdetails.Tat);
-            }
-            $loading.waitMe('hide');
-        },
-        error: function (err) {
-            $loading.waitMe('hide');
-        }
-    });    
-}
-
-function updateTicket(ticketid, createdbymail) {
-    var $loading = $('#ucardLoader').waitMe({
-        effect: "timer",
-        text: 'Loading...',
-        bg: 'rgba(255,255,255,0.90)',
-        color: "lightGreen"
-    });
-
-    $('#updateTicketPanel').modal('show');
+        $('#updateTicketPanel').modal('show');
+    }
 
     $.ajax({
         type: "POST",
@@ -503,36 +455,79 @@ function updateTicket(ticketid, createdbymail) {
         success: function (result) {
             tdetails = result.d;
             if (tdetails) {
+                if (type === "V") {
+                    //if (tdetails.Status === "0") {
+                    //    $('#statusopen').css("display", "block");
+                    //    $('#statusclose').css("display", "none");
+                    //}
+                    //else {
+                    //    $('#statusopen').css("display", "none");
+                    //    $('#statusclose').css("display", "block");
+                    //}
+                    $('#phigh').css("display", "none");
+                    $('#pmoderate').css("display", "none");
+                    $('#plow').css("display", "none");
 
-                //if (tdetails.Status === "0") {
-                //    $('#statusopen').css("display", "block");
-                //    $('#statusclose').css("display", "none");
-                //}
-                //else {
-                //    $('#statusopen').css("display", "none");
-                //    $('#statusclose').css("display", "block");
-                //}
+                    if (tdetails.Priority === 0) {
+                        $('#phigh').css("display", "block");
+                    }
+                    else if (tdetails.Priority === 1) {
+                        $('#pmoderate').css("display", "block");
+                    }
+                    else {
+                        $('#plow').css("display", "block");
+                    }
 
-                if (tdetails.Priority === 0) {
-                    $('#phigh').css("display", "block");
-                }
-                else if (tdetails.Priority === 1) {
-                    $('#pmoderate').css("display", "block");
+                    $('#lbltickedid').text(tdetails.TicketId);
+                    $('#lbllastupdated').text(tdetails.UpdateDate);
+                    $('#lblDepartment').text(tdetails.DepName);
+                    $('#lblCreatedby').text(tdetails.CreatorName);
+                    $('#lblAssignTo').text(tdetails.AssignToName);
+                    $('#lblSubject').text(tdetails.Subject);
+                    $('#lblquery').text(tdetails.Query);
+                    $('#imgattachment').attr("src", tdetails.Attachment);
+
+                    // bindTat('#modaltatclock', '#modaltatmessage', tdetails.Tat);
                 }
                 else {
-                    $('#plow').css("display", "block");
+                    $('#ulbltickedid').text(tdetails.TicketId);
+                    $('#ulbllastupdated').text(tdetails.UpdateDate);
+                    $('#txtSubject').val(tdetails.Subject);
+                    $('#txtquery').val(tdetails.Query);
+                    $('#uimgattachment').attr("src", tdetails.Attachment);
+
+                    var tatdate = new Date();
+                    tatdate = new Date(d.getTime() + tdetails.Tat);
+
+                    $('#txtTat').val(tatdate);
+
+                    $('#ddlStatus option').removeAttr('selected').filter('[value=' + tdetails.Status + ']').attr('selected', true);
+                    var pul = $('#ddlStatus').prev().children();
+                    pul.children(":first").removeClass('selected');
+                    pul.children(":nth-child(" + tdetails.Status + 1 + ")").addClass('selected');
+                    if (tdetails.Status === 0) {
+                        $('#ddlStatus').prev().prev().children(":first").text("Open");
+                    }
+                    else {
+                        $('#ddlStatus').prev().prev().children(":first").text("Close");
+                    }
+
+
+                    $('#ddlPriority option').removeAttr('selected').filter('[value=' + tdetails.Priority + ']').attr('selected', true);
+                    var pul = $('#ddlPriority').prev().children();
+                    pul.children(":first").removeClass('selected');
+                    pul.children(":nth-child(" + tdetails.Priority+1 + ")").addClass('selected');
+                    if (tdetails.Priority === 0) {
+                        $('#ddlPriority').prev().prev().children(":first").text("High");
+                    }
+                    else if (tdetails.Priority === 1) {
+                        $('#ddlPriority').prev().prev().children(":first").text("Moderate");
+                    }
+                    else {
+                        $('#ddlPriority').prev().prev().children(":first").text("Low");
+                    }
+                    
                 }
-
-                $('#lbltickedid').text(tdetails.TicketId);
-                $('#lbllastupdated').text(tdetails.UpdateDate);
-                $('#lblDepartment').text(tdetails.DepName);
-                $('#lblCreatedby').text(tdetails.CreatorName);
-                $('#lblAssignTo').text(tdetails.AssignToName);
-                $('#lblSubject').text(tdetails.Subject);
-                $('#lblquery').text(tdetails.Query);
-                $('#imgattachment').attr("src", tdetails.Attachment);
-
-                // bindTat('#modaltatclock', '#modaltatmessage', tdetails.Tat);
             }
             $loading.waitMe('hide');
         },
@@ -540,6 +535,10 @@ function updateTicket(ticketid, createdbymail) {
             $loading.waitMe('hide');
         }
     });
+}
+
+function updateTicket(ticketid, createdbymail) {
+
 }
 
 function closeTicketPanel(type) {
@@ -556,7 +555,7 @@ function isDate(val) {
     return !isNaN(d.valueOf());
 }
 
-function bindTat(clockid,msgid,tat) {
+function bindTat(clockid, msgid, tat) {
     var duration = parseInt(tat);
     if (duration > 0) {
         var clock;
