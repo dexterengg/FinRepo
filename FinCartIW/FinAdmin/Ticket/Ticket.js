@@ -258,7 +258,7 @@ function createticket(txtquery, ddlDepartment, ddlDesignation, ddlAssignTo, ddlR
         $('#rqddlReportTo').text("");
     }
 
-    if (txtquery.val() && ddlDepartment.val() != "0" && ddlDesignation.val() != "0" && ddlAssignTo.val() != "0" && ddlReportTo.val() != "0" && $('#rqTAT').text() === "") {
+    if (txtsub.val() && txtquery.val() && ddlDepartment.val() != "0" && ddlDesignation.val() != "0" && ddlAssignTo.val() != "0" && ddlReportTo.val() != "0" && $('#rqTAT').text() === "") {
 
         var fileUpload = fileattachment.get(0);
         var files = fileUpload.files;
@@ -477,7 +477,6 @@ function viewTicket(ticketid, createdbymail, type) {
                     else {
                         $('#plow').css("display", "block");
                     }
-
                     $('#lbltickedid').text(tdetails.TicketId);
                     $('#lbllastupdated').text(tdetails.UpdateDate);
                     $('#lblDepartment').text(tdetails.DepName);
@@ -486,21 +485,17 @@ function viewTicket(ticketid, createdbymail, type) {
                     $('#lblSubject').text(tdetails.Subject);
                     $('#lblquery').text(tdetails.Query);
                     $('#imgattachment').attr("src", tdetails.Attachment);
-
                     // bindTat('#modaltatclock', '#modaltatmessage', tdetails.Tat);
                 }
                 else {
+                    $('#hfid').val(tdetails.Id);
                     $('#ulbltickedid').text(tdetails.TicketId);
                     $('#ulbllastupdated').text(tdetails.UpdateDate);
                     $('#txtSubject').val(tdetails.Subject);
                     $('#txtquery').val(tdetails.Query);
                     $('#uimgattachment').attr("src", tdetails.Attachment);
-
-                    var tatdate = new Date();
-                    tatdate = new Date(d.getTime() + tdetails.Tat);
-
-                    $('#txtTat').val(tatdate);
-
+                    $('#hfsrc').val(tdetails.Attachment);
+                    $('#txtTat').val(tdetails.TatDate);
                     $('#ddlStatus option').removeAttr('selected').filter('[value=' + tdetails.Status + ']').attr('selected', true);
                     var pul = $('#ddlStatus').prev().children();
                     pul.children(":first").removeClass('selected');
@@ -511,8 +506,6 @@ function viewTicket(ticketid, createdbymail, type) {
                     else {
                         $('#ddlStatus').prev().prev().children(":first").text("Close");
                     }
-
-
                     $('#ddlPriority option').removeAttr('selected').filter('[value=' + tdetails.Priority + ']').attr('selected', true);
                     var pul = $('#ddlPriority').prev().children();
                     pul.children(":first").removeClass('selected');
@@ -526,7 +519,6 @@ function viewTicket(ticketid, createdbymail, type) {
                     else {
                         $('#ddlPriority').prev().prev().children(":first").text("Low");
                     }
-                    
                 }
             }
             $loading.waitMe('hide');
@@ -537,8 +529,170 @@ function viewTicket(ticketid, createdbymail, type) {
     });
 }
 
-function updateTicket(ticketid, createdbymail) {
+function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, fileattachment, fileattachmentval) {
+    var $loading;
+    if (!txtsub.val()) {
+        $('#rqSubject').text("Please Enter Subject");
+    }
+    else {
+        $('#rqSubject').text("");
+    }
 
+    if (!txttat.val()) {
+        $('#rqTAT').text("Please Enter Tat");
+    }
+    else {
+        if (isDate(txttat.val())) {
+            var mindatetime = 15 * 60 * 1000; /* ms *///15 mins
+            var newdatetime = new Date(txttat.val())
+            var currdatetime = new Date();
+
+            if ((newdatetime.getTime() - currdatetime.getTime()) < mindatetime) {
+                $('#rqTAT').text("Tat Must Be greater than 15 mins");
+            }
+            else {
+                $('#rqTAT').text("");
+            }
+        }
+        else {
+            $('#rqTAT').text("Invalid Date");
+        }
+    }
+
+    if (!txtquery.val()) {
+        $('#rqtxtquery').text("Please Enter Query");
+    }
+    else {
+        $('#rqtxtquery').text("");
+    }
+
+    if (txtsub.val() && txtquery.val() && $('#rqTAT').text() === "") {
+
+        var fileUpload = fileattachment.get(0);
+        var files = fileUpload.files;
+
+        if (files.length > 0) {
+            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            if ($.inArray(fileattachment.val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                $('#rqfileattachment').html("Only .jpeg, .jpg, .png, .gif, .bmp formats are allowed." + " " + "<a href='javascript:void(0)' class='btn bg-green waves-effect' onclick='removeimagefile()'>Remove File</a>");
+            }
+            else {
+               
+                $loading = $('#ucardLoader').waitMe({
+                    effect: "timer",
+                    text: 'Please Wait Updating...',
+                    bg: 'rgba(255,255,255,0.90)',
+                    color: "lightGreen"
+                });
+
+                $('#rqfileattachment').html("");
+                var data = new FormData();
+                for (var i = 0; i < files.length; i++) {
+                    data.append(files[i].name, files[i]);
+                }
+
+                $.ajax({
+                    url: "AttachmentHandler.ashx",
+                    type: "POST",
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        if (result) {
+                            $.ajax({
+                                type: "POST",
+                                url: "AllTickets.aspx/updateticket",
+                                data: '{id:"' + id.val() + '",sub:"' + txtsub.val() + '",tat:"' + txttat.val() + '",qry:"' + txtquery.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (r) {
+                                    if (r.d === 'y') {
+                                        //$('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait Redirecting...");
+                                        //setTimeout(function () { window.location = "AllTickets"; }, 1000);
+                                        $loading.waitMe('hide');
+                                        closeTicketPanel('U');
+                                    }
+                                    else {
+                                        $loading = $('#ucardLoader').waitMe({
+                                            effect: "timer",
+                                            text: 'Error on updating. Please refresh page...',
+                                            bg: 'rgba(255,255,255,0.90)',
+                                            color: "lightRed"
+                                        });
+                                    }
+                                },
+                                error: function (r) {
+                                    $loading = $('#ucardLoader').waitMe({
+                                        effect: "timer",
+                                        text: 'Error on updating. Please refresh page...',
+                                        bg: 'rgba(255,255,255,0.90)',
+                                        color: "lightRed"
+                                    });
+                                }
+                            });
+                        }
+                        else {
+                            $loading = $('#ucardLoader').waitMe({
+                                effect: "timer",
+                                text: 'Error on updating. Please refresh page...',
+                                bg: 'rgba(255,255,255,0.90)',
+                                color: "lightRed"
+                            });
+                        }
+                    },
+                    error: function (err) {
+                        $loading = $('#ucardLoader').waitMe({
+                            effect: "timer",
+                            text: 'Error on updating. Please refresh page...',
+                            bg: 'rgba(255,255,255,0.90)',
+                            color: "lightRed"
+                        });
+                    }
+                });
+            }
+        }
+        else {
+
+            $loading = $('#ucardLoader').waitMe({
+                effect: "timer",
+                text: 'Please Wait Updating...',
+                bg: 'rgba(255,255,255,0.90)',
+                color: "lightGreen"
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "AllTickets.aspx/updateticket",
+                data: '{id:"' + id.val() + '",sub:"' + txtsub.val() + '",tat:"' + txttat.val() + '",qry:"' + txtquery.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"'+fileattachmentval.val()+'"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (r) {
+                    if (r.d === 'y') {
+                        //$('#preloaderoverlaymsg').text("Ticket Submmitted. Please Wait Redirecting...");
+                        //setTimeout(function () { window.location = "AllTickets"; }, 1000);
+                        $loading.waitMe('hide');
+                        closeTicketPanel('U');
+                    }
+                    else {
+                        $loading = $('#ucardLoader').waitMe({
+                            effect: "timer",
+                            text: 'Error on updating. Please refresh page...',
+                            bg: 'rgba(255,255,255,0.90)',
+                            color: "lightRed"
+                        });
+                    }
+                },
+                error: function (r) {
+                    $loading = $('#ucardLoader').waitMe({
+                        effect: "timer",
+                        text: 'Error on updating. Please refresh page...',
+                        bg: 'rgba(255,255,255,0.90)',
+                        color: "lightRed"
+                    });
+                }
+            });
+        }
+    }
 }
 
 function closeTicketPanel(type) {
@@ -546,6 +700,9 @@ function closeTicketPanel(type) {
         $('#viewTicketPanel').modal('hide');
     }
     else if (type === "U") {
+        $('#rqSubject').text("");
+        $('#rqTAT').text("");
+        $('#rqtxtquery').text("");
         $('#updateTicketPanel').modal('hide');
     }
 }

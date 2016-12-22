@@ -46,7 +46,6 @@ public partial class FinAdmin_Ticket_AllTickets : System.Web.UI.Page
         AssignTicketsRepeater.DataSource = tsystem.SelectTicketByAssigneeEmail(Session["AdminSessionID"].ToString());
         AssignTicketsRepeater.DataBind();        
     }
-
     protected void TicketsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         if (e.CommandName == "D")
@@ -69,5 +68,23 @@ public partial class FinAdmin_Ticket_AllTickets : System.Web.UI.Page
     {
         TicketSystem tsystem = new TicketSystem();
         return tsystem.SelectTicketByTicketId(tid,creatoremail);
+    }
+
+    [WebMethod]
+    public static string updateticket(string id, string sub, string tat, string qry, string status, string priority, string attachfile)
+    {
+        TicketSystem tsystem = new TicketSystem();
+        Ticket tc = new Ticket();
+        tc.Id = Convert.ToInt64(id.Trim());
+        tc.Subject = sub.Trim();
+        tc.Tat = tat.Trim();
+        tc.Query = qry.Trim();
+        tc.Attachment = attachfile;
+        tc.UpdatedByEmail = HttpContext.Current.Session["AdminSessionID"].ToString();
+        tc.Status = Convert.ToInt32(status.Trim());
+        tc.Priority = Convert.ToInt32(priority.Trim());
+        int i = tsystem.UpdateTicket(tc);
+
+        return i > 0 ? "y" : "n";
     }
 }

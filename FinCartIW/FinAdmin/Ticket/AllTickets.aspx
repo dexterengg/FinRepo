@@ -66,8 +66,13 @@
         function fileattachmentchange() {
             imageuploadchange($('#<%=fileattachment.ClientID%>'));
         }
+
         function removeimagefile() {
             removefile($('#<%=fileattachment.ClientID%>'));
+        }
+
+        function alterticket() {
+            updateticket($('#hfid'), $('#txtSubject'), $('#txtTat'), $('#txtquery'), $('#ddlStatus'), $('#ddlPriority'), $('#<%=fileattachment.ClientID%>'), $('#hfsrc'));
         }
     </script>
 </asp:Content>
@@ -155,7 +160,7 @@
                                                             </button>
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="javascript:void(0);" onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>','U')">Update</a></li>
-                                                                <li><a href="javascript:void(0);">Re-Assign</a></li>
+                                                                <%--<li><a href="javascript:void(0);">Re-Assign</a></li>--%>
                                                                 <li>
                                                                     <asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>' OnClientClick="delcofirm()">Delete</asp:LinkButton></li>
                                                             </ul>
@@ -412,9 +417,12 @@
                             </div>
 
                             <div class="row clearfix">
+                                <input type="hidden" id="hfid"/>
+                                <input type="hidden" id="hfsrc"/>
                                 <img class="img-responsive" id="uimgattachment" style="max-width: 30%;" />
                                 <div class="col-md-12" style="text-align: right">
-                                    <a href="javascript:void(0);" class="btn btn-success">Submit</a>
+                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="closeTicketPanel('U');">Cancel</a>
+                                    <a href="javascript:void(0);" class="btn btn-success" onclick="alterticket();">Submit</a>
                                 </div>
                             </div>
 
