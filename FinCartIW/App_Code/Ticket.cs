@@ -19,6 +19,7 @@ public class Ticket
     public string TicketId { get; set; }
     public string Subject { get; set; }
     public string Tat { get; set; }
+    public string TatDate { get; set; }
     public string Query { get; set; }
     public string Attachment { get; set; }
     public string DepName { get; set; }
