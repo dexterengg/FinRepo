@@ -12,7 +12,7 @@
     <link href="/FinAdmin/plugins/countdown/countdown.css" rel="stylesheet" />
     <!-- Bootstrap Select Css -->
     <link href="/FinAdmin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-     <!-- Bootstrap Datetime Picker Css -->
+    <!-- Bootstrap Datetime Picker Css -->
     <link href="/FinAdmin/plugins/bootstrap-material-datetimepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
     <!-- Jquery DataTable Plugin Js -->
     <script src="/FinAdmin/plugins/jquery-datatable/jquery.dataTables.js"></script>
@@ -72,7 +72,7 @@
         }
 
         function alterticket() {
-            updateticket($('#hfid'), $('#txtSubject'), $('#txtTat'), $('#txtquery'), $('#ddlStatus'), $('#ddlPriority'), $('#<%=fileattachment.ClientID%>'), $('#hfsrc'));
+            updateticket($('#hfid'), $('#txtSubject'), $('#txtTat'), $('#txtquery'), $('#ddlStatus'), $('#ddlPriority'), $('#<%=fileattachment.ClientID%>'), $('#hfsrc'), $('#hftat'));
         }
     </script>
 </asp:Content>
@@ -338,8 +338,12 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card" id="ucardLoader">
                         <div class="header bg-light-green">
-                            <h2>Ticket ID - <span id="ulbltickedid"></span><small>Last Updated: <span id="ulbllastupdated"></span></small>
-                            </h2>
+                            <div class="switch pull-right">
+                                        <label>No<input type="checkbox" id="istat"><span class="lever switch-col-deep-orange"></span>Yes</label>
+                                <br />
+                                <small>Wanna Change TAT??</small>
+                                    </div>
+                            <h2>Ticket ID - <span id="ulbltickedid"></span><small>Last Updated: <span id="ulbllastupdated"></span></small></h2>
                         </div>
                         <div class="body">
 
@@ -350,11 +354,11 @@
                                     </p>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea rows="1" class="form-control no-resize" placeholder="Enter Subject...." id="txtSubject" onchange="txtchange('S')" ></textarea>
+                                            <textarea rows="1" class="form-control no-resize" placeholder="Enter Subject...." id="txtSubject" onchange="txtchange('S')"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                 <div class="col-sm-6">
+                                <div class="col-sm-6">
                                     <p>
                                         <b>TAT <span id="rqTAT" class="badge bg-red"></span></b>
                                     </p>
@@ -417,8 +421,9 @@
                             </div>
 
                             <div class="row clearfix">
-                                <input type="hidden" id="hfid"/>
-                                <input type="hidden" id="hfsrc"/>
+                                <input type="hidden" id="hfid" />
+                                <input type="hidden" id="hfsrc" />
+                                <input type="hidden" id="hftat" />
                                 <img class="img-responsive" id="uimgattachment" style="max-width: 30%;" />
                                 <div class="col-md-12" style="text-align: right">
                                     <a href="javascript:void(0);" class="btn btn-danger" onclick="closeTicketPanel('U');">Cancel</a>

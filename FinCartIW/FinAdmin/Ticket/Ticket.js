@@ -496,6 +496,7 @@ function viewTicket(ticketid, createdbymail, type) {
                     $('#uimgattachment').attr("src", tdetails.Attachment);
                     $('#hfsrc').val(tdetails.Attachment);
                     $('#txtTat').val(tdetails.TatDate);
+                    $('#hftat').val(tdetails.TatDate);
                     $('#ddlStatus option').removeAttr('selected').filter('[value=' + tdetails.Status + ']').attr('selected', true);
                     var pul = $('#ddlStatus').prev().children();
                     pul.children(":first").removeClass('selected');
@@ -529,7 +530,7 @@ function viewTicket(ticketid, createdbymail, type) {
     });
 }
 
-function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, fileattachment, fileattachmentval) {
+function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, fileattachment, fileattachmentval,tatval) {
     var $loading;
     if (!txtsub.val()) {
         $('#rqSubject').text("Please Enter Subject");
@@ -538,25 +539,31 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
         $('#rqSubject').text("");
     }
 
-    if (!txttat.val()) {
-        $('#rqTAT').text("Please Enter Tat");
-    }
-    else {
-        if (isDate(txttat.val())) {
-            var mindatetime = 15 * 60 * 1000; /* ms *///15 mins
-            var newdatetime = new Date(txttat.val())
-            var currdatetime = new Date();
-
-            if ((newdatetime.getTime() - currdatetime.getTime()) < mindatetime) {
-                $('#rqTAT').text("Tat Must Be greater than 15 mins");
-            }
-            else {
-                $('#rqTAT').text("");
-            }
+    if ($('#istat').val()) {
+        if (!txttat.val()) {
+            $('#rqTAT').text("Please Enter Tat");
         }
         else {
-            $('#rqTAT').text("Invalid Date");
+            if (isDate(txttat.val())) {
+                var mindatetime = 15 * 60 * 1000; /* ms *///15 mins
+                var newdatetime = new Date(txttat.val())
+                var currdatetime = new Date();
+
+                if ((newdatetime.getTime() - currdatetime.getTime()) < mindatetime) {
+                    $('#rqTAT').text("Tat Must Be greater than 15 mins");
+                }
+                else {
+                    $('#rqTAT').text("");
+                }
+            }
+            else {
+                $('#rqTAT').text("Invalid Date");
+            }
         }
+    }
+    else {
+        txttat.val(tatval);
+        $('#rqTAT').text("");
     }
 
     if (!txtquery.val()) {
