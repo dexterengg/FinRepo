@@ -14,10 +14,11 @@ public partial class FinAdmin_Ticket_AllTickets : System.Web.UI.Page
     {
         if (Session["AdminSessionID"] != null)
         {
-            if (!IsPostBack)
+            if (Session["grid"]==null)
             {
-                bindTickets("A");
+                Session["grid"]="A";
             }
+            bindTickets();
         }
         else
         {
@@ -26,8 +27,9 @@ public partial class FinAdmin_Ticket_AllTickets : System.Web.UI.Page
 
     }
 
-    void bindTickets(string gridfor)
+    void bindTickets()
     {
+        string gridfor = Convert.ToString(Session["grid"]);
         if (gridfor == "R")
         {
             lbltickets.Text = "Tickets Report To Me";
@@ -46,21 +48,23 @@ public partial class FinAdmin_Ticket_AllTickets : System.Web.UI.Page
         AssignTicketsRepeater.DataSource = tsystem.SelectTicketByAssigneeEmail(Session["AdminSessionID"].ToString());
         AssignTicketsRepeater.DataBind();        
     }
-    protected void TicketsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+    
+    [WebMethod]
+    public static string deleteTicket(string tid)
     {
-        if (e.CommandName == "D")
-        {
-            int id = tsystem.DeleteTicket(e.CommandArgument.ToString());
-            bindTickets("R");
-        }
+        TicketSystem tsystem = new TicketSystem();
+        int i = tsystem.DeleteTicket(tid);
+        return i > 0 ? "y" : "n";
     }
     protected void ALinkButton_Click(object sender, EventArgs e)
     {
-        bindTickets("A");
+        Session["grid"] = "A";
+        bindTickets();
     }
     protected void RLinkButton_Click(object sender, EventArgs e)
     {
-        bindTickets("R");
+        Session["grid"] = "R";
+        bindTickets();
     }
 
     [WebMethod]

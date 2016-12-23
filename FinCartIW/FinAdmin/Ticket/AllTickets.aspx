@@ -125,7 +125,7 @@
                                                 <th>TAT</th>
                                             </tr>
                                         </thead>
-                                        <asp:Repeater ID="ReportTicketsRepeater" runat="server" OnItemCommand="TicketsRepeater_ItemCommand">
+                                        <asp:Repeater ID="ReportTicketsRepeater" runat="server">
                                             <ItemTemplate>
                                                 <tr>
                                                     <td><a onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>','V')" href="javascript:void(0);"><%#Eval("TicketId") %></a></td>
@@ -160,9 +160,7 @@
                                                             </button>
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="javascript:void(0);" onclick="viewTicket('<%#Eval("TicketId") %>','<%#Eval("CreatorEmail") %>','U')">Update</a></li>
-                                                                <%--<li><a href="javascript:void(0);">Re-Assign</a></li>--%>
-                                                                <li>
-                                                                    <asp:LinkButton ID="LinkButtonDelete" runat="server" CommandName="D" CommandArgument='<%#Eval("TicketId") %>' OnClientClick="delcofirm()">Delete</asp:LinkButton></li>
+                                                                <li><a href="javascript:void(0);" onclick="delconfrim('<%#Eval("TicketId") %>')">Delete</a></li>
                                                             </ul>
                                                         </div>
                                                     </td>
@@ -428,6 +426,31 @@
                                 <div class="col-md-12" style="text-align: right">
                                     <a href="javascript:void(0);" class="btn btn-danger" onclick="closeTicketPanel('U');">Cancel</a>
                                     <a href="javascript:void(0);" class="btn btn-success" onclick="alterticket();">Submit</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- Modal Delete-->
+    <div class="modal fade" id="deleteTicketPanel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card" id="dcardLoader">
+                        <div class="header bg-light-red">
+                            <h2>Are you sure to remove this Ticket??</h2>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-md-12" style="text-align: right">
+                                    <input type="hidden" id="hftid"/>
+                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="closeTicketPanel('D');">No</a>
+                                    <a href="javascript:void(0);" class="btn btn-success" onclick="deleteTicket();">Yes</a>
                                 </div>
                             </div>
 

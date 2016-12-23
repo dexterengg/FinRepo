@@ -71,7 +71,7 @@ public partial class FinAdmin_Ticket_AddTicket : System.Web.UI.Page
         tc.Status = Convert.ToInt32(status.Trim());
         tc.Priority = Convert.ToInt32(priority.Trim());
         int i = tsystem.CreateTicket(tc);
-
+        HttpContext.Current.Session["grid"] = "R";
         return i > 0 ? "y" : "n";
     }
 

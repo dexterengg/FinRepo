@@ -346,8 +346,49 @@ $(function () {
     });
 });
 
-function delcofirm() {
-    return confirm('Are you sure?');
+function deleteTicket() {
+    var $loading = $('#dcardLoader').waitMe({
+        effect: "timer",
+        text: 'Deleting...',
+        bg: 'rgba(255,255,255,0.90)',
+        color: "lightRed"
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "AllTickets.aspx/deleteTicket",
+        data: '{tid:"' + $('#hftid').val() + '"}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (r) {
+            if (r.d === 'y') {
+                $loading.waitMe('hide');
+                closeTicketPanel('D');
+                location.reload();
+            }
+            else {
+                $loading = $('#dcardLoader').waitMe({
+                    effect: "timer",
+                    text: 'Error on Deleting. Please refresh page...',
+                    bg: 'rgba(255,255,255,0.90)',
+                    color: "lightRed"
+                });
+            }
+        },
+        error: function (r) {
+            $loading = $('#dcardLoader').waitMe({
+                effect: "timer",
+                text: 'Error on Deleting. Please refresh page...',
+                bg: 'rgba(255,255,255,0.90)',
+                color: "lightRed"
+            });
+        }
+    });
+}
+
+function delconfrim(tid) {
+    $('#hftid').val(tid);
+    $('#deleteTicketPanel').modal('show');
 }
 
 function querychange(txtquery) {
@@ -620,6 +661,7 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
                                         //setTimeout(function () { window.location = "AllTickets"; }, 1000);
                                         $loading.waitMe('hide');
                                         closeTicketPanel('U');
+                                        location.reload();
                                     }
                                     else {
                                         $loading = $('#ucardLoader').waitMe({
@@ -681,6 +723,7 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
                         //setTimeout(function () { window.location = "AllTickets"; }, 1000);
                         $loading.waitMe('hide');
                         closeTicketPanel('U');
+                        location.reload();
                     }
                     else {
                         $loading = $('#ucardLoader').waitMe({
@@ -713,6 +756,9 @@ function closeTicketPanel(type) {
         $('#rqTAT').text("");
         $('#rqtxtquery').text("");
         $('#updateTicketPanel').modal('hide');
+    }
+    else {
+        $('#deleteTicketPanel').modal('hide');
     }
 }
 
