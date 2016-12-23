@@ -26,9 +26,9 @@
                 </h1>
             </form>
             <form class="form">
-                <input id="txtAdminUserName" type="text" placeholder="Username" tabindex="1">
-                <input id="txtAdminPassword" type="password" placeholder="Password" tabindex="2">
-                <button type="button" id="login-button" onclick="validateuser()">Login</button>
+                <input id="txtAdminUserName" type="text" placeholder="Username" tabindex="1" onkeypress="submitOnEnter(this, event);">
+                <input id="txtAdminPassword" type="password" placeholder="Password" tabindex="2" onkeypress="submitOnEnter(this, event);">
+                <button type="button" id="login-button" onclick="validateuser()" tabindex="3">Login</button>
             </form>
         </div>
         <ul class="bg-bubbles">

@@ -44,3 +44,8 @@ function validateuser() {
         });
     }
  
+function submitOnEnter(inputElement, event) {
+    if (event.keyCode == 13) { // No need to do browser specific checks. It is always 13.
+        validateuser();
+    }
+}
