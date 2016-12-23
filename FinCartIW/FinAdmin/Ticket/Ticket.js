@@ -532,6 +532,7 @@ function viewTicket(ticketid, createdbymail, type) {
 
 function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, fileattachment, fileattachmentval,tatval) {
     var $loading;
+    var tatcurrval;
     if (!txtsub.val()) {
         $('#rqSubject').text("Please Enter Subject");
     }
@@ -539,7 +540,7 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
         $('#rqSubject').text("");
     }
 
-    if ($('#istat').val()) {
+    if ($('#istat').prop("checked")) {
         if (!txttat.val()) {
             $('#rqTAT').text("Please Enter Tat");
         }
@@ -553,6 +554,7 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
                     $('#rqTAT').text("Tat Must Be greater than 15 mins");
                 }
                 else {
+                    tatcurrval = txttat.val();
                     $('#rqTAT').text("");
                 }
             }
@@ -562,7 +564,7 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
         }
     }
     else {
-        txttat.val(tatval);
+        tatcurrval = tatval.val();
         $('#rqTAT').text("");
     }
 
@@ -609,7 +611,7 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
                             $.ajax({
                                 type: "POST",
                                 url: "AllTickets.aspx/updateticket",
-                                data: '{id:"' + id.val() + '",sub:"' + txtsub.val() + '",tat:"' + txttat.val() + '",qry:"' + txtquery.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
+                                data: '{id:"' + id.val() + '",sub:"' + txtsub.val() + '",tat:"' + tatcurrval + '",qry:"' + txtquery.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + result + '"}',
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (r) {
@@ -670,7 +672,7 @@ function updateticket(id, txtsub, txttat, txtquery, ddlStatus, ddlPriority, file
             $.ajax({
                 type: "POST",
                 url: "AllTickets.aspx/updateticket",
-                data: '{id:"' + id.val() + '",sub:"' + txtsub.val() + '",tat:"' + txttat.val() + '",qry:"' + txtquery.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"'+fileattachmentval.val()+'"}',
+                data: '{id:"' + id.val() + '",sub:"' + txtsub.val() + '",tat:"' + tatcurrval + '",qry:"' + txtquery.val() + '",status:"' + ddlStatus.val() + '",priority:"' + ddlPriority.val() + '",attachfile:"' + fileattachmentval.val() + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (r) {
