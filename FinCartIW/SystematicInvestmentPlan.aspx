@@ -27,7 +27,7 @@
         <h4 class="modal-title">Sign In</h4>
       </div>
       <div class="modal-body">
-<div role="form">
+      <div role="form">
                                     <div class="form-group">
                                       <label for="email">Email ID</label>
                                       <asp:TextBox type="text" name="eusername" runat="server" TabIndex="1" id="eusername" class="form-control"  />
@@ -98,22 +98,16 @@
 	
 <nav class="navbar navbar-inverse navbar-fixed-top" style="background:url(whyshould-you-invest/image/header-bg.JPG); background-repeat:repeat-x; height:63px; border:none; padding:0px;">
       <div class="container">
-        <div class="navbar-header" >
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#" style="padding:0px;"><img src="whyshould-you-invest/image/logo_fincart_190x55.png" alt="logo" class="img-responsive" style="width:100%; height:48px; margin-top:8px;"></a>
+        <div class="row" >
+          <div class="col-lg-6 col-xs-5">
+          <a class="navbar-brand" href="#" style="padding:0px;">
+          <img src="whyshould-you-invest/image/logo_fincart_190x55.png" alt="logo" class="img-responsive" style="width:100%; height:42px; margin-top:8px;"> </a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse" >
-         <!-- <ul class="nav navbar-nav navbar-right">
-            <li><a href="#contact"><b>Sign UP</b></a></li>
-			<li><a href="#contact"><b>Sign IN</b></a></li>
-          </ul> -->
-        </div><!--/.nav-collapse -->
-      </div>
+        
+        <div class="col-lg-6 col-xs-7"> <h2 style="font-size:16px; font-weight:bold; color:#fff; float:right"> Call - 011-30018181 </h2> </div>
+        </div>
+        <div>
+       
     </nav>
 
 	<div class="slide">
@@ -210,11 +204,11 @@ suggests best 3 investment choices based on the analysis and time horizon select
    <div class="hidden-lg hidden-md col-sm-12 col-xs-12">  
    <table style="text-align:center; width:98%; margin:0 auto; padding:0; margin-top:5px">   
   <tr> 
-  <td> <span style="text-align:left; color:#FFFFFF; font-size:35px; padding:0px; margin:0; height:auto; float:left;" > #IPSELFIE  </span> </td>
+  <td> <span style="text-align:left; color:#FFFFFF; font-size:20px; padding:0px; margin:0; height:auto; float:left;" > #IPSELFIE  </span> </td>
   </tr>
-  <tr> <td> <h2 style=" text-align:left; color:#FFFFFF; font-size:25px; padding:0px; padding-top:10px; margin:0; height:auto;">   
+  <tr> <td> <h2 style=" text-align:left; color:#FFFFFF; font-size:17px; padding:0px; padding-top:8px; margin:0; height:auto;">   
   Your self-constructed Investment Plan    </h2> </td> </tr>
-  <tr> <td> <h3 style=" text-align:left; color:#FFFFFF; font-size:20px; padding:12px 0px 15px 0px; margin:0; height:auto; font-weight:normal"> 
+  <tr> <td> <h3 style=" text-align:left; color:#FFFFFF; font-size:15px; padding:8px 0px 15px 0px; margin:0; height:auto; font-weight:normal"> 
   Get your customized Investment Plan in just few clicks </h3>  </td>  </tr>
   <tr>  
   <td> 
@@ -226,7 +220,7 @@ suggests best 3 investment choices based on the analysis and time horizon select
   </table>
    </div> 
    
-   <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="padding-top:20px; padding-left:5px;">  
+   <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="padding-top:20px; padding-left:12px;">  
    <img src="howitworks/image/get-start.png" style="height:auto; width:300px;" />
    <table> 
    <tr> 
@@ -450,7 +444,7 @@ Video courtesy of
     </tr>
    <tr> 
    <td colspan="2"> 
-       <input type="text" id="Name1xs" placeholder="NAME" runat="server" maxlength="30" class="investmentinput-bg" style="width:290px;"/>
+       <input type="text" id="Name1xs" placeholder="NAME" runat="server" maxlength="30" class="investmentinput-bg" style="width:97%"/>
                             <div class="alert-danger" style="text-align: center; border-radius: 5px; margin-top: 2px;background-color:#fff;color:#ff0000;" >
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*Name Required" ControlToValidate="Name1xs" Display="Dynamic" ValidationGroup="user1xs"></asp:RequiredFieldValidator>
                                 </div>
@@ -458,7 +452,7 @@ Video courtesy of
    </tr>
    <tr> 
       <td colspan="2"> 
-<input type="text" id="Email1xs" placeholder="EMAIL ID" runat="server" maxlength="50" class="investmentinput-bg" style="width:290px;"/>
+<input type="text" id="Email1xs" placeholder="EMAIL ID" runat="server" maxlength="50" class="investmentinput-bg" style="width:97%"/>
                             <div class="alert-danger" style="text-align: center; border-radius: 5px; margin-top: 2px;background-color:#fff;color:#ff0000;" >
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*Email Required" ControlToValidate="Email1xs" Display="Dynamic" ValidationGroup="user1xs"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="*Invalid Email" ControlToValidate="Email1xs" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" Display="Dynamic" ValidationGroup="user1xs" ></asp:RegularExpressionValidator>
@@ -467,7 +461,7 @@ Video courtesy of
    </tr>
    <tr> 
       <td colspan="2"> 
-          <input type="text" id="Mobile1xs" placeholder="MOBILE NO" runat="server" maxlength="10" class="investmentinput-bg" style="width:290px;"/>
+          <input type="text" id="Mobile1xs" placeholder="MOBILE NO" runat="server" maxlength="10" class="investmentinput-bg" style="width:97%"/>
                             <div class="alert-danger" style="text-align: center; border-radius: 5px; margin-top: 2px;background-color:#fff;color:#ff0000;" >
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*Mobile Required" ControlToValidate="Mobile1xs" Display="Dynamic" ValidationGroup="user1xs"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="Mobile1xs" ErrorMessage="*Invalid Mobile" ValidationExpression="[0-9]{10}" Display="Dynamic" ValidationGroup="user1xs"></asp:RegularExpressionValidator>
@@ -476,7 +470,7 @@ Video courtesy of
    </tr>
         <tr> 
       <td colspan="2"> 
-          <input type="password" id="password1xs" placeholder="PASSWORD" runat="server"  class="investmentinput-bg" style="width:290px;"/>
+          <input type="password" id="password1xs" placeholder="PASSWORD" runat="server"  class="investmentinput-bg" style="width:97%"/>
                             <div class="alert-danger" style="text-align: center; border-radius: 5px; margin-top: 2px;background-color:#fff;color:#ff0000;" >
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="*Password Required" ControlToValidate="password1xs" Display="Dynamic" ValidationGroup="user1xs"></asp:RequiredFieldValidator>
                                 </div>
@@ -626,9 +620,9 @@ CIN # U74140DL2012PTC245046 | ARN # 86903 | Logo Trademark # 2523746 | ISO 9001:
      <p class="footerContent" style="color: #cccccc; font-size: 0.85em; text-align: center; margin-top:10px;">
   Fincart.com TM + C 2012-2015. All rights reserved. Last Update: 15 October 2015
   </p>
-      
 	 </div>
-     <div class="socialConnect">
+  
+   <div class="socialConnect" style="padding-bottom:10px;">
   <center>
    <table align="center">
     <tr>

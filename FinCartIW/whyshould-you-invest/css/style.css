@@ -20,7 +20,8 @@ margin-left: 5px;}
 
 .investmentinput-bg{background:url(../image/input-bg.PNG); background-repeat:repeat; width:530px; margin-bottom:10PX; border:none; color:#555; font-size:20px; padding:10px 13px; font-weight:400; display:block}
 .selfi-bg{ background-image:url(../image/selfie-bg.PNG); background-repeat:repeat;
-           padding:20px 80px 20px 30px;
+           padding:15px 100px 20px 30px;
+           margin-top:20px;
            }
 
 .ips-bg{background:url(../image/ips-bg.PNG); background-repeat:repeat-x; height:468px;}
