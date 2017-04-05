@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style type="text/css">
+        @charset "UTF-8";
+
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate)
+        {
+            display: none !important;
+        }
+
+        ng\:form
+        {
+            display: block;
+        }
+
+        .ng-animate-shim
+        {
+            visibility: hidden;
+        }
+
+        .ng-anchor
+        {
+            position: absolute;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/angular-animate.js"></script>
+    <script src="src/miComponents/miButton.js"></script>
+    <script src="src/miComponents/miCheckbox.js"></script>
+    <script src="src/miComponents/miDatePicker.js"></script>
+    <script src="src/miComponents/miDatetime.js"></script>
+    <script src="src/miComponents/miDropdown.js"></script>
+    <script src="src/miComponents/miImageContainer.js"></script>
+    <script src="src/miComponents/miNotification.js"></script>
+    <script src="src/miComponents/miRadiobutton.js"></script>
+    <script src="src/miComponents/miTextbox.js"></script>
+    <script src="src/miComponents/miTimePicker.js"></script>
+    <link rel="stylesheet" href="libs/miUX-UIFonts/style.css"/>
+
+    <script src="src/config/mistepper.js"></script>
+    <link href="src/themes/M2/css/main.css" rel="stylesheet" />
+</head>
+<body flex="100" layout-fill="" layout="column" class="ng-scope"  ng-app="mainApp">
+
+    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+
+ <div layout-fill="">
+     <div class="mi-shell__header" layout-fill="">
+        <div layout-align="space-between center" layout="row" layout-fill="">
+            <div class="mi-icon-close clickable" show-lg="" show-md="" show-sm=""></div>
+            <div class="mi-ellipsiss">
+                &nbsp;&nbsp;
+            </div>
+            <div class="mi-icon-phone clickable" show-lg="" show-md="" show-sm=""></div>
+        </div>
+
+    </div>
+        <div class="mi-shell" layout-fill="" layout="row">
+             
+            <div class="mi-shell__off-canvas-container mi-show">
+                <!-- uiView: menuView -->
+                        <mi-stepper steps="['{{stepNo1}}', 'Step 2', 'Step 3', 'Step 4', 'Step 5']" control="stepperControl" start-step="1"></mi-stepper>
+            </div>
+            <div layout="column" flex="1" class="mi-shell__content mobile-content ">
+                <!-- uiView: containerView -->
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+
+        //customsetting
+        var customSettings = [];
+        function getcustomsettings($http) {
+            $http.get("http://dapp16lxv:8180/FNOLWebService/fnolidentication/" + OrgCode)
+                .success(function (data) {
+                    customSettings = data.loginIdentificationResponse.loginfields.group;
+                });
+        }
+
+
+        var mainApp = angular.module("mainApp", ['miComponents', 'ngRoute', 'ngAnimate', 'mi.stepper']);
+
+        mainApp.config(['$routeProvider', function ($routeProvider) {
+            $routeProvider.
+
+            when('/main', {
+                templateUrl: 'src/common/landingPage1/landingPage1.html',
+                controller: 'mainController'
+            }).
+
+            when('/intro1', {
+                templateUrl: 'src/common/landingPage2/landingPage2.html',
+                controller: 'intro1Controller'
+            }).
+
+              when('/intro2', {
+                  templateUrl: 'src/common/landingPage3/landingPage3.html',
+                  controller: 'intro2Controller'
+              }).
+                  when('/shell', {
+                      templateUrl: 'src/common/shell/shell.html',
+                      controller: 'shellController'
+                  }).
+            otherwise({
+                redirectTo: '/main'
+            });
+        }]);
+
+        mainApp.controller('mainController', function ($scope) {
+            $scope.currtheme = thm;
+            $scope.pageClass = 'page-main';
+
+        });
+
+        mainApp.controller('intro1Controller', function ($scope) {
+            $scope.currtheme = thm;
+            $scope.pageClass = 'page-main';
+        });
+
+        mainApp.controller('intro2Controller', function ($scope) {
+            $scope.currtheme = thm;
+            $scope.pageClass = 'page-main';
+        });
+
+        mainApp.controller('shellController', function ($scope, $http) {
+            $scope.currtheme = thm;
+            $scope.pageClass = 'page-main';
+
+            $scope.func = function () {
+                if (customSettings.length > 0) {
+
+                    $scope.script = false;
+                    $scope.textbox = true;
+                    $scope.button = true;
+                    var que = [];
+
+                    for (var i = 0; i < customSettings.length; i++) {
+                        if (customSettings[i].field.length > 1) {
+                            var orque = [];
+                            for (var j = 0; j < customSettings[i].field.length; j++) {
+                                orque.push(customSettings[i].field[j].name);
+
+                            }
+                            que.push(orque.join(" or "));
+                        }
+                        else {
+                            que.push(customSettings[i].field.name)
+                        }
+                    }
+
+                    $scope.questionText = 'Lets start with your vehicle and policy information.';
+                    $scope.answerText = que;
+                }
+                else {
+                    var que = ["(1) Your policy and vehicle", "(2) Accident time, date, and type"];
+                    $scope.questionText = 'In this section we will be covering the following.';
+                    $scope.answerText = que;
+                    $scope.script = true;
+                    $scope.textbox = false;
+                    $scope.button = true;
+                    getcustomsettings($http);
+                }
+            }
+
+            $scope.func();
+        });
+
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--layout css start-->
+    <link href="src/libs/miUX-UIFonts/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/libs/miFileManager-1.3.8/fileManager.css">
+    <!--layout css end-->
+    <!--<link href="src/themes/M2/css/main.css" rel="stylesheet" />-->
+    <title></title>
+
+</head>
+<body ng-app="mi.mfnol.web" class="{{appBodyTheme}}">
+    <div class="loading" ng-show="Processing">
+        <!-- We make this div spin -->
+        <div class="spinner">
+            <!-- Mask of the quarter of circle -->
+            <div class="mask">
+                <!-- Inner masked circle -->
+                <div class="maskedCircle"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--Advance Search-->
+    <div class="mi-advance-search-popup" style="display: none" ng-show="advancedSearchPopup">
+        <br />
+        <div class="mobile-card-advance-search-text">
+            <div layout-align="space-between center" layout="row" layout-fill="">
+                <div class="mi-advance-search-header" show-lg="" show-md="" show-sm="">{{"_AdvancedSearchLabel_" | translate}}</div>
+                <div class="mi-icon-close mi-adjust-icoon-close clickable" show-lg="" show-md="" show-sm="" ng-click="advancedSearchClose()"></div>
+            </div>
+        </div>
+        <div ng-if="isAdvancedFilterApplied" class="mobile-card-advance-search-text" ng-click="setToDefault()">
+            <div class="mi-advance-search-btn-enable">{{"_SetToDefault_" | translate}}</div>
+        </div>
+        <div class="mobile-card-advance-search-text">
+            <div class="mi-advance-search-text">{{searchTypeLabel}}</div>
+        </div>
+        <div ng-repeat="ans in searchFormFields.field">
+            <div class="mobile-card">
+                <div class="identification-question-label">
+                    <lable>{{ans.name}}</lable>
+                </div>
+                <div ng-if="'textbox'==ans.type">
+                    <mi-textbox txt-class="mi-textbox-form-control" ng-model="$root.searchData[ans.val]" txt-placeholder="{{ans.placeholder}}" ng-keydown="gotonext($event)"></mi-textbox>
+                    <div ng-attr-id="{{ans.id}}"></div>
+                </div>
+                <div ng-if="'date'==ans.type && ans.isSupportable">
+                    <mi-date-picker date-class="mi-time-picker-form-control" ng-model="$root.searchData[ans.val]" ng-keydown="gotonext($event)"></mi-date-picker>
+                    <div ng-attr-id="{{ans.id}}"></div>
+                </div>
+                <div ng-if="'date'==ans.type && !ans.isSupportable">
+                    <mi-textbox txt-class="mi-time-picker-form-control" ng-model="$root.searchData[ans.val]" txt-placeholder="{{ans.placeholder}}" ng-keydown="gotonext($event)"></mi-textbox>
+                    <div ng-attr-id="{{ans.id}}"></div>
+                </div>
+                <div ng-if="'time'==ans.type && ans.isSupportable">
+                    <mi-time-picker time-class="mi-time-picker-form-control" ng-model="$root.searchData[ans.val]" ng-keydown="gotonext($event)"></mi-time-picker>
+                    <div ng-attr-id="{{ans.id}}"></div>
+                </div>
+                <div ng-if="'time'==ans.type && !ans.isSupportable">
+                    <mi-textbox txt-class="mi-time-picker-form-control" ng-model="$root.searchData[ans.val]" txt-placeholder="{{ans.placeholder}}" ng-keydown="gotonext($event)"></mi-textbox>
+                    <div ng-attr-id="{{ans.id}}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-card">
+        </div>
+        <div class="mi-style-mobile-card clickable adjust-advance-search-btn" ng-click="applyAdvancedSearch()">
+            <button class="mi-style-button" layout-align="mi-btn-start space-between center" layout="row" layout-fill="">
+            <div layout-align="space-between center" layout="row" layout-fill="">
+                <div class="mi-icat-icon" show-lg="" show-md="" show-sm=""></div>
+                {{"_SEARCHRESOURCELABEL_" | translate}}
+                <div class="mi-icat-icon" show-lg="" show-md="" show-sm=""></div>
+            </div>
+            </button>
+        </div>
+    </div>
+
+    <!--question space-->
+    <div class="mobile-content1 callout-card-div" style="display: none" ng-show="callPopOn">
+        <div align="right" style="margin-right: 2em;">
+            <div class="mi-triangle-border top"></div>
+        </div>
+        <div class="triangle-border triangle-border-callout top">
+            <div class="mobile-card-question">
+                <div class="mi-app-header-1">
+                    <div class="ax_shape" ng-show="DisplayCallCenterHours">
+                        <div class="mi-call-center-hour-wrapper" ng-show="DisplayCallCenterHours">
+                            <div class="mi-call-center-hour-title" ng-cloak>
+                                {{ CallCenterHourTitle }}
+                            </div>
+                            <div id="divCallCenterHoursHeading" class="mi-call-center-hour" ng-repeat="callCenterHour in CallCenterHours track by $index">
+                                <span id="spnCallCenterHours{{ $index }}" ng-cloak>{{ callCenterHour }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ax_shape" ng-show="istelPhoneNumber">                
+
+                        <button class="mi-callout-button" layout-align="mi-btn-start space-between center" layout="row" layout-fill="" ng-click="call()">
+                            <div layout-align="space-between center" layout="row" layout-fill="">
+                                <div class="mi-icat-icon" show-lg="" show-md="" show-sm=""></div>
+                                {{ Calltext }}
+                             <div class="mi-icat-icon" show-lg="" show-md="" show-sm=""></div>
+                        </div>
+                        </button>
+
+                    </div>
+                   
+                    <div class="ax_shape" ng-show="!istelPhoneNumber">
+                        <div id="dvCallCenterErrorMessage" ng-bind="Message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mi-remove-claim-popup" style="display: none" ng-show="showPopup">
+        <div class="mobile-card-popup">
+            <div class="">
+                <span ng-bind="WarningMessage"></span>
+            </div>
+            <div class="mobile-card-popup-button">
+                <div layout-align="space-between center" layout="row" layout-fill="">
+                    <a ng-click="discardClaim()" class="link">{{DiscardButtonLabel}}</a>
+                    <input type="button" class="mi-btn-primary popup-cancel-button" value="{{CancelButtonLabel}}" ng-click="closePopup()" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="{{Processing?'modal':''}}"></div>
+    <div id="dvCallPopup" class="{{callPopOn?'modal':''}}" ng-click="callInsuranceCarrier()"></div>
+    <div class="{{advancedSearchPopup?'modal':''}}"></div>
+    <div class="{{showPopup?'modal':''}}"></div>
+
+    <div infinite-scroll="showMore()" can-load="canLoad" class="mi-content-scroll">
+        <div ui-view="shellView" class="mi-app-wrapper" autoscroll></div>
+
+        <!-- angular js files start-->
+        <script src="scripts/modernizr-2.8.3.js"></script>
+        <script src="scripts/jquery-2.2.1.min.js"></script>
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/angular-sanitize.js"></script>
+        <script src="scripts/angular-route.js"></script>
+        <script src="scripts/angular-animate.js"></script>
+        <script src="scripts/angular-ui-router.js"></script>
+        <script src="scripts/angular-cookies.js"></script>
+        <script src="scripts/angular-resource.js"></script>
+        <script src="scripts/angular-touch.js"></script>
+        <script src="scripts/angular-translate.min.js"></script>
+        <script src="src/config/angular-idle.js"></script>
+        <script src="src/config/mi-guid-generator.js"></script>
+        <script src="src/config/googleAnalyticsObject.js"></script>
+        <script src="src/libs/angular-gettext-0.2.9/angular-gettext.js"></script>
+        <script src="src/libs/miFileManager-1.3.8/fileManager.js"></script>
+        <!-- angular js files end-->
+        <!-- oauth module start-->
+        <script src="src/common/auth/auth.js"></script>
+        <script src="src/common/auth/auth-userSession.js"></script>
+        <script src="src/common/auth/auth-service.js"></script>
+        <script src="src/common/auth/auth-factory.js"></script>
+        <script src="src/config/infinite-scroll.js"></script>
+        <!--oauth module end-->
+        <!--loding bar module start-->
+        <script src="src/app/loading-bar.js"></script>
+        <!--loding bar module-end-->
+        <!-- environment module start-->
+        <script src="src/config/miEnvironment.js"></script>
+        <!-- environment module end-->
+        <!--fnol modules start-->
+        <script src="src/app/app.js"></script>
+        <script src="src/app/miRoute.js"></script>
+        <script src="src/config/midatafactory.js"></script>
+        <script src="src/config/miassignmentfactory.js"></script>
+        <script src="src/config/miServices.js"></script>
+        <script src="src/common/error-pages/ErrorController.js"></script>
+        <script src="src/config/angular-translate-loader-static-files.js"></script>
+        <script src="src/config/angular-translate-storage-cookie.js"></script>
+        <script src="src/config/angular-translate-storage-local.js"></script>
+        <script src="src/config/angular-translate-handler-log.js"></script>
+        <script src="src/config/tmhDynamicLocale.js"></script>
+        <script src="src/config/LocaleService.js"></script>
+        <script src="src/config/v-accordion.js"></script>
+
+        <script src="src/common/shell/shellController.js"></script>
+        <script src="src/common/shell/authsecureloginController.js"></script>
+        <script src="src/common/header/info1headerController.js"></script>
+        <script src="src/common/header/info2headerController.js"></script>
+        <script src="src/common/header/info3headerController.js"></script>
+        <script src="src/common/landingPage1/intro1Controller.js"></script>
+        <script src="src/common/landingPage2/intro2Controller.js"></script>
+        <script src="src/common/landingPage3/intro3Controller.js"></script>
+
+        <script src="src/common/landing-Question/landingQuestionController.js"></script>
+        <script src="src/common/identification/identificationController.js"></script>
+        <script src="src/common/choiceselection-Question/choiceselectionQuestionController.js"></script>
+        <script src="src/common/yesno-Question/yesnoQuestionController.js"></script>
+        <script src="src/common/script-Question/scriptQuestionController.js"></script>
+        <script src="src/common/datetime-Question/datetimeQuestionController.js"></script>
+        <script src="src/common/open-Question/openController.js"></script>
+        <script src="src/common/range-Question/rangeQuestionController.js"></script>
+        <script src="src/common/date-Question/dateQuestionController.js"></script>
+        <script src="src/common/time-Question/timeQuestionController.js"></script>
+        <script src="src/common/ExistingClaimPage/ExistingClaimPageController.js"></script>
+        <script src="src/common/Confirmation-Question/ConfirmationQuestionController.js"></script>
+        <script src="src/common/summary-Page/summaryPageController.js"></script>
+        <script src="src/common/liability-Check/liabilityCheckController.js"></script>
+        <script src="src/common/outcome-Detail/outcomeDetailController.js"></script>
+        <script src="src/common/Moi/MoiController.js"></script>
+        <script src="src/common/ResourceLookUp/resourceController.js"></script>
+        <script src="src/common/ScheduleAppointment/scheduleAppointmentController.js"></script>
+        <script src="src/common/AppointmentConfirmationPage/AppointmentConfirmationController.js"></script>
+        <script src="src/common/ClaimSummaryPage/ClaimSummaryController.js"></script>
+        <script src="src/common/AdjusterAppointmentInfoPage/AdjusterAppointmentInfoController.js"></script>
+        <script src="src/common/Complex-Question/ComplexQuestionController.js"></script>
+        <script src="src/common/FileUpload/fileUploadController.js"></script>
+
+        <!--fnol modules end-->
+        <!-- Components js start-->
+        <script src="src/miComponents/miButton.js"></script>
+        <script src="src/miComponents/miCheckbox.js"></script>
+        <script src="src/miComponents/miDatePicker.js"></script>
+        <script src="src/miComponents/miDatetime.js"></script>
+        <script src="src/miComponents/miDropdown.js"></script>
+        <script src="src/miComponents/miImageContainer.js"></script>
+        <script src="src/miComponents/miNotification.js"></script>
+        <script src="src/miComponents/miRadiobutton.js"></script>
+        <script src="src/miComponents/miTextbox.js"></script>
+        <script src="src/miComponents/miTimePicker.js"></script>
+        <script src="src/miComponents/miAccordion/miAccordion.js"></script>
+        <script src="src/miComponents/miSearchTextbox.js"></script>
+        <!-- Components js end-->
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                if (/iPhone/.test(navigator.userAgent) && !window.MSStream) {
+                    $(document).on("focus", "input, textarea, select", function () {
+                        $('meta[name=viewport]').remove();
+                        $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">');
+                    });
+
+                    $(document).on("blur", "input, textarea, select", function () {
+                        $('meta[name=viewport]').remove();
+                        $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
+                    });
+                }
+            });
+
+
+        </script>
+    </div>
+</body>
+
+</html>

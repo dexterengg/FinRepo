@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="Scripts\angular.min.js"></script>    
+</head>
+<body  ng-app="myApp" ng-controller="myCtrl">
+    
+    <div >
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <td style="width:200px;">
+                    Organization ID :
+                </td>
+                <td>
+                    <input id="txtOrgId" type="text" ng-model="objLogin.cocd" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:200px;">
+                    User ID :
+                </td>
+                <td>
+                    <input id="txtUserId" type="text" ng-model="objLogin.userid" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:200px;">
+                    Password :
+                </td>
+                <td>
+                    <input id="txtPassword"  type="password" ng-model="objLogin.userpassword" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:200px;">
+                    Language :
+                </td>
+                <td>
+                    <input id="txtLanguage"  type="text" ng-model="objLogin.language" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:200px;">
+                    CallCenter Hours :
+                </td>
+                <td>
+                    <input type="text" ng-model="objLogin.callcenterhours" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:200px;">
+                    
+                </td>
+                <td>
+                    <input type="button" id="btnLogin" value="Login" ng-click="login()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+     
+     
+     <script type="text/javascript">
+         var app = angular.module('myApp', []);
+
+         app.controller('myCtrl', function ($scope, $rootScope, $q, $http, $location) {
+             
+
+             var objLogin = {
+                 cocd: "",
+                 userid: "",
+                 userpassword: "",
+                 language: "",
+                 callcenterhours: ""
+             };
+
+             $scope.url = window.location.href.split('/')[2];
+
+             $scope.getMiEnvironment = function () {
+                 try {
+                     $http({
+                         method: "GET",
+                         url: "/test.sample",
+                         headers: {
+                             'Content-Type': 'application/JSON'
+                         }
+                     }).success(function (result) {
+                         $rootScope.miEnvironment = JSON.parse(result);
+                     }).error(function (result) {
+                         alert('Failed to load MiEnvironment configuration settings !');
+                     });
+                 }
+                 catch (e) {
+
+                 }
+
+             }
+
+             $scope.getMiEnvironment();
+
+             $scope.objLogin = objLogin;
+
+             $scope.login = function () {
+                 var grantType = "password";
+                 var clientId = "FNOL";
+                 var clientSecret = "al34Sfjk47dP9LBemnsDk5uskqPxn0jd";
+                 var Content_type_oauth = "application/x-www-form-urlencoded";
+
+                 var deferred = $q.defer();
+                 var authResult = { data: '', status: '' };
+
+                 try {
+                     $http({
+                         method: "POST",
+                         url: $rootScope.miEnvironment.MYMITCHELL_HTTPS_URL + "/OAuth2Server/1.0/OAuth/Token",  //TODO: Temporary url will be replaced after service deployment. Need tp start the OAuth server solution first.
+                         data: "grant_type=" + grantType + "&client_id=" + clientId + "&client_secret=" + clientSecret + "&username=" + $scope.objLogin.userid + "&co_cd=" + $scope.objLogin.cocd + "&password=" + $scope.objLogin.userpassword,
+                         headers: { 'Content-Type': Content_type_oauth }
+                     }).success(function (result, status, headers, config) {
+
+                         authResult.data = result;
+                         authResult.status = status;
+                         deferred.resolve(authResult);
+                         var refreshtoken = authResult.data.refresh_token;
+
+                         location.href = "Default.html#/shell/" + objLogin.cocd + "/" + $scope.objLogin.language + "?token=" + refreshtoken + "&callcenterhours";// + $scope.objLogin.callcenterhours;
+
+
+                     }).error(function (result, status, headers, config) {
+
+                         authResult.data = result;
+                         authResult.status = status;
+                         deferred.resolve(authResult);
+                         alert('Invalid Credentials!');
+                     });
+                 }
+                 catch (e) {
+                     deferred.reject(e);
+                 }
+
+                 return deferred.promise;
+
+             }
+         });
+
+    </script>
+
+</body>
+</html>
